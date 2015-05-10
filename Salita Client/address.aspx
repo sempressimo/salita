@@ -10,11 +10,12 @@
      <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-info" />
      <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-                               <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal">
+         <div class="form-group">
+             <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal">
                  <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
                  <asp:ListItem>Hacia el dealer</asp:ListItem>
              </asp:RadioButtonList>
-
+         </div>
          <div class="form-group">
              <label>Dirección</label>
              <asp:TextBox ID="txtSendTo" runat="server" placeholder="Direccion a transportar" CssClass="form-control"></asp:TextBox>

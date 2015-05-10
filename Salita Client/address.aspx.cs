@@ -19,7 +19,22 @@ namespace Salita_Client
 
         protected void txtZipCode_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                SalitaEntities db = new SalitaEntities();
 
+                ListZip z = db.ListZips.SingleOrDefault(p => p.ZipCode == this.txtZipCode.Text);
+
+                if (z != null)
+                {
+                    this.txtTown.Text = z.City;
+                }
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
         }
 
         protected void cmdOK_Click(object sender, EventArgs e)
