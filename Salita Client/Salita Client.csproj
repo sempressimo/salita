@@ -201,6 +201,7 @@
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery.responsivetable.min.js" />
     <Content Include="Scripts\salita.js" />
+    <Content Include="service_complete.aspx" />
     <Content Include="Site1.Master" />
     <EntityDeploy Include="SalitaDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -325,6 +326,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalitaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="service_complete.aspx.cs">
+      <DependentUpon>service_complete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="service_complete.aspx.designer.cs">
+      <DependentUpon>service_complete.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

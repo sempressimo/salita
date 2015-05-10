@@ -121,7 +121,6 @@ C:\git\salita\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
 C:\git\salita\Salita Client\bin\Microsoft.Threading.Tasks.xml
 C:\git\salita\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.xml
 C:\git\salita\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
-C:\git\salita\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache
 C:\git\salita\Salita Client\obj\Debug\ApplicationInsights.config
 C:\git\salita\Salita Client\obj\Debug\Salita Client.dll
 C:\git\salita\Salita Client\obj\Debug\Salita Client.pdb

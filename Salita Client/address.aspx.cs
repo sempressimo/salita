@@ -14,6 +14,7 @@ namespace Salita_Client
             if (!Page.IsPostBack)
             { 
                 ViewState["id"] = Request.QueryString["id"];
+                this.lblFullName.Text = Request.QueryString["name"];
             }
         }
 
@@ -47,7 +48,10 @@ namespace Salita_Client
 
                 SalitaEntities db = new SalitaEntities();
 
-                if (db.CustomerNeeds.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.RequestedService_ID == Service_ID && p.WasFullfilled == false) == null)
+                DateTime from = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
+                DateTime to = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
+
+                if (db.CustomerNeeds.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == Service_ID && p.WasFullfilled == false) == null)
                 {
                     CustomerNeed S = new CustomerNeed();
 
@@ -63,7 +67,11 @@ namespace Salita_Client
                     db.CustomerNeeds.Add(S);
                     db.SaveChanges();
 
-                    Response.Redirect("default.aspx");
+                    Response.Redirect("report_transportation.aspx");
+                }
+                else
+                {
+                    throw new Exception("Ya existe un pedido de transportación para hoy el cliente con id: " + Customer_ID.ToString());
                 }
             }
             catch (Exception E)

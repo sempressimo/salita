@@ -11,7 +11,7 @@
      <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
          <div class="form-group">
-             <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal">
+             <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
                  <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
                  <asp:ListItem>Hacia el dealer</asp:ListItem>
              </asp:RadioButtonList>

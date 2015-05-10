@@ -10,7 +10,7 @@
 namespace Salita_Client {
     
     
-    public partial class report_transportation {
+    public partial class service_complete {
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -31,48 +31,39 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
-        /// RadioButtonList1 control.
+        /// lblFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.Label lblFullName;
         
         /// <summary>
-        /// txtFrom control.
+        /// txtServiceDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtServiceDesc;
         
         /// <summary>
-        /// txtTo control.
+        /// cmdOK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
+        protected global::System.Web.UI.WebControls.LinkButton cmdOK;
         
         /// <summary>
-        /// lbSearch control.
+        /// cmdCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbSearch;
-        
-        /// <summary>
-        /// gvRecords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRecords;
+        protected global::System.Web.UI.WebControls.LinkButton cmdCancel;
     }
 }

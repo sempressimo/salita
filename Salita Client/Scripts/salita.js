@@ -700,7 +700,7 @@ function doMouseDown(event) {
                             sndClick.play();
                         }
 
-                        window.location.assign("address.aspx?id=" + customer_ID);
+                        window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
                     }
                 }
             }
