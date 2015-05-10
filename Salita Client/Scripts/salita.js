@@ -560,6 +560,14 @@ function doMouseUp(event) {
     holdDownTimer = 0;
 }
 
+function PlayClick()
+{
+    if (sndClick.readyState > 0) {
+        sndClick.currentTime = 0;
+        sndClick.play();
+    }
+}
+
 var MouseIsDown = false;
 function doMouseDown(event) {
 
@@ -665,10 +673,7 @@ function doMouseDown(event) {
 
                     if (mouse_x > btn_water_x && mouse_x < btn_water_x + 58 && mouse_y > btn_water_y - map_top_margin && mouse_y < btn_water_y - map_top_margin + 58)
                     {
-                        if (sndClick.readyState > 0) {
-                            sndClick.currentTime = 0;
-                            sndClick.play();
-                        }
+                        PlayClick();
 
                         callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 1 }', 1);
                     }
