@@ -1,0 +1,121 @@
+﻿	      
+/*-------------------------------------------------------------------------------------------*/
+
+
+.mygrid
+{
+    margin:20px auto !important;
+    width:100%;
+    padding:10px;
+    background:rgba(255,255,255,0.7);
+    border:0;
+    font-size:12px;
+    font-family:Verdana;
+}
+
+
+.mygrid td
+{
+    padding:8px 0 !important;
+    border:0;
+    vertical-align:middle !important;
+}
+
+.mygrid th
+{
+    font-weight:bold;
+    color:#fff;
+    border:0;
+    padding:10px  !important;
+    background:rgba(0,0,0,0.6);
+}
+
+
+.mygrid tr:nth-child(even)
+{
+    background:rgba(0,0,0,0.03);
+}
+
+.mygrid tr:hover
+{
+/*background:rgba(185,213,49,.2) !important;    */
+}
+
+.mygrid tr:last-child
+{
+    border:0;
+}
+
+.mygrid a
+{
+    font-weight:bold;
+    margin:auto;
+    text-decoration:underline;
+}
+
+
+.mygrid input[type="image"], .mygrid a > img
+{
+    padding:8px !important;
+    background:#333 !important;
+    height:36px !important;
+    opacity:0.5;
+    border-radius:10px;
+    margin:0 10px 0 10px;
+}
+
+.mygrid input[type="image"]:active
+{
+    background:blue !important;
+    -webkit-box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.7);
+    box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.7);
+}
+
+
+.mygrid caption
+{
+    font-weight:bold;
+    text-align:center;
+    margin:auto;
+    padding:5px;
+    background:#999;
+    color:#fff;
+}
+
+.mypager a
+{
+    text-align:center;
+    font-weight:bold;
+    margin:auto;
+    width:auto;
+    padding:8px;
+    color:#000;
+    text-decoration:none;
+    background:rgba(185,213,49,1) !important;
+    border-radius: 10px;
+    
+    -webkit-transition:opacity .5s;
+    -webkit-transition:background .5s;
+    transition:opacity 1s;
+    transition:background 1.5s;
+}
+
+.mypager a:hover
+{
+    background:#fff;
+}
+
+.mypager table
+{
+    width:auto;
+    margin:10px auto;
+}
+
+.mypager table td
+{
+    padding:0 10px;
+}
+
+
+
+/*--------------------------------------------------------------------------------------------*/

@@ -1,0 +1,18 @@
+﻿.mygrid input[type="image"], .mygrid a > img
+{
+    padding:8px !important;
+    background:#999 !important;
+    height:32px !important;
+    opacity:0.5;
+    
+    -webkit-transition:opacity .5s;
+    -webkit-transition:background .5s;
+    transition:opacity 1s;
+    transition:background 1.5s;
+}
+
+.mygrid input[type="image"]:hover, .mygrid a > img:hover
+{
+    opacity:1;
+    background:rgba(0,144,206,1)  !important;
+}

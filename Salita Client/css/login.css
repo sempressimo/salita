@@ -1,0 +1,89 @@
+﻿
+.login-main .logo
+{
+    background:none;
+    margin:auto;
+    margin-bottom:20px;
+    text-align:center;
+    font-weight:normal;
+    display:block !important;
+    float:none !important;
+}
+
+
+
+.login-main
+{
+    font-family:Helvetica;
+    font-size:12px;
+    font-weight:bold;
+    margin:auto;
+    padding:30px 50px;
+    -webkit-box-shadow:  inset 0px 0px 24px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow:     inset 0px 0px 24px rgba(0, 0, 0, 0.16);
+    box-shadow:          inset 0px 0px 24px rgba(0, 0, 0, 0.16);
+
+    color:#333;
+    
+    text-align:center;
+
+}
+
+.login-detail
+{
+    display:block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.login-detail li
+{
+    padding:5px;
+    text-align:center;
+    list-style-image:none;
+    border:0px solid red;
+}
+
+.login-detail li .mybutton
+{
+    display:block;
+    margin:auto;
+    padding:12px;	
+}
+
+.login-detail .buttonpanel 
+{
+    margin:20px auto 0 !important;
+} 
+
+.login-detail li a
+{
+    margin:auto;
+    color:#333;
+    
+}
+
+.login-detail li a:hover
+{
+    color:#000;
+}
+
+hr  
+{
+    border-top:1px dotted #999;
+    margin:20px auto;
+}
+
+.loginfooter
+{
+    padding:20px;
+    text-align:center;
+    color:#fff;
+    width:auto;
+    font-size:11px !important;
+}
+.footerWith{
+    width:100% !important;
+}

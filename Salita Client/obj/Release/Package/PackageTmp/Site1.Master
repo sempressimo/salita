@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Salita_Client.Site1" %>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Autogermana - Customer Lounge</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+      .dropdown {
+
+      }
+
+        .navbar-collapse {
+            padding-left: 25px !important;
+            padding-right: 25px !important;
+        }
+    </style>
+        
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="css/mygrid.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=720, initial-scale=1">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+  </head>
+  <body>
+    <form id="main_form" runat="server">
+
+        <nav class="navbar navbar-default navbar-inverse" style="border:0;">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                      </button>
+                        <a class="navbar-brand" href="default.aspx" style="padding:5px"><img src="images/logo.png" alt="AutoGermana" class="logo" style="height:40px;" /></a>
+                        <a class="navbar-brand whitetext"><span>AutoGermana BMW</span></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown active">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                      <span class="bold">Menu principal </span>&nbsp;
+                                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu">
+                                        <li><asp:LinkButton ID="lbSalita" runat="server" OnClick="lbSalita_Click"><img src="images/waiting2.png" />&nbsp;&nbsp;<span> Sala Virtual</span></asp:LinkButton></li>
+                                        <li class="divider"></li>
+                                        <li><asp:LinkButton ID="lbCustomers" runat="server" OnClick="lbCustomers_Click"><img src="images/list.png" />&nbsp;&nbsp;<span> Listado Clientes</span></asp:LinkButton></li>
+                                        <li class="divider"></li>
+                                        <li><asp:LinkButton ID="lbReportTransportation" runat="server" OnClick="lbReportTransportation_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Reporte: Transportación</span></asp:LinkButton></li>
+                                        <li class="divider"></li>
+                                        <li><asp:LinkButton ID="lbReportServices" runat="server" OnClick="lbReportServices_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Reporte: Servicios</span></asp:LinkButton></li> 
+                                        <li class="divider"></li>
+                                        <li><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">&nbsp;&nbsp;<span>Log Out</span></asp:LinkButton></li> 
+                                  </ul>
+                                </li>
+                            </ul>
+                    </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+  </body>
+</html>

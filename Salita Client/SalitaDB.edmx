@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalitaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerNeeds">
+          <Key>
+            <PropertyRef Name="CustomerNeed_ID" />
+          </Key>
+          <Property Name="CustomerNeed_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="RequestedService_ID" Type="int" />
+          <Property Name="RequestDateTime" Type="datetime" />
+          <Property Name="Note" Type="varchar" MaxLength="150" />
+          <Property Name="WasFullfilled" Type="bit" />
+          <Property Name="Address_Line" Type="varchar" MaxLength="50" />
+          <Property Name="Town" Type="varchar" MaxLength="25" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="FromDealer" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Town" Type="varchar" MaxLength="25" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustomerServices">
+          <Key>
+            <PropertyRef Name="CustomerService_ID" />
+          </Key>
+          <Property Name="CustomerService_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceType" Type="varchar" MaxLength="1" />
+          <Property Name="ServiceDescription" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ListZip">
+          <Key>
+            <PropertyRef Name="ZipUid" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="Inactive" />
+          </Key>
+          <Property Name="ZipUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ZipCode" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="State" Type="varchar" MaxLength="3" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="4" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maps">
+          <Key>
+            <PropertyRef Name="Map_ID" />
+          </Key>
+          <Property Name="Map_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapName" Type="varchar" MaxLength="50" />
+          <Property Name="MapData" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Visits">
+          <Key>
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Visit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="VisitDate" Type="date" />
+          <Property Name="VisitTime" Type="time" Precision="7" />
+          <Property Name="Seat_X" Type="int" />
+          <Property Name="Seat_Y" Type="int" />
+          <Property Name="InLounge" Type="bit" />
+          <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WatingForReasons">
+          <Key>
+            <PropertyRef Name="WatingForReason_ID" />
+          </Key>
+          <Property Name="WatingForReason_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReasonDescription" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Salita.dbo.v_CustomerNeeds' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_CustomerNeeds">
+          <Key>
+            <PropertyRef Name="CustomerNeed_ID" />
+          </Key>
+          <Property Name="CustomerNeed_ID" Type="int" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="RequestedService_ID" Type="int" />
+          <Property Name="RequestDateTime" Type="datetime" />
+          <Property Name="Note" Type="varchar" MaxLength="150" />
+          <Property Name="WasFullfilled" Type="bit" />
+          <Property Name="Address_Line" Type="varchar" MaxLength="50" />
+          <Property Name="Town" Type="varchar" MaxLength="25" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="FromDealer" Type="bit" />
+          <Property Name="ServiceType" Type="varchar" MaxLength="1" />
+          <Property Name="ServiceDescription" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Customer_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_Town" Type="varchar" MaxLength="25" />
+          <Property Name="Customer_ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_RecentVisits">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Town" Type="varchar" MaxLength="25" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Visit_ID" Type="int" Nullable="false" />
+          <Property Name="VisitDate" Type="date" />
+          <Property Name="VisitTime" Type="time" Precision="7" />
+          <Property Name="Seat_X" Type="int" />
+          <Property Name="Seat_Y" Type="int" />
+          <Property Name="InLounge" Type="bit" />
+          <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <Association Name="FK_CustomerNeeds_CustomerServices">
+          <End Role="CustomerServices" Type="Self.CustomerServices" Multiplicity="0..1" />
+          <End Role="CustomerNeeds" Type="Self.CustomerNeeds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServices">
+              <PropertyRef Name="CustomerService_ID" />
+            </Principal>
+            <Dependent Role="CustomerNeeds">
+              <PropertyRef Name="RequestedService_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visits_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalitaModelStoreContainer">
+          <EntitySet Name="CustomerNeeds" EntityType="Self.CustomerNeeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerServices" EntityType="Self.CustomerServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visits" EntityType="Self.Visits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListZip" EntityType="Self.ListZip" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListZip].[ZipUid] AS [ZipUid], 
+    [ListZip].[ZipCode] AS [ZipCode], 
+    [ListZip].[City] AS [City], 
+    [ListZip].[State] AS [State], 
+    [ListZip].[AreaCode] AS [AreaCode], 
+    [ListZip].[Inactive] AS [Inactive]
+    FROM [dbo].[ListZip] AS [ListZip]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WatingForReasons" EntityType="Self.WatingForReasons" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WatingForReasons].[WatingForReason_ID] AS [WatingForReason_ID], 
+    [WatingForReasons].[ReasonDescription] AS [ReasonDescription]
+    FROM [dbo].[WatingForReasons] AS [WatingForReasons]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_CustomerNeeds" EntityType="Self.v_CustomerNeeds" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_CustomerNeeds].[CustomerNeed_ID] AS [CustomerNeed_ID], 
+    [v_CustomerNeeds].[Customer_ID] AS [Customer_ID], 
+    [v_CustomerNeeds].[RequestedService_ID] AS [RequestedService_ID], 
+    [v_CustomerNeeds].[RequestDateTime] AS [RequestDateTime], 
+    [v_CustomerNeeds].[Note] AS [Note], 
+    [v_CustomerNeeds].[WasFullfilled] AS [WasFullfilled], 
+    [v_CustomerNeeds].[Address_Line] AS [Address_Line], 
+    [v_CustomerNeeds].[Town] AS [Town], 
+    [v_CustomerNeeds].[ZipCode] AS [ZipCode], 
+    [v_CustomerNeeds].[FromDealer] AS [FromDealer], 
+    [v_CustomerNeeds].[ServiceType] AS [ServiceType], 
+    [v_CustomerNeeds].[ServiceDescription] AS [ServiceDescription], 
+    [v_CustomerNeeds].[Phone] AS [Phone], 
+    [v_CustomerNeeds].[FullName] AS [FullName], 
+    [v_CustomerNeeds].[Email] AS [Email], 
+    [v_CustomerNeeds].[Customer_Address] AS [Customer_Address], 
+    [v_CustomerNeeds].[Customer_Town] AS [Customer_Town], 
+    [v_CustomerNeeds].[Customer_ZipCode] AS [Customer_ZipCode], 
+    [v_CustomerNeeds].[IsActive] AS [IsActive]
+    FROM [dbo].[v_CustomerNeeds] AS [v_CustomerNeeds]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_RecentVisits" EntityType="Self.v_RecentVisits" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_RecentVisits].[Customer_ID] AS [Customer_ID], 
+    [v_RecentVisits].[Phone] AS [Phone], 
+    [v_RecentVisits].[FullName] AS [FullName], 
+    [v_RecentVisits].[Address] AS [Address], 
+    [v_RecentVisits].[Town] AS [Town], 
+    [v_RecentVisits].[ZipCode] AS [ZipCode], 
+    [v_RecentVisits].[IsActive] AS [IsActive], 
+    [v_RecentVisits].[Visit_ID] AS [Visit_ID], 
+    [v_RecentVisits].[VisitDate] AS [VisitDate], 
+    [v_RecentVisits].[VisitTime] AS [VisitTime], 
+    [v_RecentVisits].[Seat_X] AS [Seat_X], 
+    [v_RecentVisits].[Seat_Y] AS [Seat_Y], 
+    [v_RecentVisits].[InLounge] AS [InLounge], 
+    [v_RecentVisits].[WaitingFor] AS [WaitingFor]
+    FROM [dbo].[v_RecentVisits] AS [v_RecentVisits]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="Self.FK_CustomerNeeds_CustomerServices">
+            <End Role="CustomerServices" EntitySet="CustomerServices" />
+            <End Role="CustomerNeeds" EntitySet="CustomerNeeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visits_Customers" Association="Self.FK_Visits_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalitaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SalitaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerNeeds" EntityType="SalitaModel.CustomerNeed" />
+          <EntitySet Name="Customers" EntityType="SalitaModel.Customer" />
+          <EntitySet Name="CustomerServices" EntityType="SalitaModel.CustomerService" />
+          <EntitySet Name="Maps" EntityType="SalitaModel.Map" />
+          <EntitySet Name="sysdiagrams" EntityType="SalitaModel.sysdiagram" />
+          <EntitySet Name="Visits" EntityType="SalitaModel.Visit" />
+          <EntitySet Name="ListZips" EntityType="SalitaModel.ListZip" />
+          <EntitySet Name="WatingForReasons" EntityType="SalitaModel.WatingForReason" />
+          <EntitySet Name="v_CustomerNeeds" EntityType="SalitaModel.v_CustomerNeeds" />
+          <EntitySet Name="v_RecentVisits" EntityType="SalitaModel.v_RecentVisits" />
+          <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="SalitaModel.FK_CustomerNeeds_CustomerServices">
+            <End Role="CustomerService" EntitySet="CustomerServices" />
+            <End Role="CustomerNeed" EntitySet="CustomerNeeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visits_Customers" Association="SalitaModel.FK_Visits_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CustomerNeed">
+          <Key>
+            <PropertyRef Name="CustomerNeed_ID" />
+          </Key>
+          <Property Name="CustomerNeed_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="RequestedService_ID" Type="Int32" />
+          <Property Name="RequestDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="WasFullfilled" Type="Boolean" />
+          <Property Name="Address_Line" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="FromDealer" Type="Boolean" />
+          <NavigationProperty Name="CustomerService" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerNeed" ToRole="CustomerService" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Visits" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Customer" ToRole="Visit" />
+        </EntityType>
+        <EntityType Name="CustomerService">
+          <Key>
+            <PropertyRef Name="CustomerService_ID" />
+          </Key>
+          <Property Name="CustomerService_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CustomerNeeds" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerService" ToRole="CustomerNeed" />
+        </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="Map_ID" />
+          </Key>
+          <Property Name="Map_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MapData" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Visit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="VisitDate" Type="DateTime" Precision="0" />
+          <Property Name="VisitTime" Type="Time" Precision="7" />
+          <Property Name="Seat_X" Type="Int32" />
+          <Property Name="Seat_Y" Type="Int32" />
+          <Property Name="InLounge" Type="Boolean" />
+          <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="ListZip">
+          <Key>
+            <PropertyRef Name="ZipUid" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="Inactive" />
+          </Key>
+          <Property Name="ZipUid" Type="Guid" Nullable="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="AreaCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatingForReason">
+          <Key>
+            <PropertyRef Name="WatingForReason_ID" />
+          </Key>
+          <Property Name="WatingForReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReasonDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_CustomerNeeds">
+          <Key>
+            <PropertyRef Name="CustomerNeed_ID" />
+          </Key>
+          <Property Name="CustomerNeed_ID" Type="Int32" Nullable="false" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="RequestedService_ID" Type="Int32" />
+          <Property Name="RequestDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="WasFullfilled" Type="Boolean" />
+          <Property Name="Address_Line" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="FromDealer" Type="Boolean" />
+          <Property Name="ServiceType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="v_RecentVisits">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Visit_ID" Type="Int32" Nullable="false" />
+          <Property Name="VisitDate" Type="DateTime" Precision="0" />
+          <Property Name="VisitTime" Type="Time" Precision="7" />
+          <Property Name="Seat_X" Type="Int32" />
+          <Property Name="Seat_Y" Type="Int32" />
+          <Property Name="InLounge" Type="Boolean" />
+          <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_CustomerNeeds_CustomerServices">
+          <End Type="SalitaModel.CustomerService" Role="CustomerService" Multiplicity="0..1" />
+          <End Type="SalitaModel.CustomerNeed" Role="CustomerNeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerService">
+              <PropertyRef Name="CustomerService_ID" />
+            </Principal>
+            <Dependent Role="CustomerNeed">
+              <PropertyRef Name="RequestedService_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visits_Customers">
+          <End Type="SalitaModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="SalitaModel.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalitaModelStoreContainer" CdmEntityContainer="SalitaEntities">
+          <EntitySetMapping Name="CustomerNeeds">
+            <EntityTypeMapping TypeName="SalitaModel.CustomerNeed">
+              <MappingFragment StoreEntitySet="CustomerNeeds">
+                <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Address_Line" ColumnName="Address_Line" />
+                <ScalarProperty Name="WasFullfilled" ColumnName="WasFullfilled" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="RequestedService_ID" ColumnName="RequestedService_ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="CustomerNeed_ID" ColumnName="CustomerNeed_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SalitaModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerServices">
+            <EntityTypeMapping TypeName="SalitaModel.CustomerService">
+              <MappingFragment StoreEntitySet="CustomerServices">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="CustomerService_ID" ColumnName="CustomerService_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="SalitaModel.Map">
+              <MappingFragment StoreEntitySet="Maps">
+                <ScalarProperty Name="MapData" ColumnName="MapData" />
+                <ScalarProperty Name="MapName" ColumnName="MapName" />
+                <ScalarProperty Name="Map_ID" ColumnName="Map_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SalitaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visits">
+            <EntityTypeMapping TypeName="SalitaModel.Visit">
+              <MappingFragment StoreEntitySet="Visits">
+                <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
+                <ScalarProperty Name="InLounge" ColumnName="InLounge" />
+                <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
+                <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
+                <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
+                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListZips">
+            <EntityTypeMapping TypeName="SalitaModel.ListZip">
+              <MappingFragment StoreEntitySet="ListZip">
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ZipUid" ColumnName="ZipUid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatingForReasons">
+            <EntityTypeMapping TypeName="SalitaModel.WatingForReason">
+              <MappingFragment StoreEntitySet="WatingForReasons">
+                <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+                <ScalarProperty Name="WatingForReason_ID" ColumnName="WatingForReason_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_CustomerNeeds">
+            <EntityTypeMapping TypeName="SalitaModel.v_CustomerNeeds">
+              <MappingFragment StoreEntitySet="v_CustomerNeeds">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Customer_ZipCode" ColumnName="Customer_ZipCode" />
+                <ScalarProperty Name="Customer_Town" ColumnName="Customer_Town" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Address_Line" ColumnName="Address_Line" />
+                <ScalarProperty Name="WasFullfilled" ColumnName="WasFullfilled" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="RequestedService_ID" ColumnName="RequestedService_ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="CustomerNeed_ID" ColumnName="CustomerNeed_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_RecentVisits">
+            <EntityTypeMapping TypeName="SalitaModel.v_RecentVisits">
+              <MappingFragment StoreEntitySet="v_RecentVisits">
+                <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
+                <ScalarProperty Name="InLounge" ColumnName="InLounge" />
+                <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
+                <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
+                <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
+                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+                <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

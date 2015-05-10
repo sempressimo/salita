@@ -1,0 +1,95 @@
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\ApplicationInsights.config
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Salita Client.dll.config
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Salita Client.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Salita Client.pdb
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.PerfCollector.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.pdb
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.pdb
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\obj\Debug\ApplicationInsights.config
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\obj\Debug\Salita Client.dll
+c:\users\sempressimo\documents\visual studio 2013\Projects\Salita Client\Salita Client\obj\Debug\Salita Client.pdb
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Salita Client\Salita Client\bin\EntityFramework.dll
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Salita Client\Salita Client\bin\EntityFramework.SqlServer.dll
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Salita Client\Salita Client\bin\EntityFramework.xml
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Salita Client\Salita Client\bin\EntityFramework.SqlServer.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\ApplicationInsights.config
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Salita Client.dll.config
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Salita Client.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Salita Client.pdb
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\EntityFramework.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\EntityFramework.SqlServer.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.PerfCollector.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\EntityFramework.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\EntityFramework.SqlServer.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.pdb
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.pdb
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\obj\Debug\ApplicationInsights.config
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\obj\Debug\Salita Client.dll
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\obj\Debug\Salita Client.pdb
+C:\ACG Visual Studio Projects\Salita Client\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\ApplicationInsights.config
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Salita Client.dll.config
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Salita Client.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Salita Client.pdb
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\EntityFramework.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\EntityFramework.SqlServer.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.PerfCollector.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\EntityFramework.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\EntityFramework.SqlServer.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.pdb
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.pdb
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.ApplicationInsights.Extensibility.Web.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\obj\Debug\ApplicationInsights.config
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\obj\Debug\Salita Client.dll
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\obj\Debug\Salita Client.pdb
+C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache

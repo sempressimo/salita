@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="516c82f86d334fafbdb73983afd0ab0f" Name="Diagram1">
+        <EntityTypeShape EntityType="SalitaModel.CustomerNeed" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="SalitaModel.Customer" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SalitaModel.CustomerService" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="SalitaModel.Map" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SalitaModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalitaModel.Visit" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="SalitaModel.ListZip" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SalitaModel.v_CustomerNeeds" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SalitaModel.v_RecentVisits" Width="1.5" PointX="7.75" PointY="6.75" />
+        <AssociationConnector Association="SalitaModel.FK_CustomerNeeds_CustomerServices" />
+        <AssociationConnector Association="SalitaModel.FK_CustomerNeeds_Visits" />
+        <AssociationConnector Association="SalitaModel.FK_Visits_Customers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

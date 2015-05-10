@@ -1,0 +1,139 @@
+﻿.popup
+{
+            border: solid 2px #ccc;
+            background-color:#ffffff;
+            width:auto;
+            padding:30px;
+            margin:auto;
+            position: relative; 
+            /*left:50%;*/
+            z-index:9000;
+            box-shadow: 0px 0px 15px #333 !important;
+            text-align:center;
+
+}
+        
+ .popup > span, .popup table
+ {
+     width:100%;
+ }
+ 
+ 
+.popup td, .popup th
+{
+    padding:10px;
+}
+        
+ .popup input[type="submit"]
+ {
+     margin:10px auto;
+ }
+ 
+.modalBackground
+    {
+        background-color:rgba(0,0,0,.6);
+    }
+    
+.closebtn
+{
+        position:absolute;
+        right:-30px;
+        top:-30px;
+}
+
+    
+a.circle {
+    width: 40px;
+    height: 40px;
+    -moz-border-radius: 50%; 
+    -webkit-border-radius: 50%; 
+    border-radius: 50%;
+    background: #000;
+    text-align:center;
+    border:2px solid #fff;
+    text-decoration:none;
+    color:#fff;
+
+    font-size:22px;
+    font-weight:bold;
+    font-family:arial;
+
+    position:absolute;
+    right:-20px;
+    top:-20px;
+}
+
+a.circle:hover 
+{
+    text-decoration:none;
+    color:#fff;
+    background:red;
+}
+
+.popup h3
+{
+    margin:auto;
+    color:#666;
+    border-bottom:1px #ccc dotted;
+    padding-bottom:15px;
+    margin-bottom:15px;
+    text-align:left !important;
+}
+
+
+    
+/*------------------------------------------------------------------------------------------------------------------------------------*/
+
+.popupform input[type="text"], .popupform input[type="password"], .popupform textarea, .popupform .styled-select 
+{
+    width:220px;
+    box-shadow:none;
+}
+
+.popupform .styled-select select 
+{
+    width:248px;
+    box-shadow:none;
+}
+
+.popupform
+{
+    margin:auto;
+    width:100%;
+	border:0px solid red;
+	text-align:center;
+}
+
+.centered li
+{
+    text-align:center !important;
+}
+
+.popupform li
+{
+	display: inline-block;
+	list-style-type: none;
+	vertical-align:middle;
+	text-align:right;
+	margin:10px auto;
+	border:0px solid red;
+
+}
+
+.popupform li input, .popupform li div, .popupform li span, .popupform li textarea
+{
+    display: inline-block;
+    vertical-align:middle;
+}
+
+.popupform li span
+{
+    text-align:right;
+    width:120px;
+    margin-right:20px;
+}
+
+.popupform li input, .popupform li div, .popupform li textarea
+{
+    text-align:left;
+}

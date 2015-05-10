@@ -1,0 +1,371 @@
+.mysummary {
+    padding:10px;
+    margin:10px auto 20px;
+    display:block;
+}
+
+.row {
+    margin-bottom:20px;
+}
+
+.form-inline {
+    text-align:left;
+    display:block;
+}
+
+
+.form-inline > .checkbox
+{
+    margin-top:5px;
+    margin-right:20px !important;
+    font-weight:bold;
+}
+
+.styled-select 
+{
+   width: 220px;
+   overflow: hidden;
+   background: url(../Images/arrow.png) no-repeat right #f7f7f7;
+   border:0px solid #ccc;
+   float:left;
+   -webkit-box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+    box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+
+ }
+
+.styled-select select 
+{
+   background: transparent;
+   width: 248px;
+   padding: 5px 0 5px 10px;
+   line-height: 1;
+   border:0;
+   -webkit-appearance: none;
+   text-transform:capitalize;
+    font-size:14px;
+    color:#666;
+}
+
+
+
+        @media screen\0 {
+    
+            .styled-select select
+            {
+                padding:10px;
+            }
+        }
+   
+.styled-select select option 
+{
+	padding:5px 10px;
+}
+
+textarea
+{
+    padding:10px;
+    border:1px solid #ccc;
+}
+/*-------------------------------------------------------------------------------------------------*/
+
+.combobox 
+{
+     -webkit-border-radius: 7px 0 0 7px !important;
+     border-radius: 7px 0 0 7px !important;
+
+}
+
+
+
+.styled-select,  input[type="text"], textarea, input[type="password"]	{
+	border: 0px solid #ccc;
+	-webkit-box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+    box-shadow:  0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+	color:#000 !important;
+    
+    -webkit-transition:background 2s;
+	transition:background 2s;
+	-webkit-transition:color .5s;
+	transition:color .5s;
+}
+
+.styled-select:focus,  input[type="text"]:focus,  textarea:focus, input[type="password"]:focus 	{
+	color:#fff !important;
+	background:#666 !important;
+}
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+
+
+.buttonpanel
+{
+    margin:20px auto 0;
+    text-align:center;
+    width:auto;
+    display:block;
+}
+
+.buttonpanel > .mybutton
+{
+    margin:auto 5px !important;
+    display:inline-block !important;
+}
+
+.mybutton
+{
+	position:relative; 
+	padding:14px;
+	width:auto;
+	text-decoration:none;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+	text-align:center;
+	vertical-align:middle;
+	
+	-webkit-transition:background .5s;
+	transition:background .5s;
+}
+
+.mybutton:hover
+{
+	text-decoration:none;
+	background:rgba(187, 12, 27, 1) !important;
+	text-decoration:none;
+	color:#fff !important;
+}
+
+.mybutton img
+{
+    vertical-align:middle;
+    height:20px;
+}
+
+.mybutton span
+{
+    margin:0 8px;
+}
+
+/*-----------------------------     PROPIEDADES   -----------------------------------------------------------*/
+
+.centertext {
+    text-align:center;
+}
+
+.textleft {
+    text-align:left;
+}
+
+.bold
+{
+    font-weight:bold !important;
+}
+
+.whiteborder
+{
+    border:2px solid #fff !important;
+}
+
+.dottedwhite
+{
+    border:1px dotted #fff !important;
+}
+
+.noborder 
+{
+     border:0px !important;
+}
+
+.blackborder
+{
+    border:1px solid #666 !important;
+}
+
+.blacktext
+{
+    color:#000 !important;
+}
+
+.whitetext
+{
+    color:#fff !important;
+}
+
+.rounded 
+{
+    border-radius: 10px !important;
+}
+
+.norounded 
+{
+    border-radius: 0;
+}
+
+.nobg
+{
+    background:none !important;
+}
+
+.white 
+{
+    background:rgba(255,255,255,.9) !important;
+}
+
+.whiteclear
+{
+    background:rgba(255,255,255,.6) !important;
+}
+
+.black
+{
+    background:rgba(0,0,0,.8) !important;
+}
+
+.blackclear
+{
+    background:rgba(0,0,0,.8) !important;
+}
+
+.yellow
+{
+    background:rgba(229, 181, 74, 1) !important;
+}
+.yellowclear
+{
+    background:rgba(229, 181, 74, .8) !important;
+}
+
+.gold
+{
+    background:rgba(157, 125, 28, 1) !important;
+}
+
+.goldclear
+{
+    background:rgba(157, 125, 28, .8) !important;
+}
+
+.red 
+{
+   background:rgba(163, 54, 20, 1) !important;
+}
+.redclear
+{
+    background:rgba(163, 54, 20, .8) !important;
+}
+
+
+.green 
+{
+    background:rgba(58, 117, 122, 1) !important;
+}
+.greenclear
+{
+    background:rgba(58, 117, 122, .8) !important;
+}
+
+.blue 
+{
+    background:rgba(27, 121, 165, 1) !important;
+}
+.blueclear
+{
+    background:rgba(27, 121, 165, .8) !important;
+}
+
+.clear
+{
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.full
+{
+    width:90%;
+}
+
+.shadow 
+{
+    -webkit-box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.4);
+    box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.4);
+    top: 15px;
+    left: -632px;
+}
+
+.noshadow 
+{
+    box-shadow:none !important;
+}
+
+.glow 
+{
+    -webkit-box-shadow:  0px 0px 10px 1px rgba(255, 255, 255, 0.4);
+    box-shadow:  0px 0px 10px 1px rgba(255, 255, 255, 0.4);
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+legend
+{
+    border:0;
+    font-size:18px;
+    font-weight:lighter;
+    margin:0 !important;
+}
+
+fieldset.formcontainer
+{
+  padding:30px;
+   margin:40px auto;
+
+    display:block;
+}
+
+fieldset.formcontainer > legend
+{
+    border:0;
+    font-size:22px;
+    font-weight:lighter;
+    margin:0 !important;
+    width:auto;
+    padding:12px;
+}
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+input[type="checkbox"]
+{
+    margin-right:10px;
+    border:0;
+
+}
+
+
+li.active > a:focus
+{
+    background:rgba(0,144,206,1) !important;
+}
+
+.ui-widget-header 
+{
+    background:none;
+    border:none;
+}
+
+
+.col-md-3 .form-group > label, .col-md-4 .form-group  > label
+{
+    margin:0 0 5px !important;
+    display:block !important;
+}
+
+.msgdiv {
+    margin:20px auto;
+    width:auto;
+    padding:10px;
+}

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="SalitaEntities-Web.config Connection String" description="SalitaEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/SalitaDB.csdl|res://*/SalitaDB.ssdl|res://*/SalitaDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=AZUREDEV\SQLEXPRESS;initial catalog=Salita;user id=sa;password=q1w2e3r4;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\sempressimo\\Desktop\\Salita\ Client\ \(Jose\ Version\)\\Salita\ Client\ \(Jose\ 2\)\\Salita\ Client\\Salita\ Client\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SalitaEntities']/@connectionString" />
+  </parameter>
+</parameters>
