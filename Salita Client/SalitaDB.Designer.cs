@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\sempressimo\Desktop\Salita Client (Jose Version)\Salita Client (Jose 2)\Salita Client\Salita Client\SalitaDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\git\salita\Salita Client\SalitaDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

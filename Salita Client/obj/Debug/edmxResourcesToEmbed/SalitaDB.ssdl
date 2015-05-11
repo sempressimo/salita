@@ -70,6 +70,14 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="15" />
+    <Property Name="Role" Type="char" MaxLength="1" />
+  </EntityType>
   <EntityType Name="Visits">
     <Key>
       <PropertyRef Name="Visit_ID" />
@@ -170,6 +178,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     <EntitySet Name="CustomerServices" EntityType="Self.CustomerServices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Visits" EntityType="Self.Visits" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ListZip" EntityType="Self.ListZip" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -3,12 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="container">
-     <fieldset class="formcontainer whiteclear whiteborder shadow">
-
-     <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
      <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-info" />
      <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
+
+     <fieldset class="formcontainer whiteclear whiteborder shadow">
+
+     <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
          <div class="form-group">
              <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">

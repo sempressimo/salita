@@ -6,6 +6,7 @@
     <EntitySet Name="CustomerServices" EntityType="SalitaModel.CustomerService" />
     <EntitySet Name="Maps" EntityType="SalitaModel.Map" />
     <EntitySet Name="sysdiagrams" EntityType="SalitaModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="SalitaModel.User" />
     <EntitySet Name="Visits" EntityType="SalitaModel.Visit" />
     <EntitySet Name="ListZips" EntityType="SalitaModel.ListZip" />
     <EntitySet Name="WatingForReasons" EntityType="SalitaModel.WatingForReason" />
@@ -77,6 +78,14 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
   <EntityType Name="Visit">
     <Key>

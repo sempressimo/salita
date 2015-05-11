@@ -114,6 +114,7 @@
     <Content Include="css\top.css" />
     <Content Include="customers_list.aspx" />
     <Content Include="customer_arrived.aspx" />
+    <Content Include="customer_default.aspx" />
     <Content Include="customer_detail.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="images\alert.png" />
@@ -267,6 +268,13 @@
     <Compile Include="customer_arrived.aspx.designer.cs">
       <DependentUpon>customer_arrived.aspx</DependentUpon>
     </Compile>
+    <Compile Include="customer_default.aspx.cs">
+      <DependentUpon>customer_default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer_default.aspx.designer.cs">
+      <DependentUpon>customer_default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="customer_detail.aspx.cs">
       <DependentUpon>customer_detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -342,6 +350,9 @@
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>SalitaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Visit.cs">

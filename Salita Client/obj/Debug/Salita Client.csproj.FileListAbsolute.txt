@@ -124,3 +124,4 @@ C:\git\salita\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\git\salita\Salita Client\obj\Debug\ApplicationInsights.config
 C:\git\salita\Salita Client\obj\Debug\Salita Client.dll
 C:\git\salita\Salita Client\obj\Debug\Salita Client.pdb
+C:\git\salita\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache
