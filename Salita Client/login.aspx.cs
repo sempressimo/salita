@@ -34,11 +34,11 @@ namespace Salita_Client
                 {
                     SalitaEntities db2 = new SalitaEntities();
 
-                    var C = db2.v_RecentVisits.Where(p => p.Phone == this.txtUsername.Text && this.txtPassword.Text == "1234");
+                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate == DateTime.Today && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == "1234");
 
                     if (C != null)
                     {
-                        Session["Username"] = U.Username;
+                        Session["Username"] = C.FullName;
                         Session["Role"] = "C";
 
                         FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
