@@ -124,4 +124,17 @@ C:\git\salita\Salita Client\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\git\salita\Salita Client\obj\Debug\ApplicationInsights.config
 C:\git\salita\Salita Client\obj\Debug\Salita Client.dll
 C:\git\salita\Salita Client\obj\Debug\Salita Client.pdb
-C:\git\salita\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache
+C:\git\salita\Salita Client\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\git\salita\Salita Client\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\git\salita\Salita Client\bin\Microsoft.Owin.dll
+C:\git\salita\Salita Client\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\git\salita\Salita Client\bin\Microsoft.Owin.Security.dll
+C:\git\salita\Salita Client\bin\Microsoft.Web.Infrastructure.dll
+C:\git\salita\Salita Client\bin\Newtonsoft.Json.dll
+C:\git\salita\Salita Client\bin\Owin.dll
+C:\git\salita\Salita Client\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\git\salita\Salita Client\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\git\salita\Salita Client\bin\Microsoft.Owin.xml
+C:\git\salita\Salita Client\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\git\salita\Salita Client\bin\Microsoft.Owin.Security.xml
+C:\git\salita\Salita Client\bin\Newtonsoft.Json.xml

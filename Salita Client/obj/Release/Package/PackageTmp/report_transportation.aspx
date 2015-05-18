@@ -9,28 +9,38 @@
                 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
                 <div class="row">
+                    
+                    <div class="col-md-5">
+                        <div class="form-inline">
+                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="0" CellSpacing="10" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                                <asp:ListItem Selected="True">Pendientes para hoy</asp:ListItem>
+                                <asp:ListItem>Historicos</asp:ListItem>
+                            </asp:RadioButtonList> 
+                        </div>
+                    </div>
                     <div class="col-md-5">
                         <div class="form-inline">
                                 <div class="form-group">
-                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Buscar por nombre de cliente..."></asp:TextBox>
+                                    <asp:TextBox ID="txtFrom" runat="server" CssClass="datepicker" Enabled="false" placeholder="Fecha desde"></asp:TextBox>&nbsp;
+                                    <asp:TextBox ID="txtTo" runat="server" CssClass="datepicker" Enabled="false" placeholder="Fecha hasta"></asp:TextBox>
                                 </div>
-                                <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="mybutton rounded shadow blue bold">
-                                    <asp:Image runat="server" ImageUrl="~/images/search.png" />
+                                <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="mybutton rounded shadow blue bold"> <asp:Image runat="server" ImageUrl="~/images/search.png" />
                                 </asp:LinkButton>
                         </div>
                     </div>
 
                 </div>
         
-                <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="Customer_ID" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False">
+                <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand">
                     <Columns>
-                        <asp:ButtonField Text="Llego" CommandName="Arrived" ButtonType="Image" ImageUrl="~/images/check.png" HeaderStyle-Width="10px" />
-                        <asp:ButtonField Text="Edit" CommandName="Edit" ButtonType="Image" ImageUrl="~/images/pencil.png"  HeaderStyle-Width="10px" />
-                        <asp:ButtonField CommandName="Delete" ButtonType="Image" ImageUrl="~/images/delete2.png" HeaderStyle-Width="10px" />
+
                         <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Nombre" />
                         <asp:BoundField DataField="Phone" HeaderText="Telefono" />
-                        <asp:ButtonField DataTextField="Town" HeaderText="Pueblo" Text="Button" />
+                        <asp:BoundField DataField="Address_Line" HeaderText="Dirección" />
+                        <asp:BoundField DataField="Town" HeaderText="Pueblo" />
+                        <asp:BoundField DataField="ZipCode" HeaderText="ZipCode" />
+                        <asp:ButtonField DataTextField="WasFullfilled" HeaderText="Completado" />
                     </Columns>
                 </asp:GridView>
         </fieldset>

@@ -6,16 +6,14 @@
     <EntitySet Name="CustomerServices" EntityType="SalitaModel.CustomerService" />
     <EntitySet Name="Maps" EntityType="SalitaModel.Map" />
     <EntitySet Name="sysdiagrams" EntityType="SalitaModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="SalitaModel.User" />
     <EntitySet Name="Visits" EntityType="SalitaModel.Visit" />
     <EntitySet Name="ListZips" EntityType="SalitaModel.ListZip" />
+    <EntitySet Name="WatingForReasons" EntityType="SalitaModel.WatingForReason" />
     <EntitySet Name="v_CustomerNeeds" EntityType="SalitaModel.v_CustomerNeeds" />
     <EntitySet Name="v_RecentVisits" EntityType="SalitaModel.v_RecentVisits" />
     <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="SalitaModel.FK_CustomerNeeds_CustomerServices">
       <End Role="CustomerService" EntitySet="CustomerServices" />
-      <End Role="CustomerNeed" EntitySet="CustomerNeeds" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomerNeeds_Visits" Association="SalitaModel.FK_CustomerNeeds_Visits">
-      <End Role="Visit" EntitySet="Visits" />
       <End Role="CustomerNeed" EntitySet="CustomerNeeds" />
     </AssociationSet>
     <AssociationSet Name="FK_Visits_Customers" Association="SalitaModel.FK_Visits_Customers">
@@ -33,8 +31,11 @@
     <Property Name="RequestDateTime" Type="DateTime" Precision="3" />
     <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="WasFullfilled" Type="Boolean" />
+    <Property Name="Address_Line" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="FromDealer" Type="Boolean" />
     <NavigationProperty Name="CustomerService" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerNeed" ToRole="CustomerService" />
-    <NavigationProperty Name="Visit" Relationship="SalitaModel.FK_CustomerNeeds_Visits" FromRole="CustomerNeed" ToRole="Visit" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -43,12 +44,12 @@
     <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" />
     <NavigationProperty Name="Visits" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Customer" ToRole="Visit" />
-    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="CustomerService">
     <Key>
@@ -78,6 +79,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
   <EntityType Name="Visit">
     <Key>
       <PropertyRef Name="Visit_ID" />
@@ -89,7 +98,7 @@
     <Property Name="Seat_X" Type="Int32" />
     <Property Name="Seat_Y" Type="Int32" />
     <Property Name="InLounge" Type="Boolean" />
-    <NavigationProperty Name="CustomerNeeds" Relationship="SalitaModel.FK_CustomerNeeds_Visits" FromRole="Visit" ToRole="CustomerNeed" />
+    <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
   </EntityType>
   <EntityType Name="ListZip">
@@ -105,6 +114,13 @@
     <Property Name="AreaCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
     <Property Name="Inactive" Type="Boolean" Nullable="false" />
   </EntityType>
+  <EntityType Name="WatingForReason">
+    <Key>
+      <PropertyRef Name="WatingForReason_ID" />
+    </Key>
+    <Property Name="WatingForReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReasonDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="v_CustomerNeeds">
     <Key>
       <PropertyRef Name="CustomerNeed_ID" />
@@ -115,8 +131,19 @@
     <Property Name="RequestDateTime" Type="DateTime" Precision="3" />
     <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="WasFullfilled" Type="Boolean" />
-    <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address_Line" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="FromDealer" Type="Boolean" />
     <Property Name="ServiceType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="v_RecentVisits">
     <Key>
@@ -136,6 +163,7 @@
     <Property Name="Seat_X" Type="Int32" />
     <Property Name="Seat_Y" Type="Int32" />
     <Property Name="InLounge" Type="Boolean" />
+    <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_CustomerNeeds_CustomerServices">
     <End Type="SalitaModel.CustomerService" Role="CustomerService" Multiplicity="0..1" />
@@ -146,18 +174,6 @@
       </Principal>
       <Dependent Role="CustomerNeed">
         <PropertyRef Name="RequestedService_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomerNeeds_Visits">
-    <End Type="SalitaModel.Visit" Role="Visit" Multiplicity="0..1" />
-    <End Type="SalitaModel.CustomerNeed" Role="CustomerNeed" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Visit">
-        <PropertyRef Name="Visit_ID" />
-      </Principal>
-      <Dependent Role="CustomerNeed">
-        <PropertyRef Name="Customer_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

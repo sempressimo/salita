@@ -4,6 +4,10 @@
     <EntitySetMapping Name="CustomerNeeds">
       <EntityTypeMapping TypeName="SalitaModel.CustomerNeed">
         <MappingFragment StoreEntitySet="CustomerNeeds">
+          <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address_Line" ColumnName="Address_Line" />
           <ScalarProperty Name="WasFullfilled" ColumnName="WasFullfilled" />
           <ScalarProperty Name="Note" ColumnName="Note" />
           <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
@@ -16,11 +20,11 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="SalitaModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
           <ScalarProperty Name="Town" ColumnName="Town" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
@@ -57,9 +61,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SalitaModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Visits">
       <EntityTypeMapping TypeName="SalitaModel.Visit">
         <MappingFragment StoreEntitySet="Visits">
+          <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />
           <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
           <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
@@ -82,11 +96,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="WatingForReasons">
+      <EntityTypeMapping TypeName="SalitaModel.WatingForReason">
+        <MappingFragment StoreEntitySet="WatingForReasons">
+          <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+          <ScalarProperty Name="WatingForReason_ID" ColumnName="WatingForReason_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="v_CustomerNeeds">
       <EntityTypeMapping TypeName="SalitaModel.v_CustomerNeeds">
         <MappingFragment StoreEntitySet="v_CustomerNeeds">
-          <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Customer_ZipCode" ColumnName="Customer_ZipCode" />
+          <ScalarProperty Name="Customer_Town" ColumnName="Customer_Town" />
+          <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+          <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+          <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address_Line" ColumnName="Address_Line" />
           <ScalarProperty Name="WasFullfilled" ColumnName="WasFullfilled" />
           <ScalarProperty Name="Note" ColumnName="Note" />
           <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
@@ -99,6 +132,7 @@
     <EntitySetMapping Name="v_RecentVisits">
       <EntityTypeMapping TypeName="SalitaModel.v_RecentVisits">
         <MappingFragment StoreEntitySet="v_RecentVisits">
+          <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />
           <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
           <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
