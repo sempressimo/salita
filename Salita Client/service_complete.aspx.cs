@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,6 +41,11 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+
+                if (E.InnerException != null)
+                {
+                    this.CustomValidator1.ErrorMessage += " InnerException: " + E.InnerException.Message;
+                }
             }
         }
 
@@ -62,12 +68,19 @@ namespace Salita_Client
 
                 this.FullfillService(id);
 
+                UpdateHub.SendServer(""); 
+
                 Response.Redirect("report_transportation.aspx");
             }
             catch(Exception E)
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+
+                if (E.InnerException != null)
+                {
+                    this.CustomValidator1.ErrorMessage += " InnerException: " + E.InnerException.Message;
+                }
             }
         }
 
