@@ -22,7 +22,7 @@ var alert_img = new Image();
 var service_cafe = new Image();
 var service_transport = new Image();
 var service_water = new Image();
-var service_soda = new Image();
+var service_can = new Image();
 var pop_up_bk = new Image();
 var pop_up_cafe = new Image();
 var pop_up_water = new Image();
@@ -200,7 +200,7 @@ function init() {
     service_cafe.src = "images/service_cafe.png";
     service_transport.src = "images/service_transport.png";
     service_water.src = "images/service_water.png";
-    service_soda.src = "images/service_soda.png";
+    service_can.src = "images/service_soda.png";
     pop_up_bk.src = "images/pop_back.png";
     pop_up_cafe.src = "images/pop_cafe.png";
     pop_up_water.src = "images/pop_water.png";
@@ -378,7 +378,9 @@ function drawCustomersInfo(tile_size, ctx) {
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
-        var startDate = new Date(value.VisitDate);
+        var tempDate = Date() + value.VisitTime.substring(0, 5);
+
+        var startDate = new Date(tempDate);
         var endDate = new Date();
 
         var diff = endDate - startDate;
@@ -415,6 +417,7 @@ function drawScreenText(ctx) {
         ctx.fillText("Loading...", TextIndent, 30);
     }
     else {
+
         drawDebugText(ctx, TextIndent);
 
         if (customerSelected) {
@@ -427,7 +430,7 @@ function drawScreenText(ctx) {
             }
 
             if (SelectedCustomerRefreshmentService == true) {
-                ctx.drawImage(serv, 250 + 64, tile_Size, tile_Size);
+                ctx.drawImage(service_can, 250 + 64, 16, tile_Size, tile_Size);
             }
 
             if (SelectedCustomerTransportationService == true) {

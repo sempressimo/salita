@@ -24,6 +24,13 @@ namespace Salita_Client
             HttpContext.Current.Session["Selected_Customer_ID"] = Customer_ID;
         }
 
+        public static IEnumerable<v_CustomerNeeds> GetAllNeeds()
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            return db.v_CustomerNeeds.Where(p => p.WasFullfilled == false).OrderBy(p => p.RequestDateTime);
+        }
+
         [System.Web.Services.WebMethod]
         public static void ChangeSeat(int Customer_ID, int Seat_X, int Seat_Y)
         {

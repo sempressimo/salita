@@ -39,7 +39,12 @@ namespace Salita_Client
             var R = db.v_CustomerNeeds.Where(p => (Todays || p.WasFullfilled == false) && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime);
 
             this.gvRecords.DataSource = R.ToList();
-            this.gvRecords.DataBind(); 
+            this.gvRecords.DataBind();
+
+            if (R != null)
+            {
+                this.gvRecords.Caption = "Citas de transportación: " + R.Count();
+            }
         }
 
         protected void lbSearch_Click(object sender, EventArgs e)

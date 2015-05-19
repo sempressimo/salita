@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 0.9";
+var SalitaVersion = "Beta 0.9.1";
 
 //
 // Images
@@ -22,6 +22,7 @@ var alert_img = new Image();
 var service_cafe = new Image();
 var service_transport = new Image();
 var service_water = new Image();
+var service_can = new Image();
 var pop_up_bk = new Image();
 var pop_up_cafe = new Image();
 var pop_up_water = new Image();
@@ -199,6 +200,7 @@ function init() {
     service_cafe.src = "images/service_cafe.png";
     service_transport.src = "images/service_transport.png";
     service_water.src = "images/service_water.png";
+    service_can.src = "images/service_soda.png";
     pop_up_bk.src = "images/pop_back.png";
     pop_up_cafe.src = "images/pop_cafe.png";
     pop_up_water.src = "images/pop_water.png";
@@ -413,6 +415,7 @@ function drawScreenText(ctx) {
         ctx.fillText("Loading...", TextIndent, 30);
     }
     else {
+
         drawDebugText(ctx, TextIndent);
 
         if (customerSelected) {
@@ -425,7 +428,7 @@ function drawScreenText(ctx) {
             }
 
             if (SelectedCustomerRefreshmentService == true) {
-                //ctx.drawImage(alert_img, 250 + 64, tile_Size, tile_Size);
+                ctx.drawImage(service_can, 250 + 64, 16, tile_Size, tile_Size);
             }
 
             if (SelectedCustomerTransportationService == true) {
@@ -753,7 +756,12 @@ function doMouseDown(event) {
                             sndClick.play();
                         }
 
-                        callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 2 }', 1);
+                        if (btn_soda_y < 470) {
+                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 2 }', 1);
+                        }
+                        else {
+                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerRefreshmentService_Key);
+                        };               
                     }
                     else if (mouse_x > btn_cafe_x && mouse_x < btn_cafe_x + 58 && mouse_y > btn_cafe_y - map_top_margin && mouse_y < btn_cafe_y - map_top_margin + 58) {
                         if (sndClick.readyState > 0) {
@@ -761,7 +769,12 @@ function doMouseDown(event) {
                             sndClick.play();
                         }
 
-                        callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 5 }', 1);
+                        if (btn_cafe_y < 470) {
+                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 5 }', 1)
+                        }
+                        else {
+                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerCoffeeService_Key);
+                        };
                     }
                     else if (mouse_x > btn_taxi_x && mouse_x < btn_taxi_x + 58 && mouse_y > (btn_taxi_y - map_top_margin) && mouse_y < (btn_taxi_y - map_top_margin) + 58)
                     {

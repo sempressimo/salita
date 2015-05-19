@@ -138,3 +138,4 @@ C:\git\salita\Salita Client\bin\Microsoft.Owin.xml
 C:\git\salita\Salita Client\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\git\salita\Salita Client\bin\Microsoft.Owin.Security.xml
 C:\git\salita\Salita Client\bin\Newtonsoft.Json.xml
+C:\git\salita\Salita Client\obj\Debug\Salita Client.csprojResolveAssemblyReference.cache
