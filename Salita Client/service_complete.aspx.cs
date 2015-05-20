@@ -34,6 +34,8 @@ namespace Salita_Client
 
                         this.lblFullName.Text = Need.FullName;
                         this.txtServiceDesc.Text = Need.ServiceDescription + ": " + Need.Address_Line + " " + Need.Town;
+
+                        ViewState["ServiceType"] = Need.ServiceType;
                     }
                 }
             }
@@ -68,9 +70,16 @@ namespace Salita_Client
 
                 this.FullfillService(id);
 
-                UpdateHub.SendServer(""); 
+                UpdateHub.SendServer("");
 
-                Response.Redirect("report_transportation.aspx");
+                if (ViewState["ServiceType"].ToString() == "T")
+                {
+                    Response.Redirect("report_transportation.aspx");
+                }
+                else
+                {
+                    Response.Redirect("default.aspx");
+                }
             }
             catch(Exception E)
             {
@@ -86,7 +95,14 @@ namespace Salita_Client
 
         protected void cmdCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("report_transportation.aspx");
+            if (ViewState["ServiceType"].ToString() == "T")
+            {
+                Response.Redirect("report_transportation.aspx");
+            }
+            else
+            {
+                Response.Redirect("default.aspx");
+            }
         }
     }
 }
