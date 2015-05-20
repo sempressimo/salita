@@ -3,5 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <h1>Demo update para probar Git</h1>
+
+    <p>Cool!</p>
+
+     <p>Git mantiene tu propio source control en tu maquina. El primer [Commit]  es en tu maquina. Luego sincronizas con el server </p>
 
 </asp:Content>

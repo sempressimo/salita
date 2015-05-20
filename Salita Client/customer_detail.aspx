@@ -12,11 +12,14 @@
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-info" />
             <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
+        
+        <div class="form-group">
+            <div class="checkbox"><label><asp:CheckBox ID="cbIsActive" runat="server" /><label>Cliente esta activo?</label></label></div>
+        </div>
         <div class="form-group">
             <label>Nombre Completo</label>
             <asp:TextBox ID="txtFullName" runat="server" placeholder="Nombre" CssClass="form-control"></asp:TextBox>
         </div>
-        <div class="checkbox"><label><asp:CheckBox ID="cbIsActive" runat="server" /><label>Activo</label></label></div>
         <div class="form-group">
             <label>Teléfono</label>    
             <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone" CssClass="form-control"></asp:TextBox>
@@ -38,8 +41,9 @@
             <asp:TextBox ID="txtTown" runat="server" placeholder="Pueblo" CssClass="form-control"></asp:TextBox>
         </div>
             <div class="buttonpanel">
-                <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /></asp:LinkButton>
-                <asp:LinkButton ID="cmdCancel" runat="server" CssClass="btn mybutton black rounded shadow" OnClick="cmdCancel_Click"><asp:Image runat="server" ImageUrl="~/images/return.png" /></asp:LinkButton>
+                <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow bold whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Guardar datos</span></asp:LinkButton>
+                <asp:LinkButton ID="cmdCancel" runat="server" CssClass="btn mybutton black rounded shadow bold whitetext" OnClick="cmdCancel_Click"><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Regresar</span></asp:LinkButton>
+
             </div>
     </fieldset>
 </div>
