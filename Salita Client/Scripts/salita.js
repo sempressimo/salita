@@ -378,10 +378,10 @@ function drawCustomersInfo(tile_size, ctx) {
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
-        var tempDate = Date() + value.VisitTime.substring(0, 5);
+        var tempDate = "1/1/2015 " + value.VisitTime.substring(0, 5);
 
         var startDate = new Date(tempDate);
-        var endDate = new Date();
+        var endDate = new Date().getTime();
 
         var diff = endDate - startDate;
         var diff_as_date = new Date(diff);
@@ -395,7 +395,6 @@ function drawCustomersInfo(tile_size, ctx) {
 
         ctx.fillStyle = "White";
         ctx.fillText(diff_as_date.getMinutes() + " min.", text_x, text_y);
-        //ctx.fillText(value.FullName, text_x, text_y);
 
         if (value.Customer_ID == customer_ID) {
             SelectedCustomerTime = diff_as_date.getMinutes() + " min.";
@@ -785,7 +784,12 @@ function doMouseDown(event) {
                             sndClick.play();
                         }
 
-                        window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
+                        if (btn_taxi_y < 470) {
+                            window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
+                        }
+                        else {
+                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerTransportationService_Key);
+                        }
                     }
                 }
             }
