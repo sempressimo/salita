@@ -10,20 +10,20 @@
                 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="form-inline">
                                 <div class="form-group">
                                     <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Buscar por nombre de cliente..."></asp:TextBox>
                                 </div>
-                                <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="mybutton rounded shadow blue bold">
+                                <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="btn btn-default mybutton rounded shadow blue bold">
                                     <asp:Image runat="server" ImageUrl="~/images/search.png" />
                                 </asp:LinkButton>
                         </div>
                     </div>
 
-                    <div class="col-md-2 col-md-offset-5">
+                    <div class="col-md-2 col-md-offset-4">
                         <div class="form-inline">
-                            <asp:LinkButton ID="lbAddCustomer" runat="server" OnClick="lbAddCustomer_Click" CssClass="mybutton green bold whitetext rounded shadow">
+                            <asp:LinkButton ID="lbAddCustomer" runat="server" OnClick="lbAddCustomer_Click" CssClass="mybutton btn-block green bold whitetext rounded shadow">
                                 <asp:Image runat="server" ImageUrl="~/images/plus.png" />
                                 <span>Nuevo Cliente</span>
                             </asp:LinkButton>
