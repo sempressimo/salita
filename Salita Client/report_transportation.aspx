@@ -18,11 +18,10 @@
                             </asp:RadioButtonList> 
                         </div>
                     </div>
-                    <div class="col-md-5">
                         <div class="form-inline">
                                 <div class="form-group">
-                                    <asp:TextBox ID="txtFrom" runat="server" CssClass="datepicker" Enabled="false" placeholder="Fecha desde"></asp:TextBox>&nbsp;
-                                    <asp:TextBox ID="txtTo" runat="server" CssClass="datepicker" Enabled="false" placeholder="Fecha hasta"></asp:TextBox>
+                                    <input id="txtFrom" runat="server" class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Desde" />
+                                    <input id="txtTo" runat="server" class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Hasta" />
                                 </div>
                                 <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="mybutton rounded shadow blue bold"> <asp:Image runat="server" ImageUrl="~/images/search.png" />
                                 </asp:LinkButton>

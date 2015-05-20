@@ -15,7 +15,7 @@ namespace Salita_Client
             {
                 if (!Page.IsPostBack)
                 {
-                    this.txtFrom.Text = this.txtTo.Text = DateTime.Today.ToShortDateString();
+                    this.txtFrom.Value = this.txtTo.Value = DateTime.Today.ToShortDateString();
 
                     this.LoadRecords();
                 }
@@ -29,8 +29,8 @@ namespace Salita_Client
 
         protected void LoadRecords()
         {
-            DateTime from = Convert.ToDateTime(this.txtFrom.Text + " 12:00AM");
-            DateTime to = Convert.ToDateTime(this.txtTo.Text + " 11:59PM");
+            DateTime from = Convert.ToDateTime(this.txtFrom.Value + " 12:00AM");
+            DateTime to = Convert.ToDateTime(this.txtTo.Value + " 11:59PM");
 
             bool Todays = (RadioButtonList1.SelectedIndex == 0) ? true : false;
 
@@ -64,15 +64,15 @@ namespace Salita_Client
         {
             if (this.RadioButtonList1.SelectedIndex == 0)
             {
-                this.txtFrom.Text = this.txtTo.Text = DateTime.Today.ToShortDateString();
+                this.txtFrom.Value = this.txtTo.Value = DateTime.Today.ToShortDateString();
 
-                this.txtFrom.Enabled = this.txtTo.Enabled = false;
+                this.txtFrom.Disabled = this.txtTo.Disabled = true;
 
                 this.LoadRecords();
             }
             else
             {
-                this.txtFrom.Enabled = this.txtTo.Enabled = true;
+                this.txtFrom.Disabled = this.txtTo.Disabled = false;
             }
         }
 

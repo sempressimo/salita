@@ -46,7 +46,7 @@ namespace Salita_Client {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrom;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtFrom;
         
         /// <summary>
         /// txtTo control.
@@ -55,7 +55,7 @@ namespace Salita_Client {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTo;
         
         /// <summary>
         /// lbSearch control.
