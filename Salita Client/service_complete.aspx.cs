@@ -32,8 +32,10 @@ namespace Salita_Client
 
                         var Need = db.v_CustomerNeeds.Single(p => p.CustomerNeed_ID == ID);
 
+                        ViewState["Customer_ID"] = Need.Customer_ID;
+
                         this.lblFullName.Text = Need.FullName;
-                        this.txtServiceDesc.Text = Need.ServiceDescription + ": " + Need.Address_Line + " " + Need.Town;
+                        this.txtServiceDesc.Text = Need.ServiceDescription + ((Need.Address_Line != null) ? ": " : "") + Need.Address_Line + " " + Need.Town;
 
                         ViewState["ServiceType"] = Need.ServiceType;
                     }
@@ -60,6 +62,18 @@ namespace Salita_Client
             Need.WasFullfilled = true;
 
             db.SaveChanges();
+
+            if (this.txtServiceDesc.Text.Substring(0, 20)  == "Transportacion Fuera")
+            { 
+                // Take customer out of salita
+                int Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
+
+                Visit v = db.Visits.Single(p => p.Customer_ID == Customer_ID && p.InLounge == true);
+
+                v.InLounge = false;
+
+                db.SaveChanges();
+            }
         }
 
         protected void cmdOK_Click(object sender, EventArgs e)
