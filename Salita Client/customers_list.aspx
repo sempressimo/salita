@@ -13,7 +13,7 @@
                     <div class="col-md-6">
                         <div class="form-inline">
                                 <div class="form-group">
-                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Buscar por nombre de cliente..."></asp:TextBox>
+                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Buscar por nombre..."></asp:TextBox>
                                 </div>
                                 <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="btn btn-default mybutton rounded shadow blue bold">
                                     <asp:Image runat="server" ImageUrl="~/images/search.png" />
