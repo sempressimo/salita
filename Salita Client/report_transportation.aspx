@@ -20,15 +20,13 @@
                     </div>
                         <div class="form-inline">
                                 <div class="form-group">
-                                    <input id="txtFrom" runat="server" class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Desde" />
-                                    <input id="txtTo" runat="server" class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Hasta" />
+                                    <input id="txtFrom" runat="server" disabled="disabled" class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Desde" />
+                                    <input id="txtTo" runat="server" disabled="disabled"  class="datepicker" data-date-format="mm/dd/yyyy" placeholder="Hasta" />
                                 </div>
                                 <asp:LinkButton ID="lbSearch" runat="server" OnClick="lbSearch_Click" CssClass="mybutton rounded shadow blue bold"> <asp:Image runat="server" ImageUrl="~/images/search.png" />
                                 </asp:LinkButton>
                         </div>
                     </div>
-
-                </div>
         
                 <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand">
                     <Columns>
@@ -43,4 +41,10 @@
                     </Columns>
                 </asp:GridView>
         </fieldset>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtFrom').datepicker();
+        });
+    </script>
 </asp:Content>
