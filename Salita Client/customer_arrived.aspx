@@ -13,7 +13,15 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-info" />
     <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-        
+         <h3>Esperando por</h3>
+
+         <div class="form-group">
+             <asp:RadioButtonList ID="rblWaitingFor" runat="server" RepeatDirection="Vertical" AutoPostBack="True">
+                 <asp:ListItem Selected="True">Servicio</asp:ListItem>
+                 <asp:ListItem>Gerente</asp:ListItem>
+             </asp:RadioButtonList>
+         </div>
+
         <fieldset>
             <legend>Ultimas atenciones</legend>
             <asp:GridView ID="gvCustomerServices" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos."></asp:GridView>

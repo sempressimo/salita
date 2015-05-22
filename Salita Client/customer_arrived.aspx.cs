@@ -30,6 +30,8 @@ namespace Salita_Client
                         this.LoadCustomers(Customer_ID);
                         this.LoadCustomerServices(Customer_ID);
 
+                        this.LoadWaitingForData();
+
                         if (CustomerIsInLounge(Customer_ID))
                         {
                             this.cmdSeatInRoom.Enabled = false;
@@ -43,6 +45,22 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void LoadWaitingForData()
+        {
+            var W = this.db.WatingForReasons.OrderBy(p => p.ReasonDescription);
+
+            this.rblWaitingFor.DataTextField = "ReasonDescription";
+            this.rblWaitingFor.DataValueField = "WatingForReason_ID";
+
+            this.rblWaitingFor.DataSource = W.ToList();
+            this.rblWaitingFor.DataBind();
+
+            if (this.rblWaitingFor.Items.Count > 0)
+            {
+                this.rblWaitingFor.Items[0].Selected = true;  
             }
         }
 
@@ -91,6 +109,7 @@ namespace Salita_Client
                 V.InLounge = true;
                 V.VisitDate = DateTime.Today;
                 V.VisitTime = DateTime.Now.TimeOfDay;
+                V.WaitingFor = rblWaitingFor.SelectedItem.Text;  
 
                 this.db.Visits.Add(V);
                 this.db.SaveChanges();
