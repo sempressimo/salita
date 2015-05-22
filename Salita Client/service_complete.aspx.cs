@@ -63,16 +63,19 @@ namespace Salita_Client
 
             db.SaveChanges();
 
-            if (this.txtServiceDesc.Text.Substring(0, 20)  == "Transportacion Fuera")
-            { 
-                // Take customer out of salita
-                int Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
+            if (this.txtServiceDesc.Text.Length > 19)
+            {
+                if (this.txtServiceDesc.Text.Substring(0, 20) == "Transportacion Fuera")
+                {
+                    // Take customer out of salita
+                    int Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
 
-                Visit v = db.Visits.Single(p => p.Customer_ID == Customer_ID && p.InLounge == true);
+                    Visit v = db.Visits.Single(p => p.Customer_ID == Customer_ID && p.InLounge == true);
 
-                v.InLounge = false;
+                    v.InLounge = false;
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
             }
         }
 
