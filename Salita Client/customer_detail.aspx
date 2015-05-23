@@ -44,10 +44,9 @@
         </div>
             <div class="buttonpanel">
                 <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow bold whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Guardar datos</span></asp:LinkButton>
-                <asp:LinkButton ID="cmdCancel" runat="server" CssClass="btn mybutton black rounded shadow bold whitetext" OnClick="cmdCancel_Click"><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Regresar</span></asp:LinkButton>
+                <asp:LinkButton ID="cmdCancel" runat="server" CssClass="btn mybutton black rounded shadow bold whitetext" CausesValidation="false" OnClick="cmdCancel_Click"><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Regresar</span></asp:LinkButton>
 
             </div>
     </fieldset>
 </div>
-         
 </asp:Content>
