@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="report_transportation.aspx.cs" Inherits="Salita_Client.report_transportation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style>
+.rbl input[type="radio"]
+{
+   margin-left: 10px;
+   margin-right: 1px;
+}
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <fieldset class="formcontainer">
@@ -12,10 +19,10 @@
                     
                     <div class="col-md-5">
                         <div class="form-inline">
-                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="0" CellSpacing="10" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                            <asp:RadioButtonList ID="RadioButtonList1" CssClass="rbl" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="0" CellSpacing="10" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                 <asp:ListItem Selected="True">Pendientes para hoy</asp:ListItem>
                                 <asp:ListItem>Historicos</asp:ListItem>
-                            </asp:RadioButtonList> 
+                            </asp:RadioButtonList>
                         </div>
                     </div>
                         <div class="form-inline">
