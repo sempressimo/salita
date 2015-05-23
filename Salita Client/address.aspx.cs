@@ -22,13 +22,16 @@ namespace Salita_Client
         {
             try
             {
-                SalitaEntities db = new SalitaEntities();
-
-                ListZip z = db.ListZips.SingleOrDefault(p => p.ZipCode == this.txtZipCode.Text);
-
-                if (z != null)
+                if (this.txtZipCode.Text != "")
                 {
-                    this.txtTown.Text = z.City;
+                    SalitaEntities db = new SalitaEntities();
+
+                    ListZip z = db.ListZips.SingleOrDefault(p => p.ZipCode == this.txtZipCode.Text);
+
+                    if (z != null)
+                    {
+                        this.txtTown.Text = z.City;
+                    }
                 }
             }
             catch (Exception E)
@@ -84,6 +87,36 @@ namespace Salita_Client
         protected void cmdCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("default.aspx");
+        }
+
+        protected void cbUseRegisteredAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbUseRegisteredAddress.Checked)
+                {
+                    SalitaEntities db = new SalitaEntities();
+
+                    int Customer_ID = Convert.ToInt32(ViewState["id"]);
+
+                    var C = db.Customers.Single(p => p.Customer_ID == Customer_ID);
+
+                    this.txtSendTo.Text = C.Address;
+                    this.txtZipCode.Text = C.ZipCode;
+                    this.txtTown.Text = C.Town;
+                }
+                else
+                {
+                    this.txtSendTo.Text = "";
+                    this.txtZipCode.Text = "";
+                    this.txtTown.Text = "";
+                }
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
         }
     }
 }

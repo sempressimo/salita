@@ -18,6 +18,9 @@
              </asp:RadioButtonList>
          </div>
          <div class="form-group">
+             <asp:CheckBox ID="cbUseRegisteredAddress" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
+         </div>
+         <div class="form-group">
              <label>Dirección</label>
              <asp:TextBox ID="txtSendTo" runat="server" placeholder="Direccion a transportar" CssClass="form-control"></asp:TextBox>
              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSendTo" ErrorMessage="La dirección es requerida." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
@@ -34,7 +37,7 @@
         </div>
          <div class="buttonpanel">
              <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Someter</span></asp:LinkButton>
-             <asp:LinkButton ID="cmdCancel" runat="server" CssClass="btn mybutton black rounded shadow whitetext" OnClick="cmdCancel_Click" ><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Volver</span></asp:LinkButton>
+             <asp:LinkButton ID="cmdCancel" runat="server" CausesValidation="false" CssClass="btn mybutton black rounded shadow whitetext" OnClick="cmdCancel_Click" ><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Volver</span></asp:LinkButton>
          </div>
 
      </fieldset>
