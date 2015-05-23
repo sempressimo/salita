@@ -14,15 +14,17 @@
 
         
         <div class="form-group">
-            <div class="checkbox"><label><asp:CheckBox ID="cbIsActive" runat="server" /><label>Cliente esta activo?</label></label></div>
+            <div class="checkbox"><label><asp:CheckBox ID="cbIsActive" runat="server" Checked="True" /><label>Cliente esta activo?</label></label></div>
         </div>
         <div class="form-group">
             <label>Nombre Completo</label>
             <asp:TextBox ID="txtFullName" runat="server" placeholder="Nombre" CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullName" ErrorMessage="El nombre es requerido." ForeColor="#FF9900">Requerido.</asp:RequiredFieldValidator>
         </div>
         <div class="form-group">
             <label>Teléfono</label>    
             <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone" CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPhone" ErrorMessage="El teléfono es requerido." ForeColor="#FF9900">Requerido.</asp:RequiredFieldValidator>
         </div>
         <div class="form-group">
             <label>Email</label>
