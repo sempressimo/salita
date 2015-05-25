@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 0.9.1";
+var SalitaVersion = "Beta 0.9.2";
 
 //
 // Images
@@ -28,6 +28,7 @@ var pop_up_cafe = new Image();
 var pop_up_water = new Image();
 var pop_up_soda = new Image();
 var pop_up_taxi = new Image();
+var exit = new Image();
 
 var pop_x = 0;
 var pop_y = 0;
@@ -129,11 +130,12 @@ var chairs_tiles_max = 8; // End index (and count)  for chair tiles
 // 6: Chair up white
 // 7: Chair left white
 // 8: Chair right white
+// 9: Exit
 var MapData =
     [
         [0, 8, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0],
-        [0, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0],
+        [9, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 9],
         [0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
         [0, 0, 0, 0, 3, 0, 0, 4, 0, 0, 0, 0],
@@ -206,6 +208,7 @@ function init() {
     pop_up_water.src = "images/pop_water.png";
     pop_up_soda.src = "images/pop_soda.png";
     pop_up_taxi.src = "images/pop_taxi.png";
+    exit.src = "images/exit.png";
 
     canvas = document.getElementById('salitacanvas');
 
@@ -291,6 +294,10 @@ function drawMap(tile_size, ctx) {
             else if (TileValue == 8) {
                 // Right
                 ctx.drawImage(chair_right_w, x_cursor * tile_size, (y_cursor * tile_size) + map_top_margin, tile_size, tile_size);
+            }
+            else if (TileValue == 9) {
+                // Right
+                ctx.drawImage(exit, x_cursor * tile_size, (y_cursor * tile_size) + map_top_margin, tile_size, tile_size);
             }
 
             index++;
@@ -603,7 +610,6 @@ function callAjaxMethod(e, _url, _parameters, popup_id) {
 
             if (popup_id == 1) {
 
-
                 btn_water_y = 400;
 
                 RenderState = "Salita";
@@ -683,7 +689,8 @@ function doMouseDown(event) {
             if (RenderState == "Salita")
             {
                 // If it is a seat
-                if (SelectedTileValue >= 1 && SelectedTileValue <= chairs_tiles_max) {
+                if (SelectedTileValue >= 1 && SelectedTileValue <= chairs_tiles_max)
+                {
                     customerInSeat = false;
                     if (customerSelected == true && (sel_tile_x != old_sel_tile_x || sel_tile_y != old_sel_tile_y)) {
                         if (IsACustomerInTargetSeat(sel_tile_x, sel_tile_y) == false) {
@@ -703,6 +710,17 @@ function doMouseDown(event) {
                             customerInSeat = true;
                         }
                     }
+                }
+                else if (SelectedTileValue == 9)
+                {
+                    // Exit salita
+                    UpdateQueryState = "Loading";
+                    callAjaxMethod(event, 'default.aspx/LeaveLounge', '{Customer_ID: "' + customer_ID + '" }', 0);
+
+                    //Deselect the customer after seating
+                    customerSelected = false;
+
+                    return;
                 }
 
                 //
