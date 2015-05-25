@@ -21,7 +21,7 @@
                         <div class="form-inline">
                             <asp:RadioButtonList ID="RadioButtonList1" CssClass="rbl" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="0" CellSpacing="10" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                 <asp:ListItem Selected="True">Pendientes para hoy</asp:ListItem>
-                                <asp:ListItem>Historicos</asp:ListItem>
+                                <asp:ListItem>Todos por fecha (Historico)</asp:ListItem>
                             </asp:RadioButtonList>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
         
-                <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand">
+                <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand" OnRowDataBound="gvRecords_RowDataBound">
                     <Columns>
 
                         <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>

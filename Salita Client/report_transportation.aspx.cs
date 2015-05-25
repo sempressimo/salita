@@ -36,8 +36,17 @@ namespace Salita_Client
 
             SalitaEntities db = new SalitaEntities();
 
-            var R = db.v_CustomerNeeds.Where(p => (Todays || p.WasFullfilled == false) && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime);
+            IQueryable<v_CustomerNeeds> R = null;
 
+            if (Todays)
+            {
+                R = db.v_CustomerNeeds.Where(p => p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+            }
+            else
+            {
+               R = db.v_CustomerNeeds.Where(p => p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+            }
+ 
             this.gvRecords.DataSource = R.ToList();
             this.gvRecords.DataBind();
 
@@ -85,6 +94,37 @@ namespace Salita_Client
                 string id = this.gvRecords.DataKeys[row_index].Value.ToString(); 
 
                 Response.Redirect("service_complete.aspx?id=" + id);
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void gvRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                /*
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int FullFilled_Index = 6;
+
+                    var c = e.Row.Cells[FullFilled_Index];
+
+                    if (e.Row.Cells[FullFilled_Index].Text == "True")
+                    {
+                        //CssStyleCollection c = new CssStyleCollection();
+
+                        e.Row.Cells[FullFilled_Index].ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        e.Row.Cells[FullFilled_Index].ForeColor = System.Drawing.Color.Red;
+                    }
+                }
+                */
             }
             catch (Exception E)
             {
