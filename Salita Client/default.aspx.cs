@@ -9,8 +9,6 @@ namespace Salita_Client
 {
     public partial class _default : System.Web.UI.Page
     {
-        public static int PollDatabase = 0;
-
         SalitaEntities db = new SalitaEntities();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,6 +30,21 @@ namespace Salita_Client
         }
 
         [System.Web.Services.WebMethod]
+        public static void LeaveLounge(int Customer_ID)
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var V = db.Visits.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.InLounge == true);
+
+            if (V != null)
+            {
+                V.InLounge = false;
+
+                db.SaveChanges();
+            }
+        }
+
+        [System.Web.Services.WebMethod]
         public static void ChangeSeat(int Customer_ID, int Seat_X, int Seat_Y)
         {
             SalitaEntities db = new SalitaEntities();
@@ -44,8 +57,6 @@ namespace Salita_Client
                 V.Seat_Y = Seat_Y;
 
                 db.SaveChanges();
-
-                PollDatabase = 1;
             }
         }
 
@@ -81,8 +92,6 @@ namespace Salita_Client
                     V.InLounge = false;
 
                     this.db.SaveChanges();
-
-                    PollDatabase = 1;
                 }
                 else
                 {
