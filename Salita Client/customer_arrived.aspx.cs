@@ -74,7 +74,7 @@ namespace Salita_Client
 
         protected void LoadCustomerServices(int Customer_ID)
         {
-            var S = this.db.v_CustomerNeeds.Where(p => p.Customer_ID == Customer_ID).OrderByDescending(p => p.RequestDateTime);
+            var S = this.db.v_CustomerNeeds.Where(p => p.Customer_ID == Customer_ID).OrderByDescending(p => p.RequestDateTime).Take(8);
 
             this.gvCustomerServices.DataSource = S.ToList();
             this.gvCustomerServices.DataBind();

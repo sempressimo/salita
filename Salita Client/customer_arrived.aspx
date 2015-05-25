@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="True" CodeBehind="customer_arrived.aspx.cs" Inherits="Salita_Client.customer_arrived" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style>
+    .rbl input[type="radio"]
+    {
+       margin-left: 16px;
+       margin-right: 1px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -16,14 +23,14 @@
          <h3>Esperando por</h3>
 
          <div class="form-group">
-             <asp:RadioButtonList ID="rblWaitingFor" runat="server" RepeatDirection="Vertical" AutoPostBack="True">
+             <asp:RadioButtonList ID="rblWaitingFor" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
                  <asp:ListItem Selected="True">Servicio</asp:ListItem>
                  <asp:ListItem>Gerente</asp:ListItem>
              </asp:RadioButtonList>
          </div>
 
         <fieldset>
-            <legend>Ultimas atenciones</legend>
+            <legend>Ultimas (8) atenciones</legend>
             <asp:GridView ID="gvCustomerServices" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos." AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="ServiceDescription" HeaderText="Servicio" />
