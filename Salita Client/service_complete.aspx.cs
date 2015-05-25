@@ -70,11 +70,14 @@ namespace Salita_Client
                     // Take customer out of salita
                     int Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
 
-                    Visit v = db.Visits.Single(p => p.Customer_ID == Customer_ID && p.InLounge == true);
+                    Visit v = db.Visits.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.InLounge == true);
 
-                    v.InLounge = false;
+                    if (v != null)
+                    {
+                        v.InLounge = false;
 
-                    db.SaveChanges();
+                        db.SaveChanges();
+                    }
                 }
             }
         }
