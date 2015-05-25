@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="address.aspx.cs" Inherits="Salita_Client.address" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style>
+    .rbl input[type="radio"]
+    {
+       margin-left: 16px;
+       margin-right: 1px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -12,7 +19,7 @@
      <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
          <div class="form-group">
-             <asp:RadioButtonList ID="rblWhereTo" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
+             <asp:RadioButtonList ID="rblWhereTo" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
                  <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
                  <asp:ListItem>Hacia el dealer</asp:ListItem>
              </asp:RadioButtonList>
