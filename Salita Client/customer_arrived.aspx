@@ -24,7 +24,13 @@
 
         <fieldset>
             <legend>Ultimas atenciones</legend>
-            <asp:GridView ID="gvCustomerServices" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos."></asp:GridView>
+            <asp:GridView ID="gvCustomerServices" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos." AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="ServiceDescription" HeaderText="Servicio" />
+                    <asp:BoundField DataField="RequestDateTime" HeaderText="Fecha" />
+                    <asp:CheckBoxField DataField="WasFullfilled" HeaderText="Se entrego" />
+                </Columns>
+            </asp:GridView>
         </fieldset>
 
         <div class="buttonpanel">

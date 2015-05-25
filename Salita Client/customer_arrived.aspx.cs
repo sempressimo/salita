@@ -74,9 +74,9 @@ namespace Salita_Client
 
         protected void LoadCustomerServices(int Customer_ID)
         {
-            var S = this.db.v_CustomerNeeds.Where(p => p.Customer_ID == Customer_ID);
+            var S = this.db.v_CustomerNeeds.Where(p => p.Customer_ID == Customer_ID).OrderByDescending(p => p.RequestDateTime);
 
-            this.gvCustomerServices.DataSource = null;
+            this.gvCustomerServices.DataSource = S.ToList();
             this.gvCustomerServices.DataBind();
         }
 
@@ -115,6 +115,8 @@ namespace Salita_Client
                 this.db.SaveChanges();
 
                 this.cmdSeatInRoom.Enabled = false;
+
+                UpdateHub.SendServer("");
 
                 throw new Exception("El cliente fue sentado en la sala virtual.");
             }
