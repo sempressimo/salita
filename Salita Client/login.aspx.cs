@@ -12,7 +12,7 @@ namespace Salita_Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.txtUsername.Focus();
         }
 
         protected void cmdLogin_Click(object sender, EventArgs e)
