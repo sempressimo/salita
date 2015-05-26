@@ -36,7 +36,7 @@ namespace Salita_Client
                         {
                             this.cmdSeatInRoom.Enabled = false;
 
-                            throw new Exception("El cliente ya esta en sala virtual.");
+                            throw new Exception("El cliente ya esta en <a href=\"default.aspx\">sala virtual.</a>");
                         }
                     }
                 }
@@ -118,7 +118,7 @@ namespace Salita_Client
 
                 UpdateHub.SendServer("");
 
-                throw new Exception("El cliente fue sentado en la sala virtual.");
+                throw new Exception("El cliente fue sentado en la <a href=\"default.aspx\">sala virtual.</a>");
             }
             catch (Exception E)
             {
