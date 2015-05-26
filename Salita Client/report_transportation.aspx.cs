@@ -17,7 +17,7 @@ namespace Salita_Client
                 {
                     this.txtFrom.Value = this.txtTo.Value = DateTime.Today.ToShortDateString();
 
-                    this.LoadRecords();
+                    LoadBothGrids();
                 }
             }
             catch (Exception E)
@@ -27,7 +27,13 @@ namespace Salita_Client
             }
         }
 
-        protected void LoadRecords()
+        protected void LoadBothGrids()
+        {
+            this.LoadRecords(this.gvRecords, true);
+            this.LoadRecords(this.gvToDealder, false);
+        }
+
+        protected void LoadRecords(GridView gv, Boolean FromDealer)
         {
             DateTime from = Convert.ToDateTime(this.txtFrom.Value + " 12:00AM");
             DateTime to = Convert.ToDateTime(this.txtTo.Value + " 11:59PM");
@@ -40,19 +46,26 @@ namespace Salita_Client
 
             if (Todays)
             {
-                R = db.v_CustomerNeeds.Where(p => p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+                R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
             }
             else
             {
-               R = db.v_CustomerNeeds.Where(p => p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+               R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
             }
  
-            this.gvRecords.DataSource = R.ToList();
-            this.gvRecords.DataBind();
+            gv.DataSource = R.ToList();
+            gv.DataBind();
 
             if (R != null)
             {
-                this.gvRecords.Caption = "Citas de transportación: " + R.Count();
+                if (FromDealer)
+                {
+                    gv.Caption = "Llevar del dealer a destino: " + R.Count();
+                }
+                else
+                {
+                    gv.Caption = "Recojer en dirección y llevar al dealer: " + R.Count();
+                }
             }
         }
 
@@ -60,7 +73,7 @@ namespace Salita_Client
         {
             try
             {
-                this.LoadRecords();
+                LoadBothGrids();
             }
             catch (Exception E)
             {
@@ -77,7 +90,7 @@ namespace Salita_Client
 
                 this.txtFrom.Disabled = this.txtTo.Disabled = true;
 
-                this.LoadRecords();
+                LoadBothGrids();
             }
             else
             {
@@ -91,9 +104,20 @@ namespace Salita_Client
             {
                 int row_index = Convert.ToInt32(e.CommandArgument);
 
-                string id = this.gvRecords.DataKeys[row_index].Value.ToString(); 
+                if (e.CommandName == "Maps")
+                {
+                    string Address = this.gvRecords.DataKeys[row_index].Values[1].ToString();
+                    string Town = this.gvRecords.DataKeys[row_index].Values[2].ToString();
+                    string ZipCode = this.gvRecords.DataKeys[row_index].Values[3].ToString();
 
-                Response.Redirect("service_complete.aspx?id=" + id);
+                    Response.Redirect("https://www.google.com/maps/place/" + Address + ",+" + Town + ",+" + ZipCode + ",+Puerto+Rico/");
+                }
+                else if (e.CommandName == "Close")
+                {
+                    string id = this.gvRecords.DataKeys[row_index].Value.ToString(); 
+
+                    Response.Redirect("service_complete.aspx?id=" + id);
+                }
             }
             catch (Exception E)
             {
