@@ -64,7 +64,9 @@
                                         <li class="divider"></li>
                                         <li><asp:LinkButton ID="lbReportTransportation" runat="server" OnClick="lbReportTransportation_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Reporte: Transportación</span></asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbReportServices" runat="server" OnClick="lbReportServices_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Reporte: Servicios</span></asp:LinkButton></li> 
+                                        <li><asp:LinkButton ID="lbReportServices" runat="server" OnClick="lbReportServices_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Reporte: Servicios</span></asp:LinkButton></li>
+                                        <li class="divider"></li>
+                                        <li><asp:LinkButton ID="lbUsers" runat="server" OnClick="lbUsers_Click"><img src="images/report.png" />&nbsp;&nbsp;<span>Cuentas de Usuario</span></asp:LinkButton></li>
                                         <li class="divider"></li>
                                         <li><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">&nbsp;&nbsp;<span>Log Out</span></asp:LinkButton></li> 
                                   </ul>
