@@ -89,8 +89,7 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
           </Key>
           <Property Name="Visit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Customer_ID" Type="int" />
-          <Property Name="VisitDate" Type="date" />
-          <Property Name="VisitTime" Type="time" Precision="7" />
+          <Property Name="VisitDate" Type="datetime" />
           <Property Name="Seat_X" Type="int" />
           <Property Name="Seat_Y" Type="int" />
           <Property Name="InLounge" Type="bit" />
@@ -348,8 +347,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           </Key>
           <Property Name="Visit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Customer_ID" Type="Int32" />
-          <Property Name="VisitDate" Type="DateTime" Precision="0" />
-          <Property Name="VisitTime" Type="Time" Precision="7" />
+          <Property Name="VisitDate" Type="DateTime" Precision="3" />
           <Property Name="Seat_X" Type="Int32" />
           <Property Name="Seat_Y" Type="Int32" />
           <Property Name="InLounge" Type="Boolean" />
@@ -526,7 +524,6 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
                 <ScalarProperty Name="InLounge" ColumnName="InLounge" />
                 <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
                 <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
-                <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
                 <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
                 <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
                 <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
