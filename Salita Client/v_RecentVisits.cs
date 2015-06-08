@@ -23,7 +23,6 @@ namespace Salita_Client
         public Nullable<bool> IsActive { get; set; }
         public int Visit_ID { get; set; }
         public Nullable<System.DateTime> VisitDate { get; set; }
-        public Nullable<System.TimeSpan> VisitTime { get; set; }
         public Nullable<int> Seat_X { get; set; }
         public Nullable<int> Seat_Y { get; set; }
         public Nullable<bool> InLounge { get; set; }

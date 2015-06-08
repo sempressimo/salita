@@ -32,6 +32,7 @@
           <Property Name="Town" Type="varchar" MaxLength="25" />
           <Property Name="ZipCode" Type="varchar" MaxLength="9" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="LoginPIN" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="CustomerServices">
           <Key>
@@ -145,8 +146,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="ZipCode" Type="varchar" MaxLength="9" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="Visit_ID" Type="int" Nullable="false" />
-          <Property Name="VisitDate" Type="date" />
-          <Property Name="VisitTime" Type="time" Precision="7" />
+          <Property Name="VisitDate" Type="datetime" />
           <Property Name="Seat_X" Type="int" />
           <Property Name="Seat_Y" Type="int" />
           <Property Name="InLounge" Type="bit" />
@@ -234,7 +234,6 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_RecentVisits].[IsActive] AS [IsActive], 
     [v_RecentVisits].[Visit_ID] AS [Visit_ID], 
     [v_RecentVisits].[VisitDate] AS [VisitDate], 
-    [v_RecentVisits].[VisitTime] AS [VisitTime], 
     [v_RecentVisits].[Seat_X] AS [Seat_X], 
     [v_RecentVisits].[Seat_Y] AS [Seat_Y], 
     [v_RecentVisits].[InLounge] AS [InLounge], 
@@ -303,6 +302,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LoginPIN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Visits" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Customer" ToRole="Visit" />
         </EntityType>
         <EntityType Name="CustomerService">
@@ -411,8 +411,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="Visit_ID" Type="Int32" Nullable="false" />
-          <Property Name="VisitDate" Type="DateTime" Precision="0" />
-          <Property Name="VisitTime" Type="Time" Precision="7" />
+          <Property Name="VisitDate" Type="DateTime" Precision="3" />
           <Property Name="Seat_X" Type="Int32" />
           <Property Name="Seat_Y" Type="Int32" />
           <Property Name="InLounge" Type="Boolean" />
@@ -467,6 +466,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="SalitaModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="Town" ColumnName="Town" />
@@ -582,7 +582,6 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
                 <ScalarProperty Name="InLounge" ColumnName="InLounge" />
                 <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
                 <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
-                <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
                 <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
                 <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />

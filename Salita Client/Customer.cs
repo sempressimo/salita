@@ -27,6 +27,7 @@ namespace Salita_Client
         public string Town { get; set; }
         public string ZipCode { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public string LoginPIN { get; set; }
     
         public virtual ICollection<Visit> Visits { get; set; }
     }
