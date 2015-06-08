@@ -34,7 +34,7 @@ namespace Salita_Client
                 {
                     SalitaEntities db2 = new SalitaEntities();
 
-                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate == DateTime.Today && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == "1234");
+                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate == DateTime.Today && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
 
                     if (C != null)
                     {
