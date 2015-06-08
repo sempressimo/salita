@@ -32,7 +32,6 @@
           <Property Name="Town" Type="varchar" MaxLength="25" />
           <Property Name="ZipCode" Type="varchar" MaxLength="9" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="LoginPIN" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="CustomerServices">
           <Key>
@@ -95,6 +94,7 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
           <Property Name="Seat_Y" Type="int" />
           <Property Name="InLounge" Type="bit" />
           <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+          <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -302,7 +302,6 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
-          <Property Name="LoginPIN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Visits" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Customer" ToRole="Visit" />
         </EntityType>
         <EntityType Name="CustomerService">
@@ -352,6 +351,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="Seat_Y" Type="Int32" />
           <Property Name="InLounge" Type="Boolean" />
           <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
         </EntityType>
         <EntityType Name="ListZip">
@@ -466,7 +466,6 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="SalitaModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="Town" ColumnName="Town" />
@@ -520,6 +519,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="Visits">
             <EntityTypeMapping TypeName="SalitaModel.Visit">
               <MappingFragment StoreEntitySet="Visits">
+                <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
                 <ScalarProperty Name="InLounge" ColumnName="InLounge" />
                 <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />

@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="SalitaModel.Map" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="SalitaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="SalitaModel.User" Width="1.5" PointX="5.75" PointY="6.75" />
-        <EntityTypeShape EntityType="SalitaModel.Visit" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="SalitaModel.Visit" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="SalitaModel.ListZip" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="SalitaModel.WatingForReason" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="SalitaModel.v_CustomerNeeds" Width="1.5" PointX="7.75" PointY="6.75" />

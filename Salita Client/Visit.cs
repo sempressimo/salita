@@ -21,6 +21,7 @@ namespace Salita_Client
         public Nullable<int> Seat_Y { get; set; }
         public Nullable<bool> InLounge { get; set; }
         public string WaitingFor { get; set; }
+        public string LoginPIN { get; set; }
     
         public virtual Customer Customer { get; set; }
     }
