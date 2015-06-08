@@ -49,6 +49,15 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.RadioButtonList rblWaitingFor;
         
         /// <summary>
+        /// txtPIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPIN;
+        
+        /// <summary>
         /// gvCustomerServices control.
         /// </summary>
         /// <remarks>

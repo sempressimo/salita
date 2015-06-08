@@ -91,6 +91,8 @@ namespace Salita_Client
 
             if (V != null)
             {
+                this.txtPIN.Value = V.LoginPIN;
+
                 return true;
             }
 
@@ -107,9 +109,9 @@ namespace Salita_Client
                 V.Seat_X = 0;
                 V.Seat_Y = 0;
                 V.InLounge = true;
-                V.VisitDate = DateTime.Today;
-                V.VisitTime = DateTime.Now.TimeOfDay;
-                V.WaitingFor = rblWaitingFor.SelectedItem.Text;  
+                V.VisitDate = DateTime.Now;
+                V.WaitingFor = rblWaitingFor.SelectedItem.Text;
+                V.LoginPIN = this.txtPIN.Value;
 
                 this.db.Visits.Add(V);
                 this.db.SaveChanges();
