@@ -34,6 +34,7 @@ namespace Salita_Client
 
                         ViewState["Customer_ID"] = Need.Customer_ID;
 
+                        
                         this.lblFullName.Text = Need.FullName;
                         this.txtServiceDesc.Text = Need.ServiceDescription + ((Need.Address_Line != null) ? ": " : "") + Need.Address_Line + " " + Need.Town;
 
