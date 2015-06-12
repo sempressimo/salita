@@ -110,20 +110,20 @@ textarea
 
 .buttonpanel > .mybutton 
 {
-    margin:0 5px;
-    padding:12px 20px;
+	margin:0 5px;
+	padding:12px 20px;
 }
 
 .buttonpanel > .mybutton img
 {
-    height:26px;
+	height:26px;
 }
 
 .mybutton
 {
 	padding:12px;
 	width:auto;
-    border:0 !important;
+	border:0 !important;
 	text-decoration:none;
 	font-weight:bold;
 	font-size:14px;

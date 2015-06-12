@@ -93,12 +93,12 @@
     </Key>
     <Property Name="Visit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Customer_ID" Type="Int32" />
-    <Property Name="VisitDate" Type="DateTime" Precision="0" />
-    <Property Name="VisitTime" Type="Time" Precision="7" />
+    <Property Name="VisitDate" Type="DateTime" Precision="3" />
     <Property Name="Seat_X" Type="Int32" />
     <Property Name="Seat_Y" Type="Int32" />
     <Property Name="InLounge" Type="Boolean" />
     <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
   </EntityType>
   <EntityType Name="ListZip">
@@ -158,12 +158,12 @@
     <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="Visit_ID" Type="Int32" Nullable="false" />
-    <Property Name="VisitDate" Type="DateTime" Precision="0" />
-    <Property Name="VisitTime" Type="Time" Precision="7" />
+    <Property Name="VisitDate" Type="DateTime" Precision="3" />
     <Property Name="Seat_X" Type="Int32" />
     <Property Name="Seat_Y" Type="Int32" />
     <Property Name="InLounge" Type="Boolean" />
     <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_CustomerNeeds_CustomerServices">
     <End Type="SalitaModel.CustomerService" Role="CustomerService" Multiplicity="0..1" />

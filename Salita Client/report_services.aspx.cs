@@ -29,8 +29,8 @@ namespace Salita_Client
 
         protected void LoadRecords()
         {
-            DateTime from = Convert.ToDateTime(this.txtFrom.Value + " 12:00AM");
-            DateTime to = Convert.ToDateTime(this.txtTo.Value + " 11:59PM");
+            DateTime fromDate = Convert.ToDateTime(this.txtFrom.Value + " 12:00AM");
+            DateTime toDate = Convert.ToDateTime(this.txtTo.Value + " 11:59PM");
 
             bool Todays = (RadioButtonList1.SelectedIndex == 0) ? true : false;
 
@@ -39,6 +39,7 @@ namespace Salita_Client
             //var R = db.v_CustomerNeeds.Where(p => p.RequestDateTime >= from && p.RequestDateTime <= to).OrderBy(p => p.RequestDateTime);
 
             var R = from p in db.v_CustomerNeeds
+                        where (p.RequestDateTime >= fromDate && p.RequestDateTime <= toDate)
                         group p by p.ServiceDescription into g
                         select new
                         {

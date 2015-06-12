@@ -179,6 +179,7 @@
     <Content Include="images\down.png" />
     <Content Include="images\down2.png" />
     <Content Include="images\download.png" />
+    <Content Include="images\exit.png" />
     <Content Include="images\export-blk.png" />
     <Content Include="images\export.png" />
     <Content Include="images\face_sel.png" />
@@ -226,6 +227,8 @@
     <Content Include="images\waiting2.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="login_detail.aspx" />
+    <Content Include="login_list.aspx" />
     <Content Include="Maps\map0.txt" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -235,6 +238,7 @@
     <None Include="Properties\PublishProfiles\SalitaClient.pubxml" />
     <Content Include="report_services.aspx" />
     <Content Include="report_transportation.aspx" />
+    <Content Include="request_note.aspx" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -412,6 +416,20 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="login_detail.aspx.cs">
+      <DependentUpon>login_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login_detail.aspx.designer.cs">
+      <DependentUpon>login_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login_list.aspx.cs">
+      <DependentUpon>login_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login_list.aspx.designer.cs">
+      <DependentUpon>login_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Map.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
@@ -429,6 +447,13 @@
     </Compile>
     <Compile Include="report_transportation.aspx.designer.cs">
       <DependentUpon>report_transportation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="request_note.aspx.cs">
+      <DependentUpon>request_note.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="request_note.aspx.designer.cs">
+      <DependentUpon>request_note.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalitaDB.Context.cs">
       <AutoGen>True</AutoGen>

@@ -73,11 +73,11 @@
     <EntitySetMapping Name="Visits">
       <EntityTypeMapping TypeName="SalitaModel.Visit">
         <MappingFragment StoreEntitySet="Visits">
+          <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
           <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />
           <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
           <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
-          <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
           <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
           <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
           <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
@@ -132,11 +132,11 @@
     <EntitySetMapping Name="v_RecentVisits">
       <EntityTypeMapping TypeName="SalitaModel.v_RecentVisits">
         <MappingFragment StoreEntitySet="v_RecentVisits">
+          <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
           <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />
           <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
           <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
-          <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
           <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
           <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />

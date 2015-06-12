@@ -84,12 +84,12 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
     </Key>
     <Property Name="Visit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Customer_ID" Type="int" />
-    <Property Name="VisitDate" Type="date" />
-    <Property Name="VisitTime" Type="time" Precision="7" />
+    <Property Name="VisitDate" Type="datetime" />
     <Property Name="Seat_X" Type="int" />
     <Property Name="Seat_Y" Type="int" />
     <Property Name="InLounge" Type="bit" />
     <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+    <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -141,12 +141,12 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     <Property Name="ZipCode" Type="varchar" MaxLength="9" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="Visit_ID" Type="int" Nullable="false" />
-    <Property Name="VisitDate" Type="date" />
-    <Property Name="VisitTime" Type="time" Precision="7" />
+    <Property Name="VisitDate" Type="datetime" />
     <Property Name="Seat_X" Type="int" />
     <Property Name="Seat_Y" Type="int" />
     <Property Name="InLounge" Type="bit" />
     <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+    <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
   </EntityType>
   <Association Name="FK_CustomerNeeds_CustomerServices">
     <End Role="CustomerServices" Type="Self.CustomerServices" Multiplicity="0..1" />
@@ -230,11 +230,11 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_RecentVisits].[IsActive] AS [IsActive], 
     [v_RecentVisits].[Visit_ID] AS [Visit_ID], 
     [v_RecentVisits].[VisitDate] AS [VisitDate], 
-    [v_RecentVisits].[VisitTime] AS [VisitTime], 
     [v_RecentVisits].[Seat_X] AS [Seat_X], 
     [v_RecentVisits].[Seat_Y] AS [Seat_Y], 
     [v_RecentVisits].[InLounge] AS [InLounge], 
-    [v_RecentVisits].[WaitingFor] AS [WaitingFor]
+    [v_RecentVisits].[WaitingFor] AS [WaitingFor], 
+    [v_RecentVisits].[LoginPIN] AS [LoginPIN]
     FROM [dbo].[v_RecentVisits] AS [v_RecentVisits]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="Self.FK_CustomerNeeds_CustomerServices">

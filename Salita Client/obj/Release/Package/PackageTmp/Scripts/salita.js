@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 0.9.1";
+var SalitaVersion = "Beta 1.0";
 
 //
 // Images
@@ -28,6 +28,7 @@ var pop_up_cafe = new Image();
 var pop_up_water = new Image();
 var pop_up_soda = new Image();
 var pop_up_taxi = new Image();
+var exit = new Image();
 
 var pop_x = 0;
 var pop_y = 0;
@@ -93,7 +94,6 @@ var alert_blink = 0;
 // Debug Vars
 //
 var elapsedTime = 0;
-var elapsedTimeSinceRefresh = 0;
 var holdDownTimer = 0; // Time that mouse is pressed
 var MouseClickLogic = "N/A";
 var doc_scroll_left = 0;
@@ -129,11 +129,12 @@ var chairs_tiles_max = 8; // End index (and count)  for chair tiles
 // 6: Chair up white
 // 7: Chair left white
 // 8: Chair right white
+// 9: Exit
 var MapData =
     [
         [0, 8, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0],
-        [0, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0],
+        [9, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 9],
         [0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
         [0, 0, 0, 0, 3, 0, 0, 4, 0, 0, 0, 0],
@@ -206,6 +207,7 @@ function init() {
     pop_up_water.src = "images/pop_water.png";
     pop_up_soda.src = "images/pop_soda.png";
     pop_up_taxi.src = "images/pop_taxi.png";
+    exit.src = "images/exit.png";
 
     canvas = document.getElementById('salitacanvas');
 
@@ -292,6 +294,10 @@ function drawMap(tile_size, ctx) {
                 // Right
                 ctx.drawImage(chair_right_w, x_cursor * tile_size, (y_cursor * tile_size) + map_top_margin, tile_size, tile_size);
             }
+            else if (TileValue == 9) {
+                // Right
+                ctx.drawImage(exit, x_cursor * tile_size, (y_cursor * tile_size) + map_top_margin, tile_size, tile_size);
+            }
 
             index++;
         }
@@ -363,6 +369,8 @@ function CheckCustomerNeeds(Customer_ID) {
 function CheckIfCustomerHasNeeds(Customer_ID) {
     var HasNeeds = false;
 
+    if (NeedsArray == null) return; // Marronazo
+
     $.each(NeedsArray, function (key, value) {
         if (value.Customer_ID == Customer_ID) {
             HasNeeds = true;
@@ -372,9 +380,10 @@ function CheckIfCustomerHasNeeds(Customer_ID) {
     return HasNeeds;
 }
 
-function drawCustomersInfo(tile_size, ctx) {
-    $.each(CustomersArray, function (key, value) {
-
+function drawCustomersInfo(tile_size, ctx)
+{
+    $.each(CustomersArray, function (key, value)
+    {
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
@@ -382,7 +391,9 @@ function drawCustomersInfo(tile_size, ctx) {
         var endDate = new Date();
 
         var diff = endDate - startDate;
-        var diff_as_date = new Date(diff);
+        //var diff_as_date = new Date(diff);
+
+        var diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
 
         var text_x = x_pos + 8;
         var text_y = y_pos + map_top_margin;
@@ -391,12 +402,23 @@ function drawCustomersInfo(tile_size, ctx) {
             text_y += tile_size + 12;
         }
 
-        ctx.fillStyle = "White";
-        ctx.fillText(diff_as_date.getMinutes() + " min.", text_x, text_y);
-        //ctx.fillText(value.FullName, text_x, text_y);
+        var TimeWaiting = diff;
+
+        if (diffMins < 30) {
+            ctx.fillStyle = "White";
+        }
+        else if (diffMins >= 30 && diffMins <= 45)
+        {
+            ctx.fillStyle = "Orange";
+        }
+        else {
+            ctx.fillStyle = "Red";
+        }
+
+        ctx.fillText(diffMins + " min.", text_x, text_y);
 
         if (value.Customer_ID == customer_ID) {
-            SelectedCustomerTime = diff_as_date.getMinutes() + " min.";
+            SelectedCustomerTime = diffMins + " min.";
         }
     });
 }
@@ -444,32 +466,21 @@ function drawScreenText(ctx) {
 
 function drawDebugText(ctx, TextIndent) {
     //ctx.fillText("Selected Tile: " + sel_tile_x + "," + sel_tile_y, 0, 880);
-    ctx.fillText(" holdDownTimer: " + holdDownTimer + ", MouseIsDown: " + MouseIsDown, 0, 900);
-    //ctx.fillText("elapsedTime: " + elapsedTime + ", elapsedTimeSinceRefresh: " + elapsedTimeSinceRefresh, 0, 50);
-    ctx.fillText(" MouseClickLogic: " + MouseClickLogic + ", doc_scroll_left: " + doc_scroll_left + ", doc_element_scroll_left: " + doc_element_scroll_left, 0, 920);
-    ctx.fillText(" SelectedTileValue: " + SelectedTileValue + ", RenderState: " + RenderState, 0, 940);
-    ctx.fillText(" customerSelected: " + customerSelected + ", index: " + customerIndex + ", target seat occuppied: " + customerInSeat, 0, 960);
+    //ctx.fillText(" holdDownTimer: " + holdDownTimer + ", MouseIsDown: " + MouseIsDown, 0, 900);
+    //ctx.fillText(" MouseClickLogic: " + MouseClickLogic + ", doc_scroll_left: " + doc_scroll_left + ", doc_element_scroll_left: " + doc_element_scroll_left, 0, 920);
+    //ctx.fillText(" SelectedTileValue: " + SelectedTileValue + ", RenderState: " + RenderState, 0, 940);
+    //ctx.fillText(" customerSelected: " + customerSelected + ", index: " + customerIndex + ", target seat occuppied: " + customerInSeat, 0, 960);
 }
 
 function draw() {
-    if (elapsedTimeSinceRefresh > 500) {
 
-        if (UpdateQueryState == "Finished") {
-            // OLD Update way
-            //UpdateJsonArrays();
-        }
-
-        elapsedTimeSinceRefresh = 0;
-    }
-
-    if (canvas.getContext) {
+    if (canvas.getContext)
+    {
         var ctx = canvas.getContext('2d');
 
         var currentTime = Date.now();
 
         elapsedTime = Math.floor((currentTime - customerTime) / 1000);
-
-        elapsedTimeSinceRefresh = elapsedTimeSinceRefresh + 1;
 
         if (MouseIsDown == true) {
             holdDownTimer++;
@@ -481,14 +492,13 @@ function draw() {
 
                 holdDownTimer = 0;
 
-                if (customerSelected == true) {
-                    //UpdateQueryState = "Loading";
-                    //callAjaxMethod(event, 'default.aspx/SetSelectedCustomer', '{Customer_ID: "' + customer_ID + '" }', 1);
+                if (customerSelected == true)
+                {
 
                     RenderState = "PopUpServices";
                 }
 
-                //Deselect the customer after double click
+                //Deselect the customer after popup
                 customerSelected = false;
             }
         }
@@ -497,7 +507,8 @@ function draw() {
 
         drawMap(tile_Size, ctx);
 
-        if (CustomersArray != null) {
+        if (CustomersArray != null)
+        {
             drawCustomers(tile_Size, ctx);
         }
 
@@ -567,6 +578,8 @@ function draw() {
             }
         }
 
+        ctx.stroke();
+
         window.requestAnimationFrame(draw);
     }
 }
@@ -601,7 +614,6 @@ function callAjaxMethod(e, _url, _parameters, popup_id) {
             UpdateQueryState = "Finished";
 
             if (popup_id == 1) {
-
 
                 btn_water_y = 400;
 
@@ -682,7 +694,8 @@ function doMouseDown(event) {
             if (RenderState == "Salita")
             {
                 // If it is a seat
-                if (SelectedTileValue >= 1 && SelectedTileValue <= chairs_tiles_max) {
+                if (SelectedTileValue >= 1 && SelectedTileValue <= chairs_tiles_max)
+                {
                     customerInSeat = false;
                     if (customerSelected == true && (sel_tile_x != old_sel_tile_x || sel_tile_y != old_sel_tile_y)) {
                         if (IsACustomerInTargetSeat(sel_tile_x, sel_tile_y) == false) {
@@ -702,6 +715,17 @@ function doMouseDown(event) {
                             customerInSeat = true;
                         }
                     }
+                }
+                else if (SelectedTileValue == 9)
+                {
+                    // Exit salita
+                    UpdateQueryState = "Loading";
+                    callAjaxMethod(event, 'default.aspx/LeaveLounge', '{Customer_ID: "' + customer_ID + '" }', 0);
+
+                    //Deselect the customer after seating
+                    customerSelected = false;
+
+                    return;
                 }
 
                 //
@@ -736,6 +760,10 @@ function doMouseDown(event) {
                 if (!(mouse_x > pop_x && mouse_x < pop_x + 367 && mouse_y > (pop_y - map_top_margin) && mouse_y < (pop_y - map_top_margin) + 367)) {
                     RenderState = "Salita";
                 }
+                else if (mouse_x > 510 && mouse_y > 240 - map_top_margin && mouse_x < (510 + 40) && mouse_y < (240 + 40) - map_top_margin)
+                {
+                    RenderState = "Salita";
+                }
                 else
                 {
 
@@ -744,7 +772,7 @@ function doMouseDown(event) {
                         PlayClick();
 
                         if (btn_water_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 1 }', 1);
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 1);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerWaterService_Key);
@@ -757,7 +785,7 @@ function doMouseDown(event) {
                         }
 
                         if (btn_soda_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 2 }', 1);
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 2);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerRefreshmentService_Key);
@@ -770,7 +798,7 @@ function doMouseDown(event) {
                         }
 
                         if (btn_cafe_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 5 }', 1)
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 5);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerCoffeeService_Key);
@@ -783,7 +811,12 @@ function doMouseDown(event) {
                             sndClick.play();
                         }
 
-                        window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
+                        if (btn_taxi_y < 470) {
+                            window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
+                        }
+                        else {
+                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerTransportationService_Key);
+                        }
                     }
                 }
             }

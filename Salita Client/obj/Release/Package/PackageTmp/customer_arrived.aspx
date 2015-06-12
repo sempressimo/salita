@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="True" CodeBehind="customer_arrived.aspx.cs" Inherits="Salita_Client.customer_arrived" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style>
+    .rbl input[type="radio"]
+    {
+       margin-left: 24px;
+       margin-right: 1px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -8,15 +15,31 @@
     <fieldset class="formcontainer whiteclear whiteborder shadow">
 
         <legend class="blackclear whitetext">Recibir a <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
-
-    
+ 
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-info" />
     <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-        
+         <div class="form-group">
+            <label>Esperando por</label>
+             <asp:RadioButtonList ID="rblWaitingFor" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
+                 <asp:ListItem Selected="True">Servicio</asp:ListItem>
+                 <asp:ListItem>Gerente</asp:ListItem>
+             </asp:RadioButtonList>
+         </div>
+
+         <div class="form-group">
+            <label>PIN de Acceso</label>
+            <input runat="server" type="text" class="form-control" id="txtPIN" placeholder="4 numbers..." maxlength="4">
+        </div>
+
         <fieldset>
-            <legend>Ultimas atenciones</legend>
-            <asp:GridView ID="gvCustomerServices" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos."></asp:GridView>
+            <asp:GridView ID="gvCustomerServices" Caption="Ultimas 8 atenciones" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos." AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="ServiceDescription" HeaderText="Servicio" />
+                    <asp:BoundField DataField="RequestDateTime" HeaderText="Fecha" />
+                    <asp:CheckBoxField DataField="WasFullfilled" HeaderText="Se entrego" />
+                </Columns>
+            </asp:GridView>
         </fieldset>
 
         <div class="buttonpanel">

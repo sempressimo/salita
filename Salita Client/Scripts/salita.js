@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 0.9.2";
+var SalitaVersion = "Beta 1.0";
 
 //
 // Images
@@ -94,7 +94,6 @@ var alert_blink = 0;
 // Debug Vars
 //
 var elapsedTime = 0;
-var elapsedTimeSinceRefresh = 0;
 var holdDownTimer = 0; // Time that mouse is pressed
 var MouseClickLogic = "N/A";
 var doc_scroll_left = 0;
@@ -147,11 +146,11 @@ var MapData =
         [0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 6]
     ];
 
-var global_uri = "http://localhost:8395/api/visit";
-//var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
+//var global_uri = "http://localhost:8395/api/visit";
+var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
 
-var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
-//var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
+//var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
+var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
 
 var chat;
 
@@ -370,6 +369,8 @@ function CheckCustomerNeeds(Customer_ID) {
 function CheckIfCustomerHasNeeds(Customer_ID) {
     var HasNeeds = false;
 
+    if (NeedsArray == null) return; // Marronazo
+
     $.each(NeedsArray, function (key, value) {
         if (value.Customer_ID == Customer_ID) {
             HasNeeds = true;
@@ -379,19 +380,20 @@ function CheckIfCustomerHasNeeds(Customer_ID) {
     return HasNeeds;
 }
 
-function drawCustomersInfo(tile_size, ctx) {
-    $.each(CustomersArray, function (key, value) {
-
+function drawCustomersInfo(tile_size, ctx)
+{
+    $.each(CustomersArray, function (key, value)
+    {
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
-        var tempDate = "1/1/2015 " + value.VisitTime.substring(0, 5);
-
-        var startDate = new Date(tempDate);
-        var endDate = new Date().getTime();
+        var startDate = new Date(value.VisitDate);
+        var endDate = new Date();
 
         var diff = endDate - startDate;
-        var diff_as_date = new Date(diff);
+        //var diff_as_date = new Date(diff);
+
+        var diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
 
         var text_x = x_pos + 8;
         var text_y = y_pos + map_top_margin;
@@ -400,11 +402,23 @@ function drawCustomersInfo(tile_size, ctx) {
             text_y += tile_size + 12;
         }
 
-        ctx.fillStyle = "White";
-        ctx.fillText(diff_as_date.getMinutes() + " min.", text_x, text_y);
+        var TimeWaiting = diff;
+
+        if (diffMins < 30) {
+            ctx.fillStyle = "White";
+        }
+        else if (diffMins >= 30 && diffMins <= 45)
+        {
+            ctx.fillStyle = "Orange";
+        }
+        else {
+            ctx.fillStyle = "Red";
+        }
+
+        ctx.fillText(diffMins + " min.", text_x, text_y);
 
         if (value.Customer_ID == customer_ID) {
-            SelectedCustomerTime = diff_as_date.getMinutes() + " min.";
+            SelectedCustomerTime = diffMins + " min.";
         }
     });
 }
@@ -452,32 +466,21 @@ function drawScreenText(ctx) {
 
 function drawDebugText(ctx, TextIndent) {
     //ctx.fillText("Selected Tile: " + sel_tile_x + "," + sel_tile_y, 0, 880);
-    ctx.fillText(" holdDownTimer: " + holdDownTimer + ", MouseIsDown: " + MouseIsDown, 0, 900);
-    //ctx.fillText("elapsedTime: " + elapsedTime + ", elapsedTimeSinceRefresh: " + elapsedTimeSinceRefresh, 0, 50);
-    ctx.fillText(" MouseClickLogic: " + MouseClickLogic + ", doc_scroll_left: " + doc_scroll_left + ", doc_element_scroll_left: " + doc_element_scroll_left, 0, 920);
-    ctx.fillText(" SelectedTileValue: " + SelectedTileValue + ", RenderState: " + RenderState, 0, 940);
-    ctx.fillText(" customerSelected: " + customerSelected + ", index: " + customerIndex + ", target seat occuppied: " + customerInSeat, 0, 960);
+    //ctx.fillText(" holdDownTimer: " + holdDownTimer + ", MouseIsDown: " + MouseIsDown, 0, 900);
+    //ctx.fillText(" MouseClickLogic: " + MouseClickLogic + ", doc_scroll_left: " + doc_scroll_left + ", doc_element_scroll_left: " + doc_element_scroll_left, 0, 920);
+    //ctx.fillText(" SelectedTileValue: " + SelectedTileValue + ", RenderState: " + RenderState, 0, 940);
+    //ctx.fillText(" customerSelected: " + customerSelected + ", index: " + customerIndex + ", target seat occuppied: " + customerInSeat, 0, 960);
 }
 
 function draw() {
-    if (elapsedTimeSinceRefresh > 500) {
 
-        if (UpdateQueryState == "Finished") {
-            // OLD Update way
-            //UpdateJsonArrays();
-        }
-
-        elapsedTimeSinceRefresh = 0;
-    }
-
-    if (canvas.getContext) {
+    if (canvas.getContext)
+    {
         var ctx = canvas.getContext('2d');
 
         var currentTime = Date.now();
 
         elapsedTime = Math.floor((currentTime - customerTime) / 1000);
-
-        elapsedTimeSinceRefresh = elapsedTimeSinceRefresh + 1;
 
         if (MouseIsDown == true) {
             holdDownTimer++;
@@ -489,14 +492,13 @@ function draw() {
 
                 holdDownTimer = 0;
 
-                if (customerSelected == true) {
-                    //UpdateQueryState = "Loading";
-                    //callAjaxMethod(event, 'default.aspx/SetSelectedCustomer', '{Customer_ID: "' + customer_ID + '" }', 1);
+                if (customerSelected == true)
+                {
 
                     RenderState = "PopUpServices";
                 }
 
-                //Deselect the customer after double click
+                //Deselect the customer after popup
                 customerSelected = false;
             }
         }
@@ -505,7 +507,8 @@ function draw() {
 
         drawMap(tile_Size, ctx);
 
-        if (CustomersArray != null) {
+        if (CustomersArray != null)
+        {
             drawCustomers(tile_Size, ctx);
         }
 
@@ -574,6 +577,8 @@ function draw() {
                 ctx.drawImage(pop_up_cafe, btn_cafe_x, btn_cafe_y, 58, 58);
             }
         }
+
+        ctx.stroke();
 
         window.requestAnimationFrame(draw);
     }
@@ -755,6 +760,10 @@ function doMouseDown(event) {
                 if (!(mouse_x > pop_x && mouse_x < pop_x + 367 && mouse_y > (pop_y - map_top_margin) && mouse_y < (pop_y - map_top_margin) + 367)) {
                     RenderState = "Salita";
                 }
+                else if (mouse_x > 510 && mouse_y > 240 - map_top_margin && mouse_x < (510 + 40) && mouse_y < (240 + 40) - map_top_margin)
+                {
+                    RenderState = "Salita";
+                }
                 else
                 {
 
@@ -763,7 +772,7 @@ function doMouseDown(event) {
                         PlayClick();
 
                         if (btn_water_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 1 }', 1);
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 1);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerWaterService_Key);
@@ -776,7 +785,7 @@ function doMouseDown(event) {
                         }
 
                         if (btn_soda_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 2 }', 1);
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 2);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerRefreshmentService_Key);
@@ -789,7 +798,7 @@ function doMouseDown(event) {
                         }
 
                         if (btn_cafe_y < 470) {
-                            callAjaxMethod(event, 'default.aspx/ProcessService', '{Customer_ID: "' + customer_ID + '", Service_ID: 5 }', 1)
+                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 5);
                         }
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerCoffeeService_Key);

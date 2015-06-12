@@ -87,6 +87,7 @@ textarea
 	transition:background 2s;
 	-webkit-transition:color .5s;
 	transition:color .5s;
+
 }
 
 .styled-select:focus,  input[type="text"]:focus,  textarea:focus, input[type="password"]:focus 	{
@@ -102,23 +103,27 @@ textarea
 
 .buttonpanel
 {
-	margin:20px auto 0;
+	margin:30px auto 20px;
 	text-align:center;
-	width:auto;
 	display:block;
 }
 
-.buttonpanel > .mybutton
+.buttonpanel > .mybutton 
 {
-	margin:auto 5px !important;
-	display:inline-block !important;
+	margin:0 5px;
+	padding:12px 20px;
+}
+
+.buttonpanel > .mybutton img
+{
+	height:26px;
 }
 
 .mybutton
 {
-	position:relative; 
-	padding:14px;
+	padding:12px;
 	width:auto;
+	border:0 !important;
 	text-decoration:none;
 	font-weight:bold;
 	font-size:14px;
@@ -141,12 +146,12 @@ textarea
 .mybutton img
 {
 	vertical-align:middle;
-	height:20px;
+	height:22px;
 }
 
 .mybutton span
 {
-	margin:0 8px;
+	margin:0 9px;
 }
 
 /*-----------------------------     PROPIEDADES   -----------------------------------------------------------*/
