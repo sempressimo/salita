@@ -32,15 +32,19 @@
             <input runat="server" type="text" class="form-control" id="txtPIN" placeholder="4 numbers..." maxlength="4">
         </div>
 
-        <fieldset>
-            <asp:GridView ID="gvCustomerServices" Caption="Ultimas 8 atenciones" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos." AutoGenerateColumns="False">
-                <Columns>
-                    <asp:BoundField DataField="ServiceDescription" HeaderText="Servicio" />
-                    <asp:BoundField DataField="RequestDateTime" HeaderText="Fecha" />
-                    <asp:CheckBoxField DataField="WasFullfilled" HeaderText="Se entrego" />
-                </Columns>
-            </asp:GridView>
-        </fieldset>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <asp:GridView ID="gvCustomerServices" Caption="Ultimas 8 atenciones" runat="server" CssClass="mygrid" EmptyDataText="No tiene servicios previos." AutoGenerateColumns="False">
+                        <Columns>
+                            <asp:BoundField DataField="ServiceDescription" HeaderText="Servicio" />
+                            <asp:BoundField DataField="RequestDateTime" HeaderText="Fecha" />
+                            <asp:CheckBoxField DataField="WasFullfilled" HeaderText="Se entrego" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
 
         <div class="buttonpanel">
             <asp:LinkButton ID="cmdSeatInRoom" runat="server" CssClass="btn mybutton blue rounded shadow whitetext" OnClick="cmdSeatInRoom_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Sentar en sala</span></asp:LinkButton>
