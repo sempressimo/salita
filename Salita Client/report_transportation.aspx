@@ -35,31 +35,35 @@
                         </div>
                     </div>
         
-                <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID, Address_Line, Town, ZipCode" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand" OnRowDataBound="gvRecords_RowDataBound">
-                    <Columns>
+                <div class="table-responsive">
+                    <asp:GridView ID="gvRecords" CssClass="mygrid" DataKeyNames="CustomerNeed_ID, Address_Line, Town, ZipCode" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand" OnRowDataBound="gvRecords_RowDataBound">
+                        <Columns>
 
-                        <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
-                        <asp:BoundField DataField="FullName" HeaderText="Nombre" />
-                        <asp:BoundField DataField="Phone" HeaderText="Telefono" />
-                        <asp:BoundField DataField="Address_Line" HeaderText="Dirección" />
-                        <asp:BoundField DataField="Town" HeaderText="Pueblo" />
-                        <asp:ButtonField CommandName="Maps" DataTextField="ZipCode" HeaderText="ZipCode" />
-                        <asp:ButtonField CommandName="Close" DataTextField="WasFullfilled" HeaderText="Completado" />
-                    </Columns>
-                </asp:GridView>
+                            <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
+                            <asp:BoundField DataField="FullName" HeaderText="Nombre" />
+                            <asp:BoundField DataField="Phone" HeaderText="Telefono" />
+                            <asp:BoundField DataField="Address_Line" HeaderText="Dirección" />
+                            <asp:BoundField DataField="Town" HeaderText="Pueblo" />
+                            <asp:ButtonField CommandName="Maps" DataTextField="ZipCode" HeaderText="ZipCode" />
+                            <asp:ButtonField CommandName="Close" DataTextField="WasFullfilled" HeaderText="Completado" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
 
-                <asp:GridView ID="gvToDealder" CssClass="mygrid" DataKeyNames="CustomerNeed_ID, Address_Line, Town, ZipCode" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand" OnRowDataBound="gvRecords_RowDataBound">
-                    <Columns>
+                <div class="table-responsive">
+                    <asp:GridView ID="gvToDealder" CssClass="mygrid" DataKeyNames="CustomerNeed_ID, Address_Line, Town, ZipCode" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="False" OnRowCommand="gvRecords_RowCommand" OnRowDataBound="gvRecords_RowDataBound">
+                        <Columns>
 
-                        <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
-                        <asp:BoundField DataField="FullName" HeaderText="Nombre" />
-                        <asp:BoundField DataField="Phone" HeaderText="Telefono" />
-                        <asp:BoundField DataField="Address_Line" HeaderText="Dirección" />
-                        <asp:BoundField DataField="Town" HeaderText="Pueblo" />
-                        <asp:ButtonField CommandName="Maps" DataTextField="ZipCode" HeaderText="ZipCode" />
-                        <asp:ButtonField CommandName="Close" DataTextField="WasFullfilled" HeaderText="Completado" />
-                    </Columns>
-                </asp:GridView>
+                            <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
+                            <asp:BoundField DataField="FullName" HeaderText="Nombre" />
+                            <asp:BoundField DataField="Phone" HeaderText="Telefono" />
+                            <asp:BoundField DataField="Address_Line" HeaderText="Dirección" />
+                            <asp:BoundField DataField="Town" HeaderText="Pueblo" />
+                            <asp:ButtonField CommandName="Maps" DataTextField="ZipCode" HeaderText="ZipCode" />
+                            <asp:ButtonField CommandName="Close" DataTextField="WasFullfilled" HeaderText="Completado" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
 
         </fieldset>
 
