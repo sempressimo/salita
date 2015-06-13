@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <asp:GridView ID="gvRecords" CssClass="mygrid" runat="server" EmptyDataText="No pedidos de transportación para la fecha." AutoGenerateColumns="True" OnRowCommand="gvRecords_RowCommand">
                     <Columns>
                     </Columns>
