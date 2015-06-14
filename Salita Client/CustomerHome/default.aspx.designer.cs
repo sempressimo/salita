@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Salita_Client
+namespace Salita_Client.CustomerHome
 {
 
 
-    public partial class customer_default
+    public partial class _default
     {
     }
 }
