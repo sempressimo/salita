@@ -15,7 +15,7 @@ namespace Salita_Client
             this.txtUsername.Focus();
         }
 
-        protected void cmdLogin_Click(object sender, EventArgs e)
+        protected void lbLogin_Click(object sender, EventArgs e)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Salita_Client
                 {
                     Session["Username"] = U.Username;
                     Session["Role"] = U.Role;
- 
+
                     FormsAuthentication.RedirectFromLoginPage(this.txtUsername.Text, false);
                 }
                 else
@@ -52,7 +52,7 @@ namespace Salita_Client
                     }
                 }
             }
-            catch(Exception E)
+            catch (Exception E)
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;

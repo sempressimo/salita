@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <p>&nbsp;</p>
-                                <asp:LinkButton ID="lbLogin" runat="server" OnClick="cmdLogin_Click" CssClass="mybutton bold whitetext blue rounded">
+                                <asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" CssClass="mybutton bold whitetext blue rounded">
                                     <asp:Image ID="Image1" runat="server" ImageUrl="~/images/login.png" />
                                     <asp:Label runat="server" Text="Login"></asp:Label>
                                 </asp:LinkButton> 
