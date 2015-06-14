@@ -2,19 +2,78 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>Autogermana-BMW Lounge Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/Scripts/jquery-2.1.4.min.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/Scripts/bootstrap.min.js") %>"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
+    <style type="text/css">
+        .bk {
+            background: url(../images/bg.jpg);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-color: #333;
+            min-height: 100%;
+            -webkit-font-smoothing: antialiased;
+            font-family: helvetica;
+        }
+    </style>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+<body class="bk">
+ 
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="default.aspx"><span class="glyphicon glyphicon-heart-empty">&nbsp;100x35</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="default.aspx">Hogar</a></li>
+            <li><a href="request_appointment.aspx">Transportacion</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Refrigerios <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="reasons_list.aspx">Mis Dietas</a></li>
+                <li><a href="sub_reasons_list.aspx">Mis Assessments</a></li>
+                <li><a href="login_list.aspx">Mi Expediente</a></li>
+                <li class="divider"></li>
+                <li><a href="change_password.aspx">Cambiar mi Contraseña</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signout.aspx"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Sign Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+        </div>
     </div>
-    </form>
+    <asp:ContentPlaceHolder ID="ScriptSection" runat="server" />
 </body>
 </html>
