@@ -28,13 +28,18 @@ namespace Salita_Client
                     Session["Username"] = U.Username;
                     Session["Role"] = U.Role;
 
-                    FormsAuthentication.RedirectFromLoginPage(this.txtUsername.Text, false);
+                    FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+
+                    Response.Redirect("default.aspx");
                 }
                 else
                 {
                     SalitaEntities db2 = new SalitaEntities();
 
-                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate == DateTime.Today && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
+                    DateTime From = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
+                    DateTime To = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
+
+                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate >= From && p.VisitDate <= To && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
 
                     if (C != null)
                     {
@@ -43,7 +48,7 @@ namespace Salita_Client
 
                         FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
 
-                        Response.Redirect("customer_default.aspx");
+                        Response.Redirect(@"\CustomerHome\default.aspx");
                     }
                     else
                     {
