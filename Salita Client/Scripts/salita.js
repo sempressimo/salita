@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 1.0";
+var SalitaVersion = "Beta 1.1";
 
 //
 // Images
@@ -179,7 +179,7 @@ function init() {
     CustomerLoadQueryState = "Loading";
 
     // Load Images
-    bg01.src = "images/bg01.png";
+    bg01.src = "images/background.jpg";
 
     //floor1.src = 'images/floor0.png';
 
