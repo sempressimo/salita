@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -130,25 +131,20 @@ namespace Salita_Client
         {
             try
             {
-                /*
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    int FullFilled_Index = 6;
+                    int PhoneIndex = 2;
 
-                    var c = e.Row.Cells[FullFilled_Index];
+                    var c = e.Row.Cells[PhoneIndex];
 
-                    if (e.Row.Cells[FullFilled_Index].Text == "True")
+                    if (c.Text.Length == 10)
                     {
-                        //CssStyleCollection c = new CssStyleCollection();
+                        //c.Text = String.Format("{0:(###) ###-####}", c.Text);
 
-                        e.Row.Cells[FullFilled_Index].ForeColor = System.Drawing.Color.Green;
-                    }
-                    else
-                    {
-                        e.Row.Cells[FullFilled_Index].ForeColor = System.Drawing.Color.Red;
+                        c.Text = Regex.Replace(c.Text, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
+
                     }
                 }
-                */
             }
             catch (Exception E)
             {
