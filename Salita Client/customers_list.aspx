@@ -31,18 +31,18 @@
                     </div>
                 </div>
         
-            <div class="table-responsive">
-                <asp:GridView ID="gvCustomers" CssClass="mygrid" DataKeyNames="Customer_ID" runat="server" EmptyDataText="No hay clientes bajo esos criterios." AutoGenerateColumns="False" OnRowCommand="gvCustomers_RowCommand" OnRowDeleting="gvCustomers_RowDeleting">
-                    <Columns>
-                        <asp:ButtonField Text="Llego" CommandName="Arrived" ButtonType="Image" ImageUrl="~/images/check.png" HeaderStyle-Width="10px" />
-                        <asp:ButtonField Text="Edit" CommandName="Edit" ButtonType="Image" ImageUrl="~/images/pencil.png"  HeaderStyle-Width="10px" />
-                        <asp:ButtonField CommandName="Delete" ButtonType="Image" ImageUrl="~/images/delete2.png" HeaderStyle-Width="10px" />
-                        <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
-                        <asp:BoundField DataField="FullName" HeaderText="Nombre" />
-                        <asp:BoundField DataField="Phone" HeaderText="Telefono" />
-                        <asp:ButtonField DataTextField="Town" HeaderText="Pueblo" Text="Button" />
-                    </Columns>
-                </asp:GridView>
-            </div>
+                <div class="table-responsive">
+                    <asp:GridView ID="gvCustomers" CssClass="mygrid" DataKeyNames="Customer_ID" runat="server" EmptyDataText="No hay clientes bajo esos criterios." AutoGenerateColumns="False" OnRowCommand="gvCustomers_RowCommand" OnRowDeleting="gvCustomers_RowDeleting">
+                        <Columns>
+                            <asp:ButtonField Text="Llego" CommandName="Arrived" ButtonType="Image" ImageUrl="~/images/check.png" HeaderStyle-Width="10px" />
+                            <asp:ButtonField Text="Edit" CommandName="Edit" ButtonType="Image" ImageUrl="~/images/pencil.png"  HeaderStyle-Width="10px" />
+                            <asp:ButtonField CommandName="Delete" ButtonType="Image" ImageUrl="~/images/delete2.png" HeaderStyle-Width="10px" />
+                            <asp:TemplateField ControlStyle-Width="10%"></asp:TemplateField>
+                            <asp:BoundField DataField="FullName" HeaderText="Nombre" />
+                            <asp:BoundField DataField="Phone" HeaderText="Telefono" />
+                            <asp:ButtonField DataTextField="Town" HeaderText="Pueblo" Text="Button" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
         </fieldset>
 </asp:Content>
