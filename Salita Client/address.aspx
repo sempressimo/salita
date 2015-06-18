@@ -33,9 +33,8 @@
              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSendTo" ErrorMessage="La dirección es requerida." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
          </div>
          <div class="form-group">
-            <label>Zip Code</label>
+            <label>Zip Code (Opcional)</label>
             <asp:TextBox ID="txtZipCode" runat="server" AutoPostBack="True" OnTextChanged="txtZipCode_TextChanged" placeholder="Zip Code" CssClass="form-control"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtZipCode" ErrorMessage="El zipcode es requerido." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
         </div>
         <div class="form-group">
             <label>Pueblo</label>
