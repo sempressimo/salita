@@ -30,7 +30,14 @@ namespace Salita_Client
 
                     FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
 
-                    Response.Redirect("default.aspx");
+                    if (Session["Role"].ToString() == "D")
+                    {
+                        Response.Redirect("transport_page.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("default.aspx");
+                    }
                 }
                 else
                 {
