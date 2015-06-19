@@ -59,19 +59,19 @@
                                       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <span class="caret"></span>
                                   </a>
                                   <ul class="dropdown-menu" role="menu">
-                                        <li><asp:LinkButton ID="lbSalita" runat="server" OnClick="lbSalita_Click"><i aria-hidden="true" class="glyphicon glyphicon-th-large"></i>&nbsp;&nbsp;Sala Virtual</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbSalita" CausesValidation="false" runat="server" OnClick="lbSalita_Click"><i aria-hidden="true" class="glyphicon glyphicon-th-large"></i>&nbsp;&nbsp;Sala Virtual</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbCustomers" runat="server" OnClick="lbCustomers_Click"><i aria-hidden="true" class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Listado Clientes</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbCustomers" CausesValidation="false" runat="server" OnClick="lbCustomers_Click"><i aria-hidden="true" class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Listado Clientes</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbTransport" runat="server" OnClick="lbTransport_Click"><i aria-hidden="true" class="glyphicon glyphicon-road"></i>&nbsp;&nbsp;Transportación (Hoy)</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbTransport" CausesValidation="false" runat="server" OnClick="lbTransport_Click"><i aria-hidden="true" class="glyphicon glyphicon-road"></i>&nbsp;&nbsp;Transportación (Hoy)</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbReportTransportation" runat="server" OnClick="lbReportTransportation_Click"><i aria-hidden="true" class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Reporte: Transportación</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbReportTransportation" CausesValidation="false" runat="server" OnClick="lbReportTransportation_Click"><i aria-hidden="true" class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Reporte: Transportación</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbReportServices" runat="server" OnClick="lbReportServices_Click"><i aria-hidden="true" class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Reporte: Servicios</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbReportServices" CausesValidation="false" runat="server" OnClick="lbReportServices_Click"><i aria-hidden="true" class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Reporte: Servicios</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbUsers" runat="server" OnClick="lbUsers_Click"><i aria-hidden="true" class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Cuentas de Usuario</asp:LinkButton></li>
+                                        <li><asp:LinkButton ID="lbUsers" CausesValidation="false" runat="server" OnClick="lbUsers_Click"><i aria-hidden="true" class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Cuentas de Usuario</asp:LinkButton></li>
                                         <li class="divider"></li>
-                                        <li><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click"><i aria-hidden="true" class="glyphicon glyphicon-share"></i>&nbsp;&nbsp;Log Out</asp:LinkButton></li> 
+                                        <li><asp:LinkButton ID="lbLogout" CausesValidation="false" runat="server" OnClick="lbLogout_Click"><i aria-hidden="true" class="glyphicon glyphicon-share"></i>&nbsp;&nbsp;Log Out</asp:LinkButton></li> 
                                   </ul>
                                 </li>
                             </ul>
