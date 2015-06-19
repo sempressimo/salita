@@ -25,7 +25,7 @@
              </asp:RadioButtonList>
          </div>
          <div class="form-group">
-             <asp:CheckBox ID="cbUseRegisteredAddress" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
+             <asp:CheckBox ID="cbUseRegisteredAddress" CssClass="form-control" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
          </div>
          <div class="form-group">
              <label>Dirección</label>
