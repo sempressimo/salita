@@ -45,5 +45,10 @@ namespace Salita_Client
         {
             Response.Redirect("login_list.aspx");
         }
+
+        protected void lbTransport_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("transport_page.aspx");
+        }
     }
 }

@@ -49,6 +49,15 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.LinkButton lbCustomers;
         
         /// <summary>
+        /// lbTransport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbTransport;
+        
+        /// <summary>
         /// lbReportTransportation control.
         /// </summary>
         /// <remarks>
