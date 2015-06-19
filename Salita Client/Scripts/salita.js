@@ -1,13 +1,15 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 1.1";
+var SalitaVersion = "Beta 1.6";
 
 //
 // Images
 //
 var floor1 = new Image();
 var customer_neutral = new Image();
+var customer_medium = new Image();
+var customer_bad = new Image();
 var customer_selected = new Image();
 var chair_down = new Image();
 var chair_up = new Image();
@@ -72,6 +74,7 @@ var customer_ID = new Number();
 
 var SelectedCustomerName = "Ninguno";
 var SelectedCustomerTime = "N/A";
+var SelectedCustomerTime_Value = 0;
 var SelectedCustomerWaitingFor = "N/A";
 var SelectedTileValue = new Number();
 
@@ -188,6 +191,8 @@ function init() {
     sndClick.src = "sounds/click.wav";
 
     customer_neutral.src = "images/customer_neutral.png";
+    customer_medium.src = "images/face_idle.png";
+    customer_bad.src = "images/face_bad.png";
     customer_selected.src = "images/face_sel.png";
     chair_down.src = "images/chair_down.png";
     chair_up.src = "images/chair_up.png";
@@ -314,11 +319,28 @@ function drawCustomers(tile_size, ctx) {
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
-        if (customerSelected == true && customer_ID == value.Customer_ID) {
+        if (customerSelected == true && customer_ID == value.Customer_ID)
+        {
             ctx.drawImage(customer_selected, x_pos, y_pos + map_top_margin, tile_size, tile_size);
         }
-        else {
-            ctx.drawImage(customer_neutral, x_pos, y_pos + map_top_margin, tile_size, tile_size);
+        else
+        {
+            UpdateMinsWaiting(value.VisitDate);
+
+            if (diffMins < 15)
+            {
+                ctx.drawImage(customer_neutral, x_pos, y_pos + map_top_margin, tile_size, tile_size);
+            }
+            else if (diffMins >= 15 && diffMins <= 30)
+            {
+                ctx.drawImage(customer_medium, x_pos, y_pos + map_top_margin, tile_size, tile_size);
+            }
+            else
+            {
+                ctx.drawImage(customer_bad, x_pos, y_pos + map_top_margin, tile_size, tile_size);
+            }
+
+            
         }
 
         if (CheckIfCustomerHasNeeds(value.Customer_ID)) {
@@ -380,6 +402,17 @@ function CheckIfCustomerHasNeeds(Customer_ID) {
     return HasNeeds;
 }
 
+function UpdateMinsWaiting(VisitDate)
+{
+    var startDate = new Date(VisitDate);
+    var endDate = new Date();
+
+    var diff = endDate - startDate;
+
+    diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
+}
+
+var diffMins = 0;
 function drawCustomersInfo(tile_size, ctx)
 {
     $.each(CustomersArray, function (key, value)
@@ -387,13 +420,7 @@ function drawCustomersInfo(tile_size, ctx)
         var x_pos = value.Seat_X * tile_size;
         var y_pos = value.Seat_Y * tile_size;
 
-        var startDate = new Date(value.VisitDate);
-        var endDate = new Date();
-
-        var diff = endDate - startDate;
-        //var diff_as_date = new Date(diff);
-
-        var diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
+        UpdateMinsWaiting(value.VisitDate);
 
         var text_x = x_pos + 8;
         var text_y = y_pos + map_top_margin;
@@ -402,22 +429,12 @@ function drawCustomersInfo(tile_size, ctx)
             text_y += tile_size + 12;
         }
 
-        var TimeWaiting = diff;
-
-        if (diffMins < 30) {
-            ctx.fillStyle = "White";
-        }
-        else if (diffMins >= 30 && diffMins <= 45)
-        {
-            ctx.fillStyle = "Orange";
-        }
-        else {
-            ctx.fillStyle = "Red";
-        }
-
+        ctx.fillStyle = "White";
+        
         ctx.fillText(diffMins + " min.", text_x, text_y);
 
         if (value.Customer_ID == customer_ID) {
+            SelectedCustomerTime_Value = diffMins;
             SelectedCustomerTime = diffMins + " min.";
         }
     });
@@ -513,7 +530,16 @@ function draw() {
         }
 
         // Draw Update Panel
-        ctx.drawImage(customer_neutral, 10, 10, 64, 64);
+        if (SelectedCustomerTime_Value < 15) {
+            ctx.drawImage(customer_neutral, 10, 10, 64, 64);
+        }
+        else if (SelectedCustomerTime_Value >= 15 && SelectedCustomerTime_Value <= 30) {
+            ctx.drawImage(customer_medium, 10, 10, 64, 64);
+        }
+        else {
+            ctx.drawImage(customer_bad, 10, 10, 64, 64);
+        }
+        
 
         drawScreenText(ctx);
 

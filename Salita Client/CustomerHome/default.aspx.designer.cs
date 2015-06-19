@@ -11,5 +11,14 @@ namespace Salita_Client.CustomerHome {
     
     
     public partial class _default {
+        
+        /// <summary>
+        /// lblRefresment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRefresment;
     }
 }

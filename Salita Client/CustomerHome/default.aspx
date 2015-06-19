@@ -15,8 +15,8 @@
             <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-4">
-                    <h3><span class="glyphicon glyphicon-glass"></span>&nbsp;Bebidas</h3>
-                    <p class="small">En esta sección podrá solicitar agua, refresco o cafe cortesia de Autogermana BMW.</p>
+                    <h3><span class="glyphicon glyphicon-glass"></span>&nbsp;<span id="lblRefresment" runat="server"><%=Resources.DefaultResource.CustomerMenuRefreshmentTitle %></span></h3>
+                    <p class="small"><%=Resources.DefaultResource.CustomerMenuRefreshmentDesc %></p>
                     <p><a class="btn btn-default" href="#" role="button">Pedir Bebida &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
