@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ¿Esta seguro que desea cancelar la transportación?.
+        /// </summary>
+        internal static string CancelTransportationText {
+            get {
+                return ResourceManager.GetString("CancelTransportationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to En esta sección podrá solicitar agua, refresco o cafe cortesia de Autogermana BMW..
         /// </summary>
         internal static string CustomerMenuRefreshmentDesc {

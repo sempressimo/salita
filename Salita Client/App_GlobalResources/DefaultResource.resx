@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CancelTransportationText" xml:space="preserve">
+    <value>¿Esta seguro que desea cancelar la transportación?</value>
+  </data>
   <data name="CustomerMenuRefreshmentDesc" xml:space="preserve">
     <value>En esta sección podrá solicitar agua, refresco o cafe cortesia de Autogermana BMW.</value>
   </data>
