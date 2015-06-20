@@ -9,8 +9,11 @@
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-        <br/>
-        
+        <div class="well well-sm">
+            <a id="li_llevar" runat="server" href="transport_page.aspx?m=llevar" style="margin-right: 12px;">Llevar <span class="badge">
+                <asp:Label ID="lblTake" runat="server" Text="0"></asp:Label></span></a>&nbsp;<a id="li_recojer" runat="server" href="transport_page.aspx?m=recojer">Recojer <span class="badge"><asp:Label ID="lblPickUp" runat="server" Text="0"></asp:Label></span></a>
+        </div>
+
         <asp:ListView ID="lvTake" runat="server">
             <ItemTemplate>
                 <div class="panel">
@@ -20,13 +23,10 @@
                         <%#Eval("Town") %> PR, <%#Eval("ZipCode") %><br/>
                         <br/>
                         <asp:LinkButton ID="lbComplete" OnClick="lbComplete_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-primary pull-left" runat="server">Entregado</asp:LinkButton>&nbsp;
-                        <asp:LinkButton ID="lbCancel" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger" runat="server">Cancelar</asp:LinkButton>
+                        <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger" runat="server">Cancelar</asp:LinkButton>
                     </div>
                 </div>
             </ItemTemplate>
-            <ItemSeparatorTemplate>
-                <hr/>
-            </ItemSeparatorTemplate>
             <EmptyDataTemplate>
                 <div class="panel">
                     <div class="panel-body">
@@ -37,4 +37,5 @@
         </asp:ListView>
 
     </div>
+
 </asp:Content>
