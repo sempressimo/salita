@@ -19,18 +19,17 @@
      <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
          <div class="form-group">
-             <asp:RadioButtonList ID="rblWhereTo" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
+             <asp:RadioButtonList ID="rblWhereTo" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="rblWhereTo_SelectedIndexChanged">
                  <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
                  <asp:ListItem>Hacia el dealer</asp:ListItem>
              </asp:RadioButtonList>
          </div>
          <div class="form-group">
-             <asp:CheckBox ID="cbUseRegisteredAddress" CssClass="form-control" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
+             <asp:CheckBox ID="cbUseRegisteredAddress" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
          </div>
          <div class="form-group">
              <label>Dirección</label>
-             <asp:TextBox ID="txtSendTo" runat="server" placeholder="Direccion a transportar" CssClass="form-control"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSendTo" ErrorMessage="La dirección es requerida." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
+             <asp:TextBox ID="txtSendTo" runat="server" placeholder="Direccion a transportar" CssClass="form-control"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSendTo" ErrorMessage="La dirección es requerida." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
          </div>
          <div class="form-group">
             <label>Zip Code (Opcional)</label>
@@ -41,6 +40,9 @@
             <asp:TextBox ID="txtTown" runat="server" placeholder="Pueblo" CssClass="form-control"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTown" ErrorMessage="El pueblo es requerido." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
         </div>
+        <div id="div_RoundTrip" runat="server" class="form-group">
+                <asp:CheckBox ID="cbRoundTrip" runat="server" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Necesita que lo busquen también" />
+         </div>
          <div class="buttonpanel">
              <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Someter</span></asp:LinkButton>
              <asp:LinkButton ID="cmdCancel" runat="server" CausesValidation="false" CssClass="btn mybutton black rounded shadow whitetext" OnClick="cmdCancel_Click" ><asp:Image runat="server" ImageUrl="~/images/return.png" /><span>Volver</span></asp:LinkButton>

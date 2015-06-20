@@ -70,6 +70,13 @@ namespace Salita_Client
                     db.CustomerNeeds.Add(S);
                     db.SaveChanges();
 
+                    if (this.cbRoundTrip.Checked)
+                    {
+                        S.FromDealer = !S.FromDealer;
+                        db.CustomerNeeds.Add(S);
+                        db.SaveChanges();
+                    }
+
                     Response.Redirect("report_transportation.aspx");
                 }
                 else
@@ -116,6 +123,18 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void rblWhereTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.rblWhereTo.SelectedIndex == 0)
+            {
+                this.div_RoundTrip.Visible = true;
+            }
+            else
+            {
+                this.div_RoundTrip.Visible = false;
             }
         }
     }
