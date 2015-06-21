@@ -50,7 +50,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="default.aspx">Hogar</a></li>
-            <li><a href="request_appointment.aspx">Transportacion</a></li>
+            <li><a href="my_transports.aspx">Transportacion</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Refrigerios <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
