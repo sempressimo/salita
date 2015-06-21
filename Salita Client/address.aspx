@@ -3,8 +3,8 @@
 <style>
     .rbl input[type="radio"]
     {
-       margin-left: 16px;
-       margin-right: 1px;
+       margin-left: 0px;
+       margin-right: 16px;
     }
 </style>
 </asp:Content>
@@ -19,7 +19,7 @@
      <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
          <div class="form-group">
-             <asp:RadioButtonList ID="rblWhereTo" CssClass="rbl" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="rblWhereTo_SelectedIndexChanged">
+             <asp:RadioButtonList ID="rblWhereTo" CssClass="form-control" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="rblWhereTo_SelectedIndexChanged">
                  <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
                  <asp:ListItem>Hacia el dealer</asp:ListItem>
              </asp:RadioButtonList>
@@ -37,11 +37,16 @@
         </div>
         <div class="form-group">
             <label>Pueblo</label>
-            <asp:TextBox ID="txtTown" runat="server" placeholder="Pueblo" CssClass="form-control"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTown" ErrorMessage="El pueblo es requerido." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
+            <asp:TextBox ID="txtTown" runat="server" placeholder="Pueblo" CssClass="form-control"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTown" ErrorMessage="El pueblo es requerido." ForeColor="#FF9900">* Requerido</asp:RequiredFieldValidator>
         </div>
         <div id="div_RoundTrip" runat="server" class="form-group">
-                <asp:CheckBox ID="cbRoundTrip" runat="server" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Necesita que lo busquen también" />
+                <asp:CheckBox ID="cbRoundTrip" runat="server" OnCheckedChanged="cbRoundTrip_CheckedChanged" Text="Necesita que lo busquen también" AutoPostBack="True" />
+
+                <div id="divPickupTime" class="form-group" runat="server" visible="false">
+                    <label>Hora</label>
+                    <asp:DropDownList ID="cmbTime" CssClass="form-control" runat="server"></asp:DropDownList>
+                </div>
+
          </div>
          <div class="buttonpanel">
              <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Someter</span></asp:LinkButton>

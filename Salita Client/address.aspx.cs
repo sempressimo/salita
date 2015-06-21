@@ -15,7 +15,21 @@ namespace Salita_Client
             { 
                 ViewState["id"] = Request.QueryString["id"];
                 this.lblFullName.Text = Request.QueryString["name"];
+
+                this.LoadLists();
             }
+        }
+
+        protected void LoadLists()
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var L = db.HourSlots.Where(p => p.IsActive == true).OrderBy(p => p.HourSlotOrder);
+
+            this.cmbTime.DataSource = L.ToList();
+            this.cmbTime.DataTextField = "HourSlotTime";
+            this.cmbTime.DataValueField = "HourSlotTime";
+            this.cmbTime.DataBind();
         }
 
         protected void txtZipCode_TextChanged(object sender, EventArgs e)
@@ -72,6 +86,7 @@ namespace Salita_Client
 
                     if (this.cbRoundTrip.Checked)
                     {
+                        S.RequestDateTime = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " " + this.cmbTime.SelectedValue);
                         S.FromDealer = !S.FromDealer;
                         db.CustomerNeeds.Add(S);
                         db.SaveChanges();
@@ -136,6 +151,11 @@ namespace Salita_Client
             {
                 this.div_RoundTrip.Visible = false;
             }
+        }
+
+        protected void cbRoundTrip_CheckedChanged(object sender, EventArgs e)
+        {
+            divPickupTime.Visible = this.cbRoundTrip.Checked;
         }
     }
 }
