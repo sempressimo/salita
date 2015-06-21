@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 1.7";
+var SalitaVersion = "Beta 1.9";
 
 //
 // Images
@@ -75,6 +75,7 @@ var customer_ID = new Number();
 var SelectedCustomerName = "Ninguno";
 var SelectedCustomerTime = "N/A";
 var SelectedCustomerTime_Value = 0;
+var SelectedCustomerTime_Mood = "G";
 var SelectedCustomerWaitingFor = "N/A";
 var SelectedTileValue = new Number();
 
@@ -309,7 +310,8 @@ function drawMap(tile_size, ctx) {
     }
 }
 
-function drawCustomers(tile_size, ctx) {
+function drawCustomers(tile_size, ctx)
+{
     alert_blink += 1;
 
     CustomersCount = 0;
@@ -327,11 +329,11 @@ function drawCustomers(tile_size, ctx) {
         {
             UpdateMinsWaiting(value.VisitDate);
 
-            if (diffMins < 15)
+            if (value.Mood == "G")
             {
                 ctx.drawImage(customer_neutral, x_pos, y_pos + map_top_margin, tile_size, tile_size);
             }
-            else if (diffMins >= 15 && diffMins <= 30)
+            else if (value.Mood == "N")
             {
                 ctx.drawImage(customer_medium, x_pos, y_pos + map_top_margin, tile_size, tile_size);
             }
@@ -433,7 +435,9 @@ function drawCustomersInfo(tile_size, ctx)
         
         ctx.fillText(diffMins + " min.", text_x, text_y);
 
-        if (value.Customer_ID == customer_ID) {
+        if (value.Customer_ID == customer_ID)
+        {
+            SelectedCustomerTime_Mood = value.Mood;
             SelectedCustomerTime_Value = diffMins;
             SelectedCustomerTime = diffMins + " min.";
         }
@@ -530,17 +534,19 @@ function draw() {
         }
 
         // Draw Update Panel
-        if (SelectedCustomerTime_Value < 15) {
+        if (SelectedCustomerTime_Mood == "G")
+        {
             ctx.drawImage(customer_neutral, 10, 10, 64, 64);
         }
-        else if (SelectedCustomerTime_Value >= 15 && SelectedCustomerTime_Value <= 30) {
+        else if (SelectedCustomerTime_Mood == "N")
+        {
             ctx.drawImage(customer_medium, 10, 10, 64, 64);
         }
-        else {
+        else
+        {
             ctx.drawImage(customer_bad, 10, 10, 64, 64);
         }
         
-
         drawScreenText(ctx);
 
         if (CustomersArray != null) {
