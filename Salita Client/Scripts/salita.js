@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 1.6";
+var SalitaVersion = "Beta 1.7";
 
 //
 // Images
