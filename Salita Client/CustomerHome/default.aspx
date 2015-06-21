@@ -22,7 +22,7 @@
                 <div class="col-md-4">
                     <h3><span class="glyphicon glyphicon-road"></span>&nbsp;Transportación</h3>
                     <p class="small">¿Necesita transportación? En esta sección podra solicitar (o cancelar) transporación fuera y/o de regreso al dealer.</p>
-                    <p><a class="btn btn-default" href="#" role="button">Solictar Transporte &raquo;</a></p>
+                    <p><a class="btn btn-default" href="request_transport.aspx" role="button">Solictar Transporte &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h3><span class="glyphicon glyphicon-envelope"></span>&nbsp;Mensajes</h3>
