@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="516c82f86d334fafbdb73983afd0ab0f" Name="Diagram1">
         <EntityTypeShape EntityType="SalitaModel.CustomerNeed" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="SalitaModel.Customer" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SalitaModel.Customer" Width="1.5" PointX="0.75" PointY="1.125" />
         <EntityTypeShape EntityType="SalitaModel.CustomerService" Width="1.5" PointX="0.75" PointY="5.5" />
         <EntityTypeShape EntityType="SalitaModel.HourSlot" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="SalitaModel.Map" Width="1.5" PointX="5.75" PointY="3.75" />
