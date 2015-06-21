@@ -28,6 +28,7 @@ namespace Salita_Client
         public virtual DbSet<CustomerNeed> CustomerNeeds { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerService> CustomerServices { get; set; }
+        public virtual DbSet<HourSlot> HourSlots { get; set; }
         public virtual DbSet<Map> Maps { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }

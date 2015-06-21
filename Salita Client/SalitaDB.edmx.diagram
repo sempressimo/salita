@@ -8,14 +8,15 @@
         <EntityTypeShape EntityType="SalitaModel.CustomerNeed" Width="1.5" PointX="3" PointY="5" />
         <EntityTypeShape EntityType="SalitaModel.Customer" Width="1.5" PointX="0.75" PointY="1" />
         <EntityTypeShape EntityType="SalitaModel.CustomerService" Width="1.5" PointX="0.75" PointY="5.5" />
-        <EntityTypeShape EntityType="SalitaModel.Map" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SalitaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SalitaModel.User" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SalitaModel.HourSlot" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalitaModel.Map" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SalitaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SalitaModel.User" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="SalitaModel.Visit" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="SalitaModel.ListZip" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SalitaModel.WatingForReason" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SalitaModel.v_CustomerNeeds" Width="1.5" PointX="7.75" PointY="6.75" />
-        <EntityTypeShape EntityType="SalitaModel.v_RecentVisits" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalitaModel.ListZip" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SalitaModel.WatingForReason" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SalitaModel.v_CustomerNeeds" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalitaModel.v_RecentVisits" Width="1.5" PointX="0.75" PointY="9.75" />
         <AssociationConnector Association="SalitaModel.FK_CustomerNeeds_CustomerServices" />
         <AssociationConnector Association="SalitaModel.FK_Visits_Customers" />
       </Diagram>

@@ -42,6 +42,14 @@
           <Property Name="ServiceDescription" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="HourSlots">
+          <Key>
+            <PropertyRef Name="HourSlotTime" />
+          </Key>
+          <Property Name="HourSlotTime" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="HourSlotOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ListZip">
@@ -181,6 +189,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySet Name="CustomerNeeds" EntityType="Self.CustomerNeeds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerServices" EntityType="Self.CustomerServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HourSlots" EntityType="Self.HourSlots" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -259,6 +268,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySet Name="CustomerNeeds" EntityType="SalitaModel.CustomerNeed" />
           <EntitySet Name="Customers" EntityType="SalitaModel.Customer" />
           <EntitySet Name="CustomerServices" EntityType="SalitaModel.CustomerService" />
+          <EntitySet Name="HourSlots" EntityType="SalitaModel.HourSlot" />
           <EntitySet Name="Maps" EntityType="SalitaModel.Map" />
           <EntitySet Name="sysdiagrams" EntityType="SalitaModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="SalitaModel.User" />
@@ -315,6 +325,14 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="CustomerNeeds" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerService" ToRole="CustomerNeed" />
+        </EntityType>
+        <EntityType Name="HourSlot">
+          <Key>
+            <PropertyRef Name="HourSlotTime" />
+          </Key>
+          <Property Name="HourSlotTime" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="HourSlotOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Map">
           <Key>
@@ -487,6 +505,15 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
                 <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
                 <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
                 <ScalarProperty Name="CustomerService_ID" ColumnName="CustomerService_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HourSlots">
+            <EntityTypeMapping TypeName="SalitaModel.HourSlot">
+              <MappingFragment StoreEntitySet="HourSlots">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HourSlotOrder" ColumnName="HourSlotOrder" />
+                <ScalarProperty Name="HourSlotTime" ColumnName="HourSlotTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
