@@ -63,7 +63,7 @@ namespace Salita_Client
 
             IQueryable<v_CustomerNeeds> R = null;
 
-            R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+            R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.RequestDateTime);
             
             gv.DataSource = R.ToList();
             gv.DataBind();

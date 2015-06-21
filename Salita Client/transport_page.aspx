@@ -18,6 +18,7 @@
             <ItemTemplate>
                 <div class="panel">
                     <div class="panel-body">
+                        <h3 class="pull-right"><%#Convert.ToDateTime(Eval("RequestDateTime")).ToShortTimeString()%></h3>
                         <label><%#Eval("FullName") %> (<%#Regex.Replace(Eval("Phone").ToString(), @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3") %>)</label><br/>
                         <%#Eval("Address_Line") %><br/>
                         <%#Eval("Town") %> PR, <%#Eval("ZipCode") %><br/>
