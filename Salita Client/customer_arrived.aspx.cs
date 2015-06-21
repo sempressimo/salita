@@ -34,9 +34,15 @@ namespace Salita_Client
 
                         if (CustomerIsInLounge(Customer_ID))
                         {
-                            this.cmdSeatInRoom.Enabled = false;
+                            ViewState["mode"] = "Edit";
 
-                            throw new Exception("El cliente ya esta en <a href=\"default.aspx\">sala virtual.</a>");
+                            //this.cmdSeatInRoom.Enabled = false;
+
+                            throw new Exception("El cliente ya esta en <a href=\"default.aspx\">sala virtual.</a> Cambiar detalles en esta página resetea el tiempo.");
+                        }
+                        else
+                        {
+                            ViewState["mode"] = "Add";
                         }
                     }
                 }
@@ -52,16 +58,11 @@ namespace Salita_Client
         {
             var W = this.db.WatingForReasons.OrderBy(p => p.ReasonDescription);
 
-            this.rblWaitingFor.DataTextField = "ReasonDescription";
-            this.rblWaitingFor.DataValueField = "WatingForReason_ID";
+            this.cmbWaitingFor.DataTextField = "ReasonDescription";
+            this.cmbWaitingFor.DataValueField = "WatingForReason_ID";
 
-            this.rblWaitingFor.DataSource = W.ToList();
-            this.rblWaitingFor.DataBind();
-
-            if (this.rblWaitingFor.Items.Count > 0)
-            {
-                this.rblWaitingFor.Items[0].Selected = true;  
-            }
+            this.cmbWaitingFor.DataSource = W.ToList();
+            this.cmbWaitingFor.DataBind();
         }
 
         protected void LoadCustomers(int Customer_ID)
@@ -103,24 +104,42 @@ namespace Salita_Client
         {
             try
             {
-                Visit V = new Visit();
+                if (ViewState["mode"].ToString() == "Add")
+                {
+                    Visit V = new Visit();
 
-                V.Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
-                V.Seat_X = 0;
-                V.Seat_Y = 0;
-                V.InLounge = true;
-                V.VisitDate = DateTime.Now;
-                V.WaitingFor = rblWaitingFor.SelectedItem.Text;
-                V.LoginPIN = this.txtPIN.Value;
+                    V.Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
+                    V.Seat_X = 0;
+                    V.Seat_Y = 0;
+                    V.InLounge = true;
+                    V.VisitDate = DateTime.Now;
+                    V.WaitingFor = this.cmbWaitingFor.SelectedItem.Text;
+                    V.LoginPIN = this.txtPIN.Value;
+                    V.Mood = this.cmbMood.SelectedValue.ToString();
+                    this.db.Visits.Add(V);
+                    this.db.SaveChanges();
 
-                this.db.Visits.Add(V);
-                this.db.SaveChanges();
+                    this.cmdSeatInRoom.Enabled = false;
 
-                this.cmdSeatInRoom.Enabled = false;
+                    UpdateHub.SendServer("");
 
-                UpdateHub.SendServer("");
+                    throw new Exception("El cliente fue sentado en la <a href=\"default.aspx\">sala virtual.</a>");
+                }
+                else if (ViewState["mode"].ToString() == "Edit")
+                { 
+                    int cid = Convert.ToInt32(ViewState["Customer_ID"]);
 
-                throw new Exception("El cliente fue sentado en la <a href=\"default.aspx\">sala virtual.</a>");
+                    var V = this.db.Visits.Single(p => p.Customer_ID == cid && p.InLounge == true);
+
+                    V.VisitDate = DateTime.Now;
+                    V.WaitingFor = this.cmbWaitingFor.SelectedItem.Text;
+                    V.LoginPIN = this.txtPIN.Value;
+                    V.Mood = this.cmbMood.SelectedValue.ToString();
+
+                    this.db.SaveChanges();
+
+                    throw new Exception("El cliente fue reseteado a esperar por otro servicio o a otro PIN.</a> <a href=\"default.aspx\">Ir a sala virtual.</a>");
+                }
             }
             catch (Exception E)
             {

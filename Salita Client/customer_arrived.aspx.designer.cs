@@ -40,13 +40,22 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
-        /// rblWaitingFor control.
+        /// cmbWaitingFor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblWaitingFor;
+        protected global::System.Web.UI.WebControls.DropDownList cmbWaitingFor;
+        
+        /// <summary>
+        /// cmbMood control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbMood;
         
         /// <summary>
         /// txtPIN control.
