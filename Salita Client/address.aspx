@@ -43,8 +43,10 @@
                 <asp:CheckBox ID="cbRoundTrip" runat="server" OnCheckedChanged="cbRoundTrip_CheckedChanged" Text="Necesita que lo busquen también" AutoPostBack="True" />
 
                 <div id="divPickupTime" class="form-group" runat="server" visible="false">
-                    <label>Hora</label>
-                    <asp:DropDownList ID="cmbTime" CssClass="form-control" runat="server"></asp:DropDownList>
+                    <div class="form-group">
+                        <label>Hora</label>
+                        <asp:DropDownList ID="cmbTime" CssClass="form-control" runat="server"></asp:DropDownList>
+                    </div>
                 </div>
 
          </div>
