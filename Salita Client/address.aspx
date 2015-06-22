@@ -4,7 +4,8 @@
     .rbl input[type="radio"]
     {
        margin-left: 0px;
-       margin-right: 16px;
+       margin-right: 8px;
+       padding-right: 8px;
     }
 </style>
 </asp:Content>
@@ -16,14 +17,15 @@
 
      <fieldset class="formcontainer whiteclear whiteborder shadow">
 
-     <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
+     <legend class="blackclear whitetext">TranTransportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
-         <div class="form-group">
-             <asp:RadioButtonList ID="rblWhereTo" CssClass="form-control" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="rblWhereTo_SelectedIndexChanged">
-                 <asp:ListItem Selected="True">Hacia dirección</asp:ListItem>
-                 <asp:ListItem>Hacia el dealer</asp:ListItem>
-             </asp:RadioButtonList>
-         </div>
+        <div class="form-group">
+            <label>Llevar o recojer</label>
+            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbWhereTo" AutoPostBack="true" OnSelectedIndexChanged="cmbWhereTo_SelectedIndexChanged" >
+                <asp:ListItem Value="0">Llevar a destino</asp:ListItem>
+                <asp:ListItem Value="1">Recojer y traer al taller</asp:ListItem>
+            </asp:DropDownList>
+        </div>
          <div class="form-group">
              <asp:CheckBox ID="cbUseRegisteredAddress" runat="server" AutoPostBack="True" OnCheckedChanged="cbUseRegisteredAddress_CheckedChanged" Text="Usar dirección del hogar" />
          </div>

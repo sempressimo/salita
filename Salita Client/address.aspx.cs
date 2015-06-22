@@ -79,13 +79,15 @@ namespace Salita_Client
                     S.Address_Line = this.txtSendTo.Text;
                     S.Town = this.txtTown.Text;
                     S.ZipCode = this.txtZipCode.Text;
-                    S.FromDealer = (this.rblWhereTo.SelectedIndex == 0) ? true : false;
+                    S.FromDealer = (this.cmbWhereTo.SelectedIndex == 0) ? true : false;
 
                     db.CustomerNeeds.Add(S);
                     db.SaveChanges();
 
                     if (this.cbRoundTrip.Checked)
                     {
+                        S.WasFullfilled = false;
+                        S.RequestedService_ID = 4; // 4 == transportacion al dealer
                         S.RequestDateTime = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " " + this.cmbTime.SelectedValue);
                         S.FromDealer = !S.FromDealer;
                         db.CustomerNeeds.Add(S);
@@ -141,9 +143,14 @@ namespace Salita_Client
             }
         }
 
-        protected void rblWhereTo_SelectedIndexChanged(object sender, EventArgs e)
+        protected void cbRoundTrip_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rblWhereTo.SelectedIndex == 0)
+            divPickupTime.Visible = this.cbRoundTrip.Checked;
+        }
+
+        protected void cmbWhereTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbWhereTo.SelectedIndex == 0)
             {
                 this.div_RoundTrip.Visible = true;
             }
@@ -151,11 +158,6 @@ namespace Salita_Client
             {
                 this.div_RoundTrip.Visible = false;
             }
-        }
-
-        protected void cbRoundTrip_CheckedChanged(object sender, EventArgs e)
-        {
-            divPickupTime.Visible = this.cbRoundTrip.Checked;
         }
     }
 }
