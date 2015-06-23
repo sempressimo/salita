@@ -19,6 +19,7 @@
           <Property Name="Town" Type="varchar" MaxLength="25" />
           <Property Name="ZipCode" Type="varchar" MaxLength="9" />
           <Property Name="FromDealer" Type="bit" />
+          <Property Name="Canceled" Type="bit" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -139,6 +140,7 @@ warning 6002: The table/view 'Salita.dbo.v_CustomerNeeds' does not have a primar
           <Property Name="Customer_Town" Type="varchar" MaxLength="25" />
           <Property Name="Customer_ZipCode" Type="varchar" MaxLength="9" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="Canceled" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -161,6 +163,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="InLounge" Type="bit" />
           <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
           <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
+          <Property Name="Mood" Type="char" MaxLength="1" />
         </EntityType>
         <Association Name="FK_CustomerNeeds_CustomerServices">
           <End Role="CustomerServices" Type="Self.CustomerServices" Multiplicity="0..1" />
@@ -231,7 +234,8 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_CustomerNeeds].[Customer_Address] AS [Customer_Address], 
     [v_CustomerNeeds].[Customer_Town] AS [Customer_Town], 
     [v_CustomerNeeds].[Customer_ZipCode] AS [Customer_ZipCode], 
-    [v_CustomerNeeds].[IsActive] AS [IsActive]
+    [v_CustomerNeeds].[IsActive] AS [IsActive], 
+    [v_CustomerNeeds].[Canceled] AS [Canceled]
     FROM [dbo].[v_CustomerNeeds] AS [v_CustomerNeeds]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_RecentVisits" EntityType="Self.v_RecentVisits" store:Type="Views" store:Schema="dbo">
@@ -249,7 +253,8 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_RecentVisits].[Seat_Y] AS [Seat_Y], 
     [v_RecentVisits].[InLounge] AS [InLounge], 
     [v_RecentVisits].[WaitingFor] AS [WaitingFor], 
-    [v_RecentVisits].[LoginPIN] AS [LoginPIN]
+    [v_RecentVisits].[LoginPIN] AS [LoginPIN], 
+    [v_RecentVisits].[Mood] AS [Mood]
     FROM [dbo].[v_RecentVisits] AS [v_RecentVisits]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="Self.FK_CustomerNeeds_CustomerServices">
@@ -301,6 +306,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="FromDealer" Type="Boolean" />
+          <Property Name="Canceled" Type="Boolean" />
           <NavigationProperty Name="CustomerService" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerNeed" ToRole="CustomerService" />
         </EntityType>
         <EntityType Name="Customer">
@@ -419,6 +425,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="Customer_Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Customer_ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Canceled" Type="Boolean" />
         </EntityType>
         <EntityType Name="v_RecentVisits">
           <Key>
@@ -439,6 +446,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="InLounge" Type="Boolean" />
           <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <Association Name="FK_CustomerNeeds_CustomerServices">
           <End Type="SalitaModel.CustomerService" Role="CustomerService" Multiplicity="0..1" />
@@ -473,6 +481,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="CustomerNeeds">
             <EntityTypeMapping TypeName="SalitaModel.CustomerNeed">
               <MappingFragment StoreEntitySet="CustomerNeeds">
+                <ScalarProperty Name="Canceled" ColumnName="Canceled" />
                 <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="Town" ColumnName="Town" />
@@ -586,6 +595,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="v_CustomerNeeds">
             <EntityTypeMapping TypeName="SalitaModel.v_CustomerNeeds">
               <MappingFragment StoreEntitySet="v_CustomerNeeds">
+                <ScalarProperty Name="Canceled" ColumnName="Canceled" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Customer_ZipCode" ColumnName="Customer_ZipCode" />
                 <ScalarProperty Name="Customer_Town" ColumnName="Customer_Town" />
@@ -611,6 +621,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="v_RecentVisits">
             <EntityTypeMapping TypeName="SalitaModel.v_RecentVisits">
               <MappingFragment StoreEntitySet="v_RecentVisits">
+                <ScalarProperty Name="Mood" ColumnName="Mood" />
                 <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
                 <ScalarProperty Name="InLounge" ColumnName="InLounge" />

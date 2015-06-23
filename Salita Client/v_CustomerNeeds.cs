@@ -33,5 +33,6 @@ namespace Salita_Client
         public string Customer_Town { get; set; }
         public string Customer_ZipCode { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<bool> Canceled { get; set; }
     }
 }
