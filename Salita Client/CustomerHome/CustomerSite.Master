@@ -45,7 +45,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="default.aspx"><span class="glyphicon glyphicon-heart-empty">&nbsp;100x35</span></a>
+          <a class="navbar-brand" href="default.aspx" style="padding:5px"><img src="../images/logo.png" alt="AutoGermana" class="logo" style="height:40px;" /></a>
+          <a class="navbar-brand whitetext"><span>AutoGermana BMW</span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
