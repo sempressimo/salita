@@ -34,6 +34,21 @@ namespace Salita_Client
         {
             SalitaEntities db = new SalitaEntities();
 
+            //
+            // Cancel requests except for transportation
+            //
+            var Needs = db.CustomerNeeds.Where(p => p.Customer_ID == Customer_ID && p.WasFullfilled == false && p.Canceled == false && p.RequestedService_ID < 3 && p.RequestedService_ID > 4);
+
+            foreach (CustomerNeed N in Needs)
+            {
+                N.Canceled = true;
+
+                db.SaveChanges();
+            }
+
+            //
+            // Take customer out
+            //
             var V = db.Visits.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.InLounge == true);
 
             if (V != null)
@@ -73,6 +88,7 @@ namespace Salita_Client
                 S.RequestDateTime = DateTime.Now;
                 S.WasFullfilled = false;
                 S.RequestedService_ID = Service_ID;
+                S.Canceled = false;
 
                 db.CustomerNeeds.Add(S);
                 db.SaveChanges();
