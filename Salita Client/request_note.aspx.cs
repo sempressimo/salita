@@ -77,6 +77,7 @@ namespace Salita_Client
             Need.WasFullfilled = false;
             Need.Note = this.txtServiceNote.Text;
             Need.RequestedService_ID = Service_ID;
+            Need.Canceled = false;
 
             db.CustomerNeeds.Add(Need);
             db.SaveChanges();
