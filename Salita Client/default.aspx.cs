@@ -37,13 +37,17 @@ namespace Salita_Client
             //
             // Cancel requests except for transportation
             //
-            var Needs = db.CustomerNeeds.Where(p => p.Customer_ID == Customer_ID && p.WasFullfilled == false && p.Canceled == false && p.RequestedService_ID < 3 && p.RequestedService_ID > 4);
+            var Needs = db.CustomerNeeds.Where(p => p.Customer_ID == Customer_ID && p.WasFullfilled == false && p.Canceled == false && p.RequestedService_ID != 3 && p.RequestedService_ID != 4);
 
             foreach (CustomerNeed N in Needs)
             {
-                N.Canceled = true;
+                SalitaEntities db2 = new SalitaEntities();
 
-                db.SaveChanges();
+                var NeedToUpdate = db2.CustomerNeeds.Single(p => p.CustomerNeed_ID == N.CustomerNeed_ID);
+
+                NeedToUpdate.Canceled = true;
+
+                db2.SaveChanges();
             }
 
             //
