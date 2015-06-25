@@ -80,6 +80,7 @@ namespace Salita_Client
                     S.Town = this.txtTown.Text;
                     S.ZipCode = this.txtZipCode.Text;
                     S.FromDealer = (this.cmbWhereTo.SelectedIndex == 0) ? true : false;
+                    S.Canceled = false;
 
                     db.CustomerNeeds.Add(S);
                     db.SaveChanges();
