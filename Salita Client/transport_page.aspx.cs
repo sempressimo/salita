@@ -50,7 +50,7 @@ namespace Salita_Client
             DateTime from = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
             DateTime to = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
-            var R = db.v_CustomerNeeds.Where(p => p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+            var R = db.v_CustomerNeeds.Where(p => p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && (p.RequestedService_ID == 3 || p.RequestedService_ID == 4)).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
 
             this.lblTake.Text = R.Where(p => p.FromDealer == true).Count().ToString();
             this.lblPickUp.Text = R.Where(p => p.FromDealer == false).Count().ToString();
@@ -63,7 +63,7 @@ namespace Salita_Client
 
             IQueryable<v_CustomerNeeds> R = null;
 
-            R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.RequestDateTime);
+            R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && (p.RequestedService_ID == 3 || p.RequestedService_ID == 4)).OrderBy(p => p.RequestDateTime).OrderBy(p => p.RequestDateTime);
             
             gv.DataSource = R.ToList();
             gv.DataBind();
@@ -84,6 +84,14 @@ namespace Salita_Client
             string id = btn.CommandArgument;
 
             Response.Redirect("cancel_transportation.aspx?id=" + id);
+        }
+
+        protected void lbEdit_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            string id = btn.CommandArgument;
+
+            Response.Redirect("address.aspx?id=" + id);
         }
     }
 }

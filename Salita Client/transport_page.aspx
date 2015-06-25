@@ -24,7 +24,8 @@
                         <%#Eval("Town") %> PR, <%#Eval("ZipCode") %><br/>
                         <br/>
                         <asp:LinkButton ID="lbComplete" OnClick="lbComplete_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-primary pull-left" runat="server">Entregado</asp:LinkButton>&nbsp;
-                        <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger" runat="server">Cancelar</asp:LinkButton>
+                        <asp:LinkButton ID="lbEdit" OnClick="lbEdit_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-success pull-left" runat="server">Edit</asp:LinkButton>&nbsp;
+                        <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger" runat="server">Cancel</asp:LinkButton>
                     </div>
                 </div>
             </ItemTemplate>
