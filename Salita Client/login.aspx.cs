@@ -28,7 +28,23 @@ namespace Salita_Client
                     Session["Username"] = U.Username;
                     Session["Role"] = U.Role;
 
-                    FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                    HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Text, false);
+                    var ticket = FormsAuthentication.Decrypt(cookie.Value);
+
+                    // Store UserData inside the Forms Ticket with all the attributes
+                    // in sync with the web.config
+                    var newticket = new FormsAuthenticationTicket(ticket.Version,
+                                                                  ticket.Name,
+                                                                  ticket.IssueDate,
+                                                                  ticket.Expiration,
+                                                                  false, // always persistent
+                                                                  "admin",
+                                                                  ticket.CookiePath);
+
+                    // Encrypt the ticket and store it in the cookie
+                    cookie.Value = FormsAuthentication.Encrypt(newticket);
+                    cookie.Expires = newticket.Expiration.AddHours(24);
+                    this.Context.Response.Cookies.Set(cookie);
 
                     if (Session["Role"].ToString() == "D")
                     {
@@ -46,14 +62,32 @@ namespace Salita_Client
                     DateTime From = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
                     DateTime To = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
-                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate >= From && p.VisitDate <= To && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
+                    //var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate >= From && p.VisitDate <= To && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
+                    var C = db2.v_RecentVisits.SingleOrDefault(p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
 
                     if (C != null)
                     {
                         Session["Username"] = C.FullName;
                         Session["Role"] = "C";
+                        Session["Customer_ID"] = C.Customer_ID;
 
-                        FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                        HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Text, false);
+                        var ticket = FormsAuthentication.Decrypt(cookie.Value);
+
+                        // Store UserData inside the Forms Ticket with all the attributes
+                        // in sync with the web.config
+                        var newticket = new FormsAuthenticationTicket(ticket.Version,
+                                                                      ticket.Name,
+                                                                      ticket.IssueDate,
+                                                                      ticket.Expiration,
+                                                                      false, // persistent
+                                                                      "customer",
+                                                                      ticket.CookiePath);
+
+                        // Encrypt the ticket and store it in the cookie
+                        cookie.Value = FormsAuthentication.Encrypt(newticket);
+                        //cookie.Expires = newticket.Expiration.AddHours(24);
+                        this.Context.Response.Cookies.Set(cookie);
 
                         Response.Redirect(@"\CustomerHome\default.aspx");
                     }
