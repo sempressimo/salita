@@ -12,7 +12,7 @@ namespace Salita_Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.txtUsername.Focus();
+            //this.txtUsername.Focus();
         }
 
         protected void lbLogin_Click(object sender, EventArgs e)
@@ -21,14 +21,14 @@ namespace Salita_Client
             {
                 SalitaEntities db = new SalitaEntities();
 
-                var U = db.Users.SingleOrDefault(p => p.Username == this.txtUsername.Text && p.UserPassword == this.txtPassword.Text);
+                var U = db.Users.SingleOrDefault(p => p.Username == this.txtUsername.Value && p.UserPassword == this.txtPassword.Text);
 
                 if (U != null)
                 {
                     Session["Username"] = U.Username;
                     Session["Role"] = U.Role;
 
-                    HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Text, false);
+                    HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Value, false);
                     var ticket = FormsAuthentication.Decrypt(cookie.Value);
 
                     // Store UserData inside the Forms Ticket with all the attributes
@@ -63,7 +63,7 @@ namespace Salita_Client
                     DateTime To = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
                     //var C = db2.v_RecentVisits.SingleOrDefault(p => p.VisitDate >= From && p.VisitDate <= To && p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
-                    var C = db2.v_RecentVisits.SingleOrDefault(p.Phone == this.txtUsername.Text && this.txtPassword.Text.Trim() == p.LoginPIN);
+                    var C = db2.v_RecentVisits.SingleOrDefault(p => p.Phone == this.txtUsername.Value && this.txtPassword.Text.Trim() == p.LoginPIN);
 
                     if (C != null)
                     {
@@ -71,7 +71,7 @@ namespace Salita_Client
                         Session["Role"] = "C";
                         Session["Customer_ID"] = C.Customer_ID;
 
-                        HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Text, false);
+                        HttpCookie cookie = FormsAuthentication.GetAuthCookie(this.txtUsername.Value, false);
                         var ticket = FormsAuthentication.Decrypt(cookie.Value);
 
                         // Store UserData inside the Forms Ticket with all the attributes
