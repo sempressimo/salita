@@ -3,28 +3,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div id="jtron" class="container" style="background: none;">
+<div id="jtron" class="container" style="background: none;">
 
-        <h3>Cancelar Transportación</h3>
+    <h3>Cancelar Transportación</h3>
         
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-        <div class="panel">
-            <div class="panel-body">
-                <p>
-                    ¿Esta seguro que desea cancelar la transportación?
-                </p>
-                <label>
-                    <asp:Label ID="lblCustomerName" runat="server" Text="Label"></asp:Label> (<asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>)</label><br/>
-                    <asp:Label ID="lblAddress" runat="server" Text="Label"></asp:Label><br/>
-                    <asp:Label ID="lblTown" runat="server" Text="Label"></asp:Label>&nbsp;<asp:Label ID="lblCountry" runat="server" Text="PR"></asp:Label>, <asp:Label ID="lblZipCode" runat="server" Text="Label"></asp:Label><br/>
-                <br/>
-                <asp:LinkButton ID="lbComplete" OnClick="lbComplete_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger pull-left" runat="server">Cancelar</asp:LinkButton>&nbsp;
-                <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-default" runat="server">Regresar</asp:LinkButton>
-            </div>
+    <div class="panel">
+        <div class="panel-body">
+            <p>
+                ¿Esta seguro que desea cancelar la transportación?
+            </p>
+            <label>
+                <asp:Label ID="lblCustomerName" runat="server" Text="Label"></asp:Label> (<asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>)</label><br/>
+                <asp:Label ID="lblAddress" runat="server" Text="Label"></asp:Label><br/>
+                <asp:Label ID="lblTown" runat="server" Text="Label"></asp:Label>&nbsp;<asp:Label ID="lblCountry" runat="server" Text="PR"></asp:Label>, <asp:Label ID="lblZipCode" runat="server" Text="Label"></asp:Label><br/>
+            <br/>
+            <asp:LinkButton ID="lbComplete" OnClick="lbComplete_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-danger pull-left" runat="server">Cancelar</asp:LinkButton>&nbsp;
+            <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CommandArgument='<%#Eval("CustomerNeed_ID") %>' CssClass="btn btn-default" runat="server">Regresar</asp:LinkButton>
         </div>
+    </div>
 
-        </div>
+</div>
 
 </asp:Content>
