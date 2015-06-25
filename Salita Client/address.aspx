@@ -17,7 +17,7 @@
 
      <fieldset class="formcontainer whiteclear whiteborder shadow">
 
-     <legend class="blackclear whitetext">TranTransportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
+     <legend class="blackclear whitetext">Transportación para: <asp:Label ID="lblFullName" runat="server" style="text-transform:uppercase;"></asp:Label></legend>
 
         <div class="form-group">
             <label>Llevar o recojer</label>
