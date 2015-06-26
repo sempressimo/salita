@@ -75,10 +75,4 @@
                     </div>
                 </div>
         </fieldset>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#txtFrom').datepicker();
-        });
-    </script>
 </asp:Content>

@@ -47,11 +47,11 @@ namespace Salita_Client
 
             if (Todays)
             {
-                R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+                R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.WasFullfilled == false && p.RequestDateTime >= from && p.RequestDateTime <= to && (p.RequestedService_ID == 3 || p.RequestedService_ID == 4)).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
             }
             else
             {
-               R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.RequestDateTime >= from && p.RequestDateTime <= to && p.RequestedService_ID == 3).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
+                R = db.v_CustomerNeeds.Where(p => p.FromDealer == FromDealer && p.RequestDateTime >= from && p.RequestDateTime <= to && (p.RequestedService_ID == 3 || p.RequestedService_ID == 4)).OrderBy(p => p.RequestDateTime).OrderBy(p => p.WasFullfilled);
             }
  
             gv.DataSource = R.ToList();

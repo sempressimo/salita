@@ -28,7 +28,7 @@ namespace Salita_Client.CustomerHome
         {
             int cid = Convert.ToInt32(Session["Customer_ID"]);
 
-            DateTime from = Convert.ToDateTime(DateTime.Today.ToShortDateString() + "12:00AM");
+            DateTime from = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
 
             var R = db.CustomerNeeds.Where(p => p.Customer_ID == cid && p.WasFullfilled == false && p.RequestDateTime >= from);
 
@@ -40,14 +40,10 @@ namespace Salita_Client.CustomerHome
         {
             try
             {
-                int id = Convert.ToInt32(ViewState["id"]);
+                LinkButton btn = (LinkButton)(sender);
+                string id = btn.CommandArgument;
 
-                var R = db.CustomerNeeds.Single(p => p.CustomerNeed_ID == id);
-
-                this.db.CustomerNeeds.Remove(R);
-                this.db.SaveChanges();
-
-                Response.Redirect("transport_page.aspx");
+                Response.Redirect("user_transport_cancel.aspx?id=" + id);
             }
             catch (Exception E)
             {

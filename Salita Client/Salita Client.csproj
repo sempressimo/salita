@@ -123,13 +123,13 @@
   <ItemGroup>
     <Content Include="address.aspx" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="cancel_transportation.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-combobox.css" />
-    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\calendar.css" />
     <Content Include="css\footable.min.css" />
     <Content Include="css\form.css" />
@@ -143,7 +143,10 @@
     <Content Include="css\style.css" />
     <Content Include="css\top.css" />
     <Content Include="CustomerHome\default.aspx" />
+    <Content Include="CustomerHome\my_transports.aspx" />
+    <Content Include="CustomerHome\request_transport.aspx" />
     <Content Include="CustomerHome\signout.aspx" />
+    <Content Include="CustomerHome\user_transport_cancel.aspx" />
     <Content Include="customers_list.aspx" />
     <Content Include="customer_arrived.aspx" />
     <Content Include="customer_detail.aspx" />
@@ -302,6 +305,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DefaultResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="cancel_transportation.aspx.cs">
+      <DependentUpon>cancel_transportation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cancel_transportation.aspx.designer.cs">
+      <DependentUpon>cancel_transportation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
@@ -319,12 +329,33 @@
     <Compile Include="CustomerHome\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerHome\my_transports.aspx.cs">
+      <DependentUpon>my_transports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\my_transports.aspx.designer.cs">
+      <DependentUpon>my_transports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerHome\request_transport.aspx.cs">
+      <DependentUpon>request_transport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\request_transport.aspx.designer.cs">
+      <DependentUpon>request_transport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerHome\signout.aspx.cs">
       <DependentUpon>signout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomerHome\signout.aspx.designer.cs">
       <DependentUpon>signout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerHome\user_transport_cancel.aspx.cs">
+      <DependentUpon>user_transport_cancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\user_transport_cancel.aspx.designer.cs">
+      <DependentUpon>user_transport_cancel.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerNeed.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
@@ -362,6 +393,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HourSlot.cs">
+      <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ListZip.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>

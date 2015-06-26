@@ -12,12 +12,31 @@ namespace Salita_Client
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            { 
-                ViewState["id"] = Request.QueryString["id"];
-                this.lblFullName.Text = Request.QueryString["name"];
+            {
+                if (Request.QueryString["sid"] != null)
+                {
+                    ViewState["Service_ID"] = Request.QueryString["sid"];
 
+                    this.LoadNeed(Convert.ToInt32(ViewState["Service_ID"]));
+                }
+                else
+                {
+                    this.lblFullName.Text = Request.QueryString["name"];
+                    ViewState["id"] = Request.QueryString["id"];
+                }
+                
                 this.LoadLists();
             }
+        }
+
+        protected void LoadNeed(int id)
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var N = db.v_CustomerNeeds.Single(p => p.CustomerNeed_ID == id);
+
+            this.lblFullName.Text = N.FullName;
+
         }
 
         protected void LoadLists()
@@ -53,6 +72,13 @@ namespace Salita_Client
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
             }
+        }
+
+        protected void UpdateRequest(int id)
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var N = db.v_CustomerNeeds.Single(p => p.CustomerNeed_ID == id);
         }
 
         protected void cmdOK_Click(object sender, EventArgs e)
