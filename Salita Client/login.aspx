@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/form.css" />
 
         <script src="Scripts/jquery-2.1.3.min.js"></script>
