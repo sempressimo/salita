@@ -20,7 +20,7 @@
         }
     </style>
         
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/modal.css" rel="stylesheet" type="text/css" />
     <link href="css/mygrid.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
