@@ -340,9 +340,7 @@ function drawCustomers(tile_size, ctx)
             else
             {
                 ctx.drawImage(customer_bad, x_pos, y_pos + map_top_margin, tile_size, tile_size);
-            }
-
-            
+            }  
         }
 
         if (CheckIfCustomerHasNeeds(value.Customer_ID)) {
@@ -444,7 +442,8 @@ function drawCustomersInfo(tile_size, ctx)
     });
 }
 
-function drawScreenText(ctx) {
+function drawScreenText(ctx)
+{
 
     var TextIndent = 80;
 
@@ -454,14 +453,16 @@ function drawScreenText(ctx) {
 
     ctx.fillText(" Version: " + SalitaVersion, 0, 980);
 
-    if (CustomerLoadQueryState == "Loading") {
-        ctx.fillText("Loading...", TextIndent, 30);
+    if (CustomerLoadQueryState == "Loading")
+    {
+        ctx.fillText("Please wait...", TextIndent, 30);
     }
-    else {
-
+    else
+    {
         drawDebugText(ctx, TextIndent);
 
-        if (customerSelected) {
+        if (customerSelected)
+        {
             ctx.fillText("Tiempo: " + SelectedCustomerTime, TextIndent, 30);
             ctx.fillText("Cliente: " + SelectedCustomerName, TextIndent, 50);
             ctx.fillText("Esperando por: " + SelectedCustomerWaitingFor, TextIndent, 70);
