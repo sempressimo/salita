@@ -10,9 +10,6 @@
         <link rel="stylesheet" type="text/css" href="css/login.css" />
         <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/form.css" />
-
-        <script src="Scripts/jquery-2.1.3.min.js"></script>
-        <script src="Scripts/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -54,5 +51,7 @@
         </div>
 
     </form>
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 </body>
 </html>

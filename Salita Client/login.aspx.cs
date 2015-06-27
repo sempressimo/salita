@@ -102,6 +102,11 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+
+                if (E.InnerException != null)
+                {
+                    this.CustomValidator1.ErrorMessage += " Inner exception: " + E.InnerException.Message;
+                }
             }
         }
     }
