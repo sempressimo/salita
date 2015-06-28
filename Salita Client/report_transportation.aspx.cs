@@ -39,7 +39,7 @@ namespace Salita_Client
             DateTime from = Convert.ToDateTime(this.txtFrom.Value + " 12:00AM");
             DateTime to = Convert.ToDateTime(this.txtTo.Value + " 11:59PM");
 
-            bool Todays = (RadioButtonList1.SelectedIndex == 0) ? true : false;
+            bool Todays = (this.ddlReportType.SelectedIndex == 0) ? true : false;
 
             SalitaEntities db = new SalitaEntities();
 
@@ -80,22 +80,6 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
-            }
-        }
-
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.RadioButtonList1.SelectedIndex == 0)
-            {
-                this.txtFrom.Value = this.txtTo.Value = DateTime.Today.ToShortDateString();
-
-                this.txtFrom.Disabled = this.txtTo.Disabled = true;
-
-                LoadBothGrids();
-            }
-            else
-            {
-                this.txtFrom.Disabled = this.txtTo.Disabled = false;
             }
         }
 
@@ -150,6 +134,22 @@ namespace Salita_Client
             {
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void ddlReportType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.ddlReportType.SelectedIndex == 0)
+            {
+                this.txtFrom.Value = this.txtTo.Value = DateTime.Today.ToShortDateString();
+
+                this.txtFrom.Disabled = this.txtTo.Disabled = true;
+
+                LoadBothGrids();
+            }
+            else
+            {
+                this.txtFrom.Disabled = this.txtTo.Disabled = false;
             }
         }
     }
