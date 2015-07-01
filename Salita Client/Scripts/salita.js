@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 1.9";
+var SalitaVersion = "Beta 2.0";
 
 //
 // Images
@@ -46,6 +46,11 @@ var btn_cafe_y = 0;
 
 var btn_taxi_x = 0;
 var btn_taxi_y = 0;
+
+var btn_change_mood_x = 0;
+var btn_change_mood_x2 = 0;
+var btn_change_mood_x3 = 0;
+var btn_change_mood_y = 0;
 
 //
 // Sounds
@@ -150,13 +155,17 @@ var MapData =
         [0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 6]
     ];
 
-//var global_uri = "http://localhost:8395/api/visit";
-var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
+var global_uri = "http://localhost:8395/api/visit";
+//var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
+//var global_uri = "http://salitaagapi.azurewebsites.net/api/visit";
 
-//var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
-var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
+var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
+//var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
+//var global_uri_needs = "http://salitaagapi.azurewebsites.net/api/CustomerNeed";
 
 var chat;
+
+//var input = new CanvasInput({canvas: document.getElementById('salitacanvas')});
 
 //
 // Functions
@@ -179,6 +188,8 @@ function sendJSonRequest(uri, Array_to_update) {
 }
 
 function init() {
+
+    $("#my_textbox").hide(); //Jquery
 
     CustomerLoadQueryState = "Loading";
 
@@ -229,7 +240,8 @@ function init() {
 
     window.requestAnimationFrame(draw);
 
-    $(function () {
+    $(function ()
+    {
         // Declare a proxy to reference the hub. 
         chat = $.connection.updateHub;
 
@@ -247,7 +259,8 @@ function init() {
     });
 }
 
-function UpdateJsonArrays() {
+function UpdateJsonArrays()
+{
     sendJSonRequest(global_uri, "Visits");
     sendJSonRequest(global_uri_needs, "Needs");
 }
@@ -404,12 +417,15 @@ function CheckIfCustomerHasNeeds(Customer_ID) {
 
 function UpdateMinsWaiting(VisitDate)
 {
-    var startDate = new Date(VisitDate);
-    var endDate = new Date();
+    var startDate = moment(new Date(VisitDate));
+    var endDate = moment(new Date());
 
-    var diff = endDate - startDate;
+    //var diff = endDate - startDate;
 
-    diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
+    //diffMins = Math.round(((diff % 86400000) % 3600000) / 60000); // minutes
+
+    var duration = moment.duration(endDate.diff(startDate));
+    diffMins = Math.round(duration.asMinutes());
 }
 
 var diffMins = 0;
@@ -554,7 +570,8 @@ function draw() {
             drawCustomersInfo(tile_Size, ctx);
         }
 
-        if (RenderState == "PopUpServices") {
+        if (RenderState == "PopUpServices")
+        {
 
             pop_x = (canvas.width / 2) - (367 / 2);
 
@@ -609,6 +626,16 @@ function draw() {
                 btn_cafe_y = pop_y + 140;
                 ctx.drawImage(pop_up_cafe, btn_cafe_x, btn_cafe_y, 58, 58);
             }
+
+            // Draw Mood Selection Faces
+            btn_change_mood_x = btn_water_x;
+            btn_change_mood_x2 = btn_cafe_x;
+            btn_change_mood_x3 = btn_soda_x;
+            btn_change_mood_y = 260;
+
+            ctx.drawImage(customer_neutral, btn_change_mood_x, btn_change_mood_y, 48, 48);
+            ctx.drawImage(customer_medium, btn_change_mood_x2, btn_change_mood_y, 48, 48);
+            ctx.drawImage(customer_bad, btn_change_mood_x3, btn_change_mood_y, 48, 48);
         }
 
         ctx.stroke();
@@ -850,6 +877,16 @@ function doMouseDown(event) {
                         else {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerTransportationService_Key);
                         }
+                    }
+                    else if (mouse_x > btn_change_mood_x && mouse_x < btn_change_mood_x + 48 && mouse_y > (btn_change_mood_y - map_top_margin) && mouse_y < (btn_change_mood_y - map_top_margin) + 48)
+                    {
+                        window.location.assign("change_mood.aspx?id=" + customer_ID + "&m=1");
+                    }
+                    else if (mouse_x > btn_change_mood_x2 && mouse_x < btn_change_mood_x2 + 48 && mouse_y > (btn_change_mood_y - map_top_margin) && mouse_y < (btn_change_mood_y - map_top_margin) + 48) {
+                        window.location.assign("change_mood.aspx?id=" + customer_ID + "&m=2");
+                    }
+                    else if (mouse_x > btn_change_mood_x3 && mouse_x < btn_change_mood_x3 + 48 && mouse_y > (btn_change_mood_y - map_top_margin) && mouse_y < (btn_change_mood_y - map_top_margin) + 48) {
+                        window.location.assign("change_mood.aspx?id=" + customer_ID + "&m=3");
                     }
                 }
             }
