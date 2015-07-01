@@ -18,12 +18,22 @@
         </div>
         <div class="form-group">
             <label>Rol</label>    
-            <asp:DropDownList ID="cmbRole" runat="server">
+            <asp:DropDownList ID="cmbRole" runat="server" CssClass="form-control">
                 <asp:ListItem Value="A">Admin</asp:ListItem>
                 <asp:ListItem Value="D">Driver</asp:ListItem>
                 <asp:ListItem Value="U">User</asp:ListItem>
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="cmbRole" ErrorMessage="El rol es requerido." ForeColor="#FF9900">Requerido.</asp:RequiredFieldValidator>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="6 letras min..." CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPassword" ErrorMessage="El password es requerido." ForeColor="#FF9900">Requerido.</asp:RequiredFieldValidator>
+        </div>
+        <div class="form-group">
+            <label>Confirmar Password</label>
+            <asp:TextBox ID="txtValidatePassword" runat="server" TextMode="Password" placeholder="Otra vez..." CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtValidatePassword" ErrorMessage="El verificar el password es requerido." ForeColor="#FF9900">Requerido.</asp:RequiredFieldValidator>
         </div>
         <div class="buttonpanel">
             <asp:LinkButton ID="cmdOK" runat="server" CssClass="btn mybutton blue rounded shadow bold whitetext" OnClick="cmdOK_Click"><asp:Image runat="server" ImageUrl="~/images/check.png" /><span>Guardar datos</span></asp:LinkButton>

@@ -40,6 +40,7 @@ namespace Salita_Client
 
             this.txtUsername.Text = C.Username;
             this.cmbRole.Items.FindByValue(C.Role).Selected = true;
+            this.txtPassword.Text = this.txtValidatePassword.Text = C.UserPassword;
         }
 
         protected void cmdCancel_Click(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace Salita_Client
 
             C.Username = this.txtUsername.Text;
             C.Role = this.cmbRole.SelectedValue;
+            C.UserPassword = this.txtPassword.Text;
 
             this.db.SaveChanges();
         }
@@ -74,6 +76,16 @@ namespace Salita_Client
         {
             try
             {
+                if (this.txtPassword.Text.Length < 6)
+                {
+                    throw new Exception("Password must be at least 6 characters.");
+                }
+
+                if (this.txtPassword.Text != this.txtValidatePassword.Text)
+                {
+                    throw new Exception("Los passwords no son iguales.");
+                }
+
                 if (ViewState["id"] != null)
                 {
                     this.Update();
