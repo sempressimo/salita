@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,7 +11,7 @@ namespace Salita_Client
 {
     public partial class _default : System.Web.UI.Page
     {
-        SalitaEntities db = new SalitaEntities();
+        //SalitaEntities db = new SalitaEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,16 +19,79 @@ namespace Salita_Client
         }
 
         [System.Web.Services.WebMethod]
-        public static void SetSelectedCustomer(int Customer_ID)
-        {
-            HttpContext.Current.Session["Selected_Customer_ID"] = Customer_ID;
-        }
-
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static IEnumerable<v_CustomerNeeds> GetAllNeeds()
         {
             SalitaEntities db = new SalitaEntities();
 
-            return db.v_CustomerNeeds.Where(p => p.WasFullfilled == false).OrderBy(p => p.RequestDateTime);
+            DateTime from = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
+            DateTime to = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
+
+            var needs = db.v_CustomerNeeds.Where(p => p.WasFullfilled == false && p.Canceled == false && p.RequestDateTime >= from && p.RequestDateTime <= to).OrderBy(p => p.RequestDateTime);
+
+            JavaScriptSerializer TheSerializer = new JavaScriptSerializer();
+
+            var TheJson = TheSerializer.Serialize(needs.ToList());
+
+            //return TheJson;
+
+            return needs;
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void FullfillService(int ID, string Note)
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var Need = db.CustomerNeeds.Single(p => p.CustomerNeed_ID == ID);
+
+            Need.WasFullfilled = true;
+
+            db.SaveChanges();
+
+            /*
+            if (this.txtServiceDesc.Text.Length > 19)
+            {
+                if (this.txtServiceDesc.Text.Substring(0, 20) == "Transportacion Fuera")
+                {
+                    // Take customer out of salita
+                    int Customer_ID = Convert.ToInt32(ViewState["Customer_ID"]);
+
+                    Visit v = db.Visits.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.InLounge == true);
+
+                    if (v != null)
+                    {
+                        v.InLounge = false;
+
+                        db.SaveChanges();
+                    }
+                }
+            }
+            */
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void SetService(int Customer_ID, int Service_ID, string Note)
+        {
+            SalitaEntities db = new SalitaEntities();
+
+            var Need = new CustomerNeed();
+
+            Need.RequestDateTime = DateTime.Now;
+            Need.Customer_ID = Customer_ID;
+            Need.WasFullfilled = false;
+            Need.Note = Note;
+            Need.RequestedService_ID = Service_ID;
+            Need.Canceled = false;
+
+            db.CustomerNeeds.Add(Need);
+            db.SaveChanges();
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void SetSelectedCustomer(int Customer_ID)
+        {
+            HttpContext.Current.Session["Selected_Customer_ID"] = Customer_ID;
         }
 
         [System.Web.Services.WebMethod]
@@ -96,32 +161,6 @@ namespace Salita_Client
 
                 db.CustomerNeeds.Add(S);
                 db.SaveChanges();
-            }
-        }
-
-        protected void cmdOK_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int Customer_ID = Convert.ToInt32(HttpContext.Current.Session["Selected_Customer_ID"]);
-
-                var V = this.db.Visits.SingleOrDefault(p => p.Customer_ID == Customer_ID && p.InLounge == true);
-
-                if (V != null)
-                {
-                    V.InLounge = false;
-
-                    this.db.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("ID: " + Customer_ID + " es invalido o el cliente ya fue marcado como removido.");
-                }
-            }
-            catch (Exception E)
-            {
-                this.CustomValidator1.IsValid = false;
-                this.CustomValidator1.ErrorMessage = E.Message;
             }
         }
     }

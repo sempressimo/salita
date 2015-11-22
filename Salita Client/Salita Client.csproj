@@ -124,10 +124,44 @@
     <Content Include="address.aspx" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="cancel_transportation.aspx" />
+    <Content Include="change_mood.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-combobox.css" />
     <Content Include="css\calendar.css" />
@@ -144,7 +178,10 @@
     <Content Include="css\top.css" />
     <Content Include="CustomerHome\default.aspx" />
     <Content Include="CustomerHome\my_transports.aspx" />
+    <Content Include="CustomerHome\request_service.aspx" />
+    <Content Include="CustomerHome\request_service_feedback.aspx" />
     <Content Include="CustomerHome\request_transport.aspx" />
+    <Content Include="CustomerHome\service_request_confirmation.aspx" />
     <Content Include="CustomerHome\signout.aspx" />
     <Content Include="CustomerHome\user_transport_cancel.aspx" />
     <Content Include="customers_list.aspx" />
@@ -221,12 +258,14 @@
     <Content Include="images\service_transport.png" />
     <Content Include="images\service_water.png" />
     <Content Include="images\share.png" />
+    <Content Include="images\stickynote.png" />
     <Content Include="images\upload_btn.png" />
     <Content Include="images\user.png" />
     <Content Include="images\view.png" />
     <Content Include="images\waiting2.png" />
     <Content Include="login_detail.aspx" />
     <Content Include="login_list.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="Maps\map0.txt" />
     <Content Include="packages.config" />
     <Content Include="CustomerHome\CustomerSite.Master" />
@@ -236,13 +275,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\sala.pubxml" />
     <None Include="Properties\PublishProfiles\salita.pubxml" />
-    <None Include="Properties\PublishProfiles\SalitaClient.pubxml" />
     <Content Include="report_services.aspx" />
     <Content Include="report_transportation.aspx" />
     <Content Include="request_note.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CanvasInput.min.js" />
     <Content Include="Scripts\footable.min.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -250,9 +290,12 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.responsivetable.min.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\salita.js" />
     <Content Include="service_complete.aspx" />
@@ -288,6 +331,7 @@
     <Content Include="Global.asax" />
     <Content Include="login.aspx" />
     <Content Include="transport_page.aspx" />
+    <Content Include="transport_page_edit.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -311,6 +355,13 @@
     </Compile>
     <Compile Include="cancel_transportation.aspx.designer.cs">
       <DependentUpon>cancel_transportation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="change_mood.aspx.cs">
+      <DependentUpon>change_mood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="change_mood.aspx.designer.cs">
+      <DependentUpon>change_mood.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
@@ -336,12 +387,33 @@
     <Compile Include="CustomerHome\my_transports.aspx.designer.cs">
       <DependentUpon>my_transports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerHome\request_service.aspx.cs">
+      <DependentUpon>request_service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\request_service.aspx.designer.cs">
+      <DependentUpon>request_service.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerHome\request_service_feedback.aspx.cs">
+      <DependentUpon>request_service_feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\request_service_feedback.aspx.designer.cs">
+      <DependentUpon>request_service_feedback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerHome\request_transport.aspx.cs">
       <DependentUpon>request_transport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomerHome\request_transport.aspx.designer.cs">
       <DependentUpon>request_transport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerHome\service_request_confirmation.aspx.cs">
+      <DependentUpon>service_request_confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerHome\service_request_confirmation.aspx.designer.cs">
+      <DependentUpon>service_request_confirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerHome\signout.aspx.cs">
       <DependentUpon>signout.aspx</DependentUpon>
@@ -421,6 +493,13 @@
     <Compile Include="login_list.aspx.designer.cs">
       <DependentUpon>login_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Map.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
@@ -485,6 +564,13 @@
     <Compile Include="transport_page.aspx.designer.cs">
       <DependentUpon>transport_page.aspx</DependentUpon>
     </Compile>
+    <Compile Include="transport_page_edit.aspx.cs">
+      <DependentUpon>transport_page_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="transport_page_edit.aspx.designer.cs">
+      <DependentUpon>transport_page_edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateHub.cs" />
     <Compile Include="UpdateStartup.cs" />
     <Compile Include="User.cs">
@@ -505,7 +591,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

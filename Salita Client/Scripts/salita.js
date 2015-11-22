@@ -1,7 +1,7 @@
 ﻿//
 // Variables
 //
-var SalitaVersion = "Beta 2.0";
+var SalitaVersion = "beta 2.0";
 
 //
 // Images
@@ -31,6 +31,7 @@ var pop_up_water = new Image();
 var pop_up_soda = new Image();
 var pop_up_taxi = new Image();
 var exit = new Image();
+var stickynote = new Image();
 
 var pop_x = 0;
 var pop_y = 0;
@@ -52,6 +53,11 @@ var btn_change_mood_x2 = 0;
 var btn_change_mood_x3 = 0;
 var btn_change_mood_y = 0;
 
+var Water_Count = 0;
+var Coffee_Count = 0;
+var Soda_Count = 0;
+var Transport_Count = 0;
+
 //
 // Sounds
 //
@@ -60,6 +66,7 @@ var sndClick = new Audio();
 //
 // Mouse Control
 //
+var MouseIsDown = false;
 var mouse_x = new Number();
 var mouse_y = new Number();
 var sel_tile_x = new Number();
@@ -94,10 +101,17 @@ var SelectedCustomerRefreshmentService_Key = -1;
 var SelectedCustomerCoffeeService_Key = -1;
 var SelectedCustomerTransportationService_Key = -1;
 
+var Selected_Icon = "";
+
 var customerTime = Date.now();
 var RenderState = "Salita";
 
+var diffMins = 0;
+
 var alert_blink = 0;
+
+var draw_stickynote = false;
+var stickynote_text = "";
 
 //
 // Debug Vars
@@ -155,17 +169,61 @@ var MapData =
         [0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 6]
     ];
 
-var global_uri = "http://localhost:8395/api/visit";
-//var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
+//var global_uri = "http://localhost:8395/api/visit";
+var global_uri = "http://loungewebapi.azurewebsites.net/api/visit";
 //var global_uri = "http://salitaagapi.azurewebsites.net/api/visit";
 
-var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
-//var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
+//var global_uri_needs = "http://localhost:8395/api/CustomerNeed";
+var global_uri_needs = "http://loungewebapi.azurewebsites.net/api/CustomerNeed";
 //var global_uri_needs = "http://salitaagapi.azurewebsites.net/api/CustomerNeed";
 
 var chat;
 
 //var input = new CanvasInput({canvas: document.getElementById('salitacanvas')});
+
+
+//
+// UI modal form functions
+//
+function addServiceToCustomer()
+{
+
+    UpdateQueryState = "Updating Customer";
+
+    var Note = $('#txtServiceNote').val();
+
+    var sid = SelectedCustomerRefreshmentService_Key;
+
+    callAjaxMethod("POST", 'default.aspx/SetService', '{Customer_ID: "' + customer_ID + '", Service_ID: ' + sid + ', Note: "' + Note + '" }', 2);
+}
+
+function fulfillServiceToCustomer() {
+
+    UpdateQueryState = "Updating Customer";
+
+    var Note = $('#txtServiceNote').val();
+
+    var sid = -1;
+
+    if (Selected_Icon == "Water")
+    {
+        sid = SelectedCustomerWaterService_Key;
+    }
+    else if (Selected_Icon == "Soda")
+    {
+        sid = SelectedCustomerRefreshmentService_Key;
+    }
+    else if (Selected_Icon == "Coffee")
+    {
+        sid = SelectedCustomerCoffeeService_Key;
+    }
+    else if (Selected_Icon == "Transportation")
+    {
+        sid = SelectedCustomerTransportationService_Key;
+    }
+
+    callAjaxMethod("POST", 'default.aspx/FullfillService', '{ID: ' + sid + ', Note: "' + Note + '" }', 3);
+}
 
 //
 // Functions
@@ -174,17 +232,67 @@ function sendJSonRequest(uri, Array_to_update) {
 
     $.ajax({ type: "GET", url: uri })
         .done(function (data) {
-            if (Array_to_update == "Visits") {
+            if (Array_to_update == "Visits")
+            {
                 CustomersArray = data;
             }
-            else if (Array_to_update == "Needs") {
+            else if (Array_to_update == "Needs")
+            {
                 NeedsArray = data;
             }
             CustomerLoadQueryState = "Finished"
         })
-        .error(function (jqXHR, textStatus, errorThrown) {
+        .error(function (jqXHR, textStatus, errorThrown)
+        {
             alert("sendJSonRequest(" + uri + "): textStatus: " + textStatus);
         });
+}
+
+function callAjaxMethod(_type, _url, _parameters, popup_id) {
+
+    //To prevent postback from happening as we are ASP.Net TextBox control
+
+    //If we had used input html element, there is no need to use ' e.preventDefault()' as posback will not happen
+
+    //e.preventDefault();
+
+    $.ajax({
+        type: _type,
+        url: _url,
+        data: _parameters,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response)
+        {
+            UpdateQueryState = "Finished";
+
+            if (popup_id == 1) {
+
+                btn_water_y = 400;
+
+                RenderState = "Salita";
+
+            }
+            else if (popup_id == 2)
+            {
+                $('#txtServiceNote').val("");
+                dialog.dialog("close");
+            }
+            else if (popup_id == 3)
+            {
+                $('#txtServiceNote').val("");
+                dialog_Fulfill.dialog("close");
+            }
+
+            // Call the Send method on the hub. 
+            chat.server.send("");
+
+        },
+        failure: function (response)
+        {
+            alert("Error in calling Ajax:" + response.d);
+        }
+    });
 }
 
 function init() {
@@ -225,6 +333,7 @@ function init() {
     pop_up_soda.src = "images/pop_soda.png";
     pop_up_taxi.src = "images/pop_taxi.png";
     exit.src = "images/exit.png";
+    stickynote.src = "images/stickynote.png";
 
     canvas = document.getElementById('salitacanvas');
 
@@ -263,6 +372,8 @@ function UpdateJsonArrays()
 {
     sendJSonRequest(global_uri, "Visits");
     sendJSonRequest(global_uri_needs, "Needs");
+
+    //callAjaxMethod("POST", 'http://localhost:1189/default.aspx/GetAllNeeds', '', 99);
 }
 
 function drawMap(tile_size, ctx) {
@@ -356,8 +467,10 @@ function drawCustomers(tile_size, ctx)
             }  
         }
 
-        if (CheckIfCustomerHasNeeds(value.Customer_ID)) {
-            if (alert_blink >= 30) {
+        if (CheckIfCustomerHasNeeds(value.Customer_ID))
+        {
+            if (alert_blink >= 30) 
+            {
                 var Alert_OffSet = 16;
 
                 ctx.drawImage(alert_img, x_pos + Alert_OffSet, y_pos + map_top_margin - Alert_OffSet, tile_size, tile_size);
@@ -372,45 +485,56 @@ function drawCustomers(tile_size, ctx)
     });
 }
 
-function CheckCustomerNeeds(Customer_ID) {
+function CheckCustomerNeeds(Customer_ID)
+{
 
     SelectedCustomerWaterService = false;
     SelectedCustomerRefreshmentService = false;
     SelectedCustomerTransportationService = false;
     SelectedCustomerCoffeeService = false;
 
-    $.each(NeedsArray, function (key, value) {
-        if (value.Customer_ID == Customer_ID) {
-            if (value.RequestedService_ID == 1) {
-                SelectedCustomerWaterService = true;
-                SelectedCustomerWaterService_Key = value.CustomerNeed_ID;
+    if (NeedsArray != null)
+    {
+        $.each(NeedsArray, function (key, value)
+        {
+            if (value.Customer_ID == Customer_ID) {
+                if (value.RequestedService_ID == 1) {
+                    SelectedCustomerWaterService = true;
+                    SelectedCustomerWaterService_Key = value.CustomerNeed_ID;
+                }
+                else if (value.RequestedService_ID == 2) {
+                    SelectedCustomerRefreshmentService = true;
+                    SelectedCustomerRefreshmentService_Key = value.CustomerNeed_ID;
+                }
+                else if (value.RequestedService_ID == 3) {
+                    SelectedCustomerTransportationService = true;
+                    SelectedCustomerTransportationService_Key = value.CustomerNeed_ID;
+                }
+                else if (value.RequestedService_ID == 5) {
+                    SelectedCustomerCoffeeService = true;
+                    SelectedCustomerCoffeeService_Key = value.CustomerNeed_ID;
+                }
             }
-            else if (value.RequestedService_ID == 2) {
-                SelectedCustomerRefreshmentService = true;
-                SelectedCustomerRefreshmentService_Key = value.CustomerNeed_ID;
-            }
-            else if (value.RequestedService_ID == 3) {
-                SelectedCustomerTransportationService = true;
-                SelectedCustomerTransportationService_Key = value.CustomerNeed_ID;
-            }
-            else if (value.RequestedService_ID == 5) {
-                SelectedCustomerCoffeeService = true;
-                SelectedCustomerCoffeeService_Key = value.CustomerNeed_ID;
-            }
-        }
-    });
+        });
+    }
 }
 
-function CheckIfCustomerHasNeeds(Customer_ID) {
+function CheckIfCustomerHasNeeds(Customer_ID)
+{
     var HasNeeds = false;
 
     if (NeedsArray == null) return; // Marronazo
 
-    $.each(NeedsArray, function (key, value) {
-        if (value.Customer_ID == Customer_ID) {
-            HasNeeds = true;
-        }
-    });
+    if (NeedsArray != null)
+    {
+        $.each(NeedsArray, function (key, value)
+        {
+            if (value.Customer_ID == Customer_ID)
+            {
+                HasNeeds = true;
+            }
+        });
+    }
 
     return HasNeeds;
 }
@@ -428,7 +552,6 @@ function UpdateMinsWaiting(VisitDate)
     diffMins = Math.round(duration.asMinutes());
 }
 
-var diffMins = 0;
 function drawCustomersInfo(tile_size, ctx)
 {
     $.each(CustomersArray, function (key, value)
@@ -460,14 +583,13 @@ function drawCustomersInfo(tile_size, ctx)
 
 function drawScreenText(ctx)
 {
-
     var TextIndent = 80;
 
     ctx.font = "16px Arial";
 
     ctx.fillStyle = "White";
 
-    ctx.fillText(" Version: " + SalitaVersion, 0, 980);
+    //ctx.fillText(" v" + SalitaVersion, 0, 980);
 
     if (CustomerLoadQueryState == "Loading")
     {
@@ -499,10 +621,110 @@ function drawScreenText(ctx)
                 ctx.drawImage(service_cafe, 250 + (64 * 3), 16, tile_Size, tile_Size);
             }
         }
+
+        //
+        // Service Summary
+        //
+        Water_Count = 0;
+        Coffee_Count = 0;
+        Soda_Count = 0;
+        Transport_Count = 0;
+
+        if (NeedsArray != null)
+        {
+            $.each(NeedsArray, function (key, value)
+            {
+                //alert(value.RequestedService_ID);
+
+                if (value.RequestedService_ID == 1)
+                {
+                    Water_Count++;
+                }
+                else if (value.RequestedService_ID == 5)
+                {
+                    Coffee_Count++;
+                }
+                else if (value.RequestedService_ID == 2) {
+                    Soda_Count++;
+                }
+                else if (value.RequestedService_ID == 3 || value.RequestedService_ID == 4) {
+                    Transport_Count++;
+                }
+            });
+        }
+
+        ctx.fillText("x " + Water_Count, 140, 950);
+        ctx.fillText("x " + Coffee_Count, 295, 950);
+        ctx.fillText("x " + Soda_Count, 440, 950);
+        ctx.fillText("x " + Transport_Count, 595, 950);
     }
+
+    //
+    // Sticky note text
+    //
+    if (draw_stickynote)
+    {
+        ctx.drawImage(stickynote, 550, 10, 200, 223);
+
+        ctx.fillStyle = "Black";
+        ctx.font = "16px Courier New";
+
+        //ctx.fillText(stickynote_text, 30, 110);
+
+        var s = stickynote_text;
+        var pos_x = 570;
+        var pos_y = 110;
+        for (var i = 0; i < s.length; i++)
+        {
+            ctx.fillText(s.charAt(i), pos_x, pos_y);
+            
+            if (pos_x >= 570 + (10 * 15))
+            {
+                pos_x = 570;
+                pos_y += 20;
+            }
+            else
+            {
+                pos_x += 10;
+            }
+        }
+    }
+
+    ctx.fillStyle = "White";
 }
 
-function drawDebugText(ctx, TextIndent) {
+function GetNote(Customer_ID, NoteFor)
+{
+    var NoteText = "N/A";
+
+    $.each(CustomersArray, function (key, cvalue)
+    {
+        if (Customer_ID == cvalue.Customer_ID)
+        {
+            $.each(NeedsArray, function (key, nvalue)
+            {
+                if (nvalue.RequestedService_ID == NoteFor)
+                {
+                    if (NoteFor == 3)
+                    {
+                        NoteText = nvalue.Address_Line + " " + nvalue.Town + " " + nvalue.ZipCode;
+                    }
+                    else
+                    {
+                        NoteText = nvalue.Note;
+                    }
+                }
+            });
+        }
+    });
+
+    if (NoteText == null) NoteText = "N/A";
+
+    return NoteText;
+}
+
+function drawDebugText(ctx, TextIndent)
+{
     //ctx.fillText("Selected Tile: " + sel_tile_x + "," + sel_tile_y, 0, 880);
     //ctx.fillText(" holdDownTimer: " + holdDownTimer + ", MouseIsDown: " + MouseIsDown, 0, 900);
     //ctx.fillText(" MouseClickLogic: " + MouseClickLogic + ", doc_scroll_left: " + doc_scroll_left + ", doc_element_scroll_left: " + doc_element_scroll_left, 0, 920);
@@ -564,9 +786,18 @@ function draw() {
             ctx.drawImage(customer_bad, 10, 10, 64, 64);
         }
         
+        //
+        // Draw Summary at Bottom
+        //
+        ctx.drawImage(service_water, 80, 910, 64, 64);
+        ctx.drawImage(service_cafe, 230, 910, 64, 64);
+        ctx.drawImage(service_can, 380, 910, 64, 64);
+        ctx.drawImage(service_transport, 530, 910, 64, 64);
+
         drawScreenText(ctx);
 
-        if (CustomersArray != null) {
+        if (CustomersArray != null)
+        {
             drawCustomersInfo(tile_Size, ctx);
         }
 
@@ -656,39 +887,6 @@ function IsACustomerInTargetSeat(dest_tile_x, dest_tile_y) {
     return ReturnValue;
 }
 
-function callAjaxMethod(e, _url, _parameters, popup_id) {
-
-    //To prevent postback from happening as we are ASP.Net TextBox control
-
-    //If we had used input html element, there is no need to use ' e.preventDefault()' as posback will not happen
-
-    //e.preventDefault();
-
-    $.ajax({
-        type: "POST",
-        url: _url,
-        data: _parameters,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            UpdateQueryState = "Finished";
-
-            if (popup_id == 1) {
-
-                btn_water_y = 400;
-
-                RenderState = "Salita";
-            }
-
-            // Call the Send method on the hub. 
-            chat.server.send("");
-        },
-        failure: function (response) {
-            alert("Error in calling Ajax:" + response.d);
-        }
-    });
-}
-
 function GetTileValue(column, row) {
     return MapData[row][column];
 }
@@ -708,12 +906,15 @@ function PlayClick()
     }
 }
 
-var MouseIsDown = false;
-function doMouseDown(event) {
+function doMouseDown(event)
+{
+
+    draw_stickynote = false;
 
     MouseIsDown = true;
 
-    if (true) {
+    if (true)
+    {
         //
         // Get the selected tile
         //
@@ -745,14 +946,59 @@ function doMouseDown(event) {
         mouse_x -= (canvas.offsetLeft);
         mouse_y -= (canvas.offsetTop) + map_top_margin;
 
+
+        //
+        // Items with Notes
+        //
+
+        if (mouse_x > 250 && mouse_x < (250 + tile_Size) && mouse_y > (16 - map_top_margin) && mouse_y < (16 - map_top_margin) + tile_Size)
+        {
+            if (SelectedCustomerWaterService == true)
+            {
+                draw_stickynote = true;
+                stickynote_text = GetNote(customer_ID, 1);
+            }
+        }
+        else if (mouse_x > 250 + 64 && mouse_x < (250 + 64 + tile_Size) && mouse_y > (16 - map_top_margin) && mouse_y < (16 - map_top_margin) + tile_Size)
+        {
+            if (SelectedCustomerRefreshmentService == true)
+            {
+                draw_stickynote = true;
+                stickynote_text = GetNote(customer_ID, 2);
+            }
+        }
+        else if (mouse_x > 250 + (64 * 2) && mouse_x < (250 + (64 * 2) + tile_Size) && mouse_y > (16 - map_top_margin) && mouse_y < (16 - map_top_margin) + tile_Size)
+        {
+            if (SelectedCustomerTransportationService == true)
+            {
+                draw_stickynote = true;
+                stickynote_text = GetNote(customer_ID, 3);
+            }
+        }
+        else if (mouse_x > 250 + (64 * 3) && mouse_x < (250 + (64 * 3) + tile_Size) && mouse_y > (16 - map_top_margin) && mouse_y < (16 - map_top_margin) + tile_Size)
+        {
+            if (SelectedCustomerCoffeeService == true)
+            {
+                draw_stickynote = true;
+                stickynote_text = GetNote(customer_ID, 5);
+            }
+        }
+        else if (mouse_x > 10 && mouse_x < (10 + tile_Size) && mouse_y > (10 - map_top_margin) && mouse_y < (10 - map_top_margin) + tile_Size)
+        {
+            draw_stickynote = true;
+            //stickynote_text = GetNote(customer_ID, 5);
+        }
+
         sel_tile_x = Math.floor(mouse_x / tile_Size);
         sel_tile_y = Math.floor(mouse_y / tile_Size);
 
-        if (sel_tile_x >= 0 && sel_tile_x < map_columns && sel_tile_y >= 0 && sel_tile_y < map_rows) {
+        if (sel_tile_x >= 0 && sel_tile_x < map_columns && sel_tile_y >= 0 && sel_tile_y < map_rows)
+        {
             SelectedTileValue = GetTileValue(sel_tile_x, sel_tile_y);
 
             if (RenderState == "Salita")
             {
+
                 // If it is a seat
                 if (SelectedTileValue >= 1 && SelectedTileValue <= chairs_tiles_max)
                 {
@@ -764,7 +1010,7 @@ function doMouseDown(event) {
                             CustomersArray[customerIndex].Seat_Y = sel_tile_y;
 
                             UpdateQueryState = "Loading";
-                            callAjaxMethod(event, 'default.aspx/ChangeSeat', '{Customer_ID: "' + customer_ID + '", Seat_X: ' + sel_tile_x + ', Seat_Y: ' + sel_tile_y + ' }', 0);
+                            callAjaxMethod("POST", 'default.aspx/ChangeSeat', '{Customer_ID: "' + customer_ID + '", Seat_X: ' + sel_tile_x + ', Seat_Y: ' + sel_tile_y + ' }', 0);
 
                             //Deselect the customer after seating
                             customerSelected = false;
@@ -780,7 +1026,7 @@ function doMouseDown(event) {
                 {
                     // Exit salita
                     UpdateQueryState = "Loading";
-                    callAjaxMethod(event, 'default.aspx/LeaveLounge', '{Customer_ID: "' + customer_ID + '" }', 0);
+                    callAjaxMethod("POST", 'default.aspx/LeaveLounge', '{Customer_ID: "' + customer_ID + '" }', 0);
 
                     //Deselect the customer after seating
                     customerSelected = false;
@@ -791,12 +1037,18 @@ function doMouseDown(event) {
                 //
                 // Selection logic
                 //
-                if (CustomersArray != null) {
+                Water_Count = 0;
+
+                if (CustomersArray != null)
+                {
                     cIndex = -1; // None selected
                     customerSelected = false;
-                    $.each(CustomersArray, function (key, value) {
+                    $.each(CustomersArray, function (key, value)
+                    {
                         cIndex++;
-                        if (sel_tile_x == value.Seat_X && sel_tile_y == value.Seat_Y) {
+
+                        if (sel_tile_x == value.Seat_X && sel_tile_y == value.Seat_Y)
+                        {
                             // Customer was selected
                             customerIndex = cIndex;
                             customerSelected = true;
@@ -806,7 +1058,8 @@ function doMouseDown(event) {
 
                             CheckCustomerNeeds(customer_ID);
 
-                            if (sndClick.readyState > 0) {
+                            if (sndClick.readyState > 0)
+                            {
                                 sndClick.currentTime = 0;
                                 sndClick.play();
                             }
@@ -817,7 +1070,8 @@ function doMouseDown(event) {
             }
             else if (RenderState == "PopUpServices")
             {
-                if (!(mouse_x > pop_x && mouse_x < pop_x + 367 && mouse_y > (pop_y - map_top_margin) && mouse_y < (pop_y - map_top_margin) + 367)) {
+                if (!(mouse_x > pop_x && mouse_x < pop_x + 367 && mouse_y > (pop_y - map_top_margin) && mouse_y < (pop_y - map_top_margin) + 367))
+                {
                     RenderState = "Salita";
                 }
                 else if (mouse_x > 510 && mouse_y > 240 - map_top_margin && mouse_x < (510 + 40) && mouse_y < (240 + 40) - map_top_margin)
@@ -829,52 +1083,69 @@ function doMouseDown(event) {
 
                     if (mouse_x > btn_water_x && mouse_x < btn_water_x + 58 && mouse_y > btn_water_y - map_top_margin && mouse_y < btn_water_y - map_top_margin + 58)
                     {
+                        Selected_Icon = "Water";
+
                         PlayClick();
 
-                        if (btn_water_y < 470) {
-                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 1);
+                        if (btn_water_y < 470)
+                        {
+                            SelectedCustomerRefreshmentService_Key = 1;
+                            dialog.dialog("open");
+                            RenderState = "Salita";
                         }
-                        else {
-                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerWaterService_Key);
+                        else
+                        {
+                            dialog_Fulfill.dialog("open");
+                            RenderState = "Salita";
                         }
                     }
-                    else if (mouse_x > btn_soda_x && mouse_x < btn_soda_x + 58 && mouse_y > btn_soda_y - map_top_margin && mouse_y < btn_soda_y - map_top_margin + 58) {
-                        if (sndClick.readyState > 0) {
-                            sndClick.currentTime = 0;
-                            sndClick.play();
-                        }
+                    else if (mouse_x > btn_soda_x && mouse_x < btn_soda_x + 58 && mouse_y > btn_soda_y - map_top_margin && mouse_y < btn_soda_y - map_top_margin + 58)
+                    {
+                        Selected_Icon = "Soda";
 
-                        if (btn_soda_y < 470) {
-                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 2);
+                        PlayClick();
+
+                        if (btn_soda_y < 470)
+                        {
+                            SelectedCustomerRefreshmentService_Key = 2;
+                            dialog.dialog("open");
+                            RenderState = "Salita";
                         }
-                        else {
-                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerRefreshmentService_Key);
+                        else
+                        {
+                            dialog_Fulfill.dialog("open");
+                            RenderState = "Salita";
                         };               
                     }
-                    else if (mouse_x > btn_cafe_x && mouse_x < btn_cafe_x + 58 && mouse_y > btn_cafe_y - map_top_margin && mouse_y < btn_cafe_y - map_top_margin + 58) {
-                        if (sndClick.readyState > 0) {
-                            sndClick.currentTime = 0;
-                            sndClick.play();
-                        }
+                    else if (mouse_x > btn_cafe_x && mouse_x < btn_cafe_x + 58 && mouse_y > btn_cafe_y - map_top_margin && mouse_y < btn_cafe_y - map_top_margin + 58)
+                    {
+                        Selected_Icon = "Coffee";
 
-                        if (btn_cafe_y < 470) {
-                            window.location.assign("request_note.aspx?id=" + customer_ID + "&sid=" + 5);
+                        PlayClick();
+
+                        if (btn_cafe_y < 470)
+                        {
+                            SelectedCustomerRefreshmentService_Key = 5;
+                            dialog.dialog("open");
+                            RenderState = "Salita";
                         }
-                        else {
-                            window.location.assign("service_complete.aspx?id=" + SelectedCustomerCoffeeService_Key);
+                        else
+                        {
+                            dialog_Fulfill.dialog("open");
+                            RenderState = "Salita";
                         };
                     }
                     else if (mouse_x > btn_taxi_x && mouse_x < btn_taxi_x + 58 && mouse_y > (btn_taxi_y - map_top_margin) && mouse_y < (btn_taxi_y - map_top_margin) + 58)
                     {
-                        if (sndClick.readyState > 0) {
-                            sndClick.currentTime = 0;
-                            sndClick.play();
-                        }
+                        Selected_Icon = "Transportation";
+
+                        PlayClick();
 
                         if (btn_taxi_y < 470) {
                             window.location.assign("address.aspx?id=" + customer_ID + "&name=" + SelectedCustomerName);
                         }
-                        else {
+                        else
+                        {
                             window.location.assign("service_complete.aspx?id=" + SelectedCustomerTransportationService_Key);
                         }
                     }

@@ -91,7 +91,7 @@ namespace Salita_Client
             LinkButton btn = (LinkButton)(sender);
             string id = btn.CommandArgument;
 
-            Response.Redirect("address.aspx?sid=" + id);
+            Response.Redirect("transport_page_edit.aspx?sid=" + id);
         }
     }
 }

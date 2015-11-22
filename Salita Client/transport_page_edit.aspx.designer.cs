@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Salita_Client.CustomerHome {
+namespace Salita_Client {
     
     
-    public partial class request_service {
-        
-        /// <summary>
-        /// form_default control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form_default;
+    public partial class transport_page_edit {
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -40,111 +31,75 @@ namespace Salita_Client.CustomerHome {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
-        /// water_alert control.
+        /// div_alert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl water_alert;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert;
         
         /// <summary>
-        /// Water_Text control.
+        /// lblFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Water_Text;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFullName;
         
         /// <summary>
-        /// lbGetWater control.
+        /// txtAddressLine1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbGetWater;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAddressLine1;
         
         /// <summary>
-        /// cbMilk control.
+        /// txtZipCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbMilk;
+        protected global::System.Web.UI.WebControls.TextBox txtZipCode;
         
         /// <summary>
-        /// cbSugar control.
+        /// txtTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbSugar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTown;
         
         /// <summary>
-        /// cbFakeSugar control.
+        /// cmbTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbFakeSugar;
+        protected global::System.Web.UI.WebControls.DropDownList cmbTime;
         
         /// <summary>
-        /// cbMocachino control.
+        /// lbCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbMocachino;
+        protected global::System.Web.UI.WebControls.LinkButton lbCancel;
         
         /// <summary>
-        /// lbGetCoffee control.
+        /// lbEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbGetCoffee;
-        
-        /// <summary>
-        /// cbCoke control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton cbCoke;
-        
-        /// <summary>
-        /// cbDietCoke control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton cbDietCoke;
-        
-        /// <summary>
-        /// cb7UP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton cb7UP;
-        
-        /// <summary>
-        /// lbGetSoda control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbGetSoda;
+        protected global::System.Web.UI.WebControls.LinkButton lbEdit;
     }
 }
