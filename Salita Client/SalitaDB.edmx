@@ -105,6 +105,19 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
           <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
           <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
           <Property Name="Mood" Type="char" MaxLength="1" />
+          <Property Name="AG_Companions" Type="int" />
+          <Property Name="AG_LL" Type="bit" />
+          <Property Name="AG_RR" Type="bit" />
+          <Property Name="AG_Tag" Type="varchar" MaxLength="5" />
+          <Property Name="AG_Advisor" Type="varchar" MaxLength="15" />
+          <Property Name="AG_DriveTo" Type="varchar" MaxLength="50" />
+          <Property Name="AG_AppointmentTime" Type="datetime" />
+          <Property Name="AG_AttendedTime" Type="datetime" />
+          <Property Name="AG_RegisteredTime" Type="datetime" />
+          <Property Name="AG_OK" Type="datetime" />
+          <Property Name="AG_ExitTime" Type="datetime" />
+          <Property Name="AG_ArrivalTime" Type="datetime" />
+          <Property Name="AG_DriverName" Type="varchar" MaxLength="15" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -114,6 +127,42 @@ warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a prima
           </Key>
           <Property Name="WatingForReason_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReasonDescription" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Salita.dbo.v_AG_Transport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_AG_Transport">
+          <Key>
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Visit_ID" Type="int" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="VisitDate" Type="datetime" />
+          <Property Name="Seat_X" Type="int" />
+          <Property Name="Seat_Y" Type="int" />
+          <Property Name="InLounge" Type="bit" />
+          <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
+          <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
+          <Property Name="Mood" Type="char" MaxLength="1" />
+          <Property Name="AG_Companions" Type="int" />
+          <Property Name="AG_LL" Type="bit" />
+          <Property Name="AG_RR" Type="bit" />
+          <Property Name="AG_Tag" Type="varchar" MaxLength="5" />
+          <Property Name="AG_Advisor" Type="varchar" MaxLength="15" />
+          <Property Name="AG_DriveTo" Type="varchar" MaxLength="50" />
+          <Property Name="AG_AppointmentTime" Type="datetime" />
+          <Property Name="AG_AttendedTime" Type="datetime" />
+          <Property Name="AG_RegisteredTime" Type="datetime" />
+          <Property Name="AG_OK" Type="datetime" />
+          <Property Name="AG_ExitTime" Type="datetime" />
+          <Property Name="AG_ArrivalTime" Type="datetime" />
+          <Property Name="AG_DriverName" Type="varchar" MaxLength="15" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Town" Type="varchar" MaxLength="25" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="9" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.v_CustomerNeeds' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -214,6 +263,39 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [WatingForReasons].[ReasonDescription] AS [ReasonDescription]
     FROM [dbo].[WatingForReasons] AS [WatingForReasons]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_AG_Transport" EntityType="Self.v_AG_Transport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_AG_Transport].[Visit_ID] AS [Visit_ID], 
+    [v_AG_Transport].[Customer_ID] AS [Customer_ID], 
+    [v_AG_Transport].[VisitDate] AS [VisitDate], 
+    [v_AG_Transport].[Seat_X] AS [Seat_X], 
+    [v_AG_Transport].[Seat_Y] AS [Seat_Y], 
+    [v_AG_Transport].[InLounge] AS [InLounge], 
+    [v_AG_Transport].[WaitingFor] AS [WaitingFor], 
+    [v_AG_Transport].[LoginPIN] AS [LoginPIN], 
+    [v_AG_Transport].[Mood] AS [Mood], 
+    [v_AG_Transport].[AG_Companions] AS [AG_Companions], 
+    [v_AG_Transport].[AG_LL] AS [AG_LL], 
+    [v_AG_Transport].[AG_RR] AS [AG_RR], 
+    [v_AG_Transport].[AG_Tag] AS [AG_Tag], 
+    [v_AG_Transport].[AG_Advisor] AS [AG_Advisor], 
+    [v_AG_Transport].[AG_DriveTo] AS [AG_DriveTo], 
+    [v_AG_Transport].[AG_AppointmentTime] AS [AG_AppointmentTime], 
+    [v_AG_Transport].[AG_AttendedTime] AS [AG_AttendedTime], 
+    [v_AG_Transport].[AG_RegisteredTime] AS [AG_RegisteredTime], 
+    [v_AG_Transport].[AG_OK] AS [AG_OK], 
+    [v_AG_Transport].[AG_ExitTime] AS [AG_ExitTime], 
+    [v_AG_Transport].[AG_ArrivalTime] AS [AG_ArrivalTime], 
+    [v_AG_Transport].[AG_DriverName] AS [AG_DriverName], 
+    [v_AG_Transport].[Phone] AS [Phone], 
+    [v_AG_Transport].[FullName] AS [FullName], 
+    [v_AG_Transport].[Email] AS [Email], 
+    [v_AG_Transport].[Address] AS [Address], 
+    [v_AG_Transport].[Town] AS [Town], 
+    [v_AG_Transport].[ZipCode] AS [ZipCode], 
+    [v_AG_Transport].[IsActive] AS [IsActive]
+    FROM [dbo].[v_AG_Transport] AS [v_AG_Transport]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_CustomerNeeds" EntityType="Self.v_CustomerNeeds" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_CustomerNeeds].[CustomerNeed_ID] AS [CustomerNeed_ID], 
@@ -281,6 +363,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySet Name="Visits" EntityType="SalitaModel.Visit" />
           <EntitySet Name="ListZips" EntityType="SalitaModel.ListZip" />
           <EntitySet Name="WatingForReasons" EntityType="SalitaModel.WatingForReason" />
+          <EntitySet Name="v_AG_Transport" EntityType="SalitaModel.v_AG_Transport" />
           <EntitySet Name="v_CustomerNeeds" EntityType="SalitaModel.v_CustomerNeeds" />
           <EntitySet Name="v_RecentVisits" EntityType="SalitaModel.v_RecentVisits" />
           <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="SalitaModel.FK_CustomerNeeds_CustomerServices">
@@ -380,6 +463,19 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AG_Companions" Type="Int32" />
+          <Property Name="AG_LL" Type="Boolean" />
+          <Property Name="AG_RR" Type="Boolean" />
+          <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_OK" Type="DateTime" Precision="3" />
+          <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
         </EntityType>
         <EntityType Name="ListZip">
@@ -401,6 +497,40 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           </Key>
           <Property Name="WatingForReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReasonDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_AG_Transport">
+          <Key>
+            <PropertyRef Name="Visit_ID" />
+          </Key>
+          <Property Name="Visit_ID" Type="Int32" Nullable="false" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="VisitDate" Type="DateTime" Precision="3" />
+          <Property Name="Seat_X" Type="Int32" />
+          <Property Name="Seat_Y" Type="Int32" />
+          <Property Name="InLounge" Type="Boolean" />
+          <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AG_Companions" Type="Int32" />
+          <Property Name="AG_LL" Type="Boolean" />
+          <Property Name="AG_RR" Type="Boolean" />
+          <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_OK" Type="DateTime" Precision="3" />
+          <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="v_CustomerNeeds">
           <Key>
@@ -560,6 +690,19 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <EntitySetMapping Name="Visits">
             <EntityTypeMapping TypeName="SalitaModel.Visit">
               <MappingFragment StoreEntitySet="Visits">
+                <ScalarProperty Name="AG_DriverName" ColumnName="AG_DriverName" />
+                <ScalarProperty Name="AG_ArrivalTime" ColumnName="AG_ArrivalTime" />
+                <ScalarProperty Name="AG_ExitTime" ColumnName="AG_ExitTime" />
+                <ScalarProperty Name="AG_OK" ColumnName="AG_OK" />
+                <ScalarProperty Name="AG_RegisteredTime" ColumnName="AG_RegisteredTime" />
+                <ScalarProperty Name="AG_AttendedTime" ColumnName="AG_AttendedTime" />
+                <ScalarProperty Name="AG_AppointmentTime" ColumnName="AG_AppointmentTime" />
+                <ScalarProperty Name="AG_DriveTo" ColumnName="AG_DriveTo" />
+                <ScalarProperty Name="AG_Advisor" ColumnName="AG_Advisor" />
+                <ScalarProperty Name="AG_Tag" ColumnName="AG_Tag" />
+                <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
+                <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
+                <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
                 <ScalarProperty Name="Mood" ColumnName="Mood" />
                 <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
@@ -589,6 +732,41 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
               <MappingFragment StoreEntitySet="WatingForReasons">
                 <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="WatingForReason_ID" ColumnName="WatingForReason_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_AG_Transport">
+            <EntityTypeMapping TypeName="SalitaModel.v_AG_Transport">
+              <MappingFragment StoreEntitySet="v_AG_Transport">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AG_DriverName" ColumnName="AG_DriverName" />
+                <ScalarProperty Name="AG_ArrivalTime" ColumnName="AG_ArrivalTime" />
+                <ScalarProperty Name="AG_ExitTime" ColumnName="AG_ExitTime" />
+                <ScalarProperty Name="AG_OK" ColumnName="AG_OK" />
+                <ScalarProperty Name="AG_RegisteredTime" ColumnName="AG_RegisteredTime" />
+                <ScalarProperty Name="AG_AttendedTime" ColumnName="AG_AttendedTime" />
+                <ScalarProperty Name="AG_AppointmentTime" ColumnName="AG_AppointmentTime" />
+                <ScalarProperty Name="AG_DriveTo" ColumnName="AG_DriveTo" />
+                <ScalarProperty Name="AG_Advisor" ColumnName="AG_Advisor" />
+                <ScalarProperty Name="AG_Tag" ColumnName="AG_Tag" />
+                <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
+                <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
+                <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
+                <ScalarProperty Name="Mood" ColumnName="Mood" />
+                <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
+                <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
+                <ScalarProperty Name="InLounge" ColumnName="InLounge" />
+                <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
+                <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
+                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

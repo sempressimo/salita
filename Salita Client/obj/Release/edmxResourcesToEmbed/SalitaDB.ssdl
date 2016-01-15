@@ -14,6 +14,7 @@
     <Property Name="Town" Type="varchar" MaxLength="25" />
     <Property Name="ZipCode" Type="varchar" MaxLength="9" />
     <Property Name="FromDealer" Type="bit" />
+    <Property Name="Canceled" Type="bit" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -35,6 +36,14 @@
     <Property Name="CustomerService_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ServiceType" Type="varchar" MaxLength="1" />
     <Property Name="ServiceDescription" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="HourSlots">
+    <Key>
+      <PropertyRef Name="HourSlotTime" />
+    </Key>
+    <Property Name="HourSlotTime" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="HourSlotOrder" Type="int" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -90,6 +99,7 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
     <Property Name="InLounge" Type="bit" />
     <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
     <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
+    <Property Name="Mood" Type="char" MaxLength="1" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.WatingForReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -125,6 +135,7 @@ warning 6002: The table/view 'Salita.dbo.v_CustomerNeeds' does not have a primar
     <Property Name="Customer_Town" Type="varchar" MaxLength="25" />
     <Property Name="Customer_ZipCode" Type="varchar" MaxLength="9" />
     <Property Name="IsActive" Type="bit" />
+    <Property Name="Canceled" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -147,6 +158,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     <Property Name="InLounge" Type="bit" />
     <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
     <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
+    <Property Name="Mood" Type="char" MaxLength="1" />
   </EntityType>
   <Association Name="FK_CustomerNeeds_CustomerServices">
     <End Role="CustomerServices" Type="Self.CustomerServices" Multiplicity="0..1" />
@@ -176,6 +188,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     <EntitySet Name="CustomerNeeds" EntityType="Self.CustomerNeeds" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerServices" EntityType="Self.CustomerServices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HourSlots" EntityType="Self.HourSlots" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -216,7 +229,8 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_CustomerNeeds].[Customer_Address] AS [Customer_Address], 
     [v_CustomerNeeds].[Customer_Town] AS [Customer_Town], 
     [v_CustomerNeeds].[Customer_ZipCode] AS [Customer_ZipCode], 
-    [v_CustomerNeeds].[IsActive] AS [IsActive]
+    [v_CustomerNeeds].[IsActive] AS [IsActive], 
+    [v_CustomerNeeds].[Canceled] AS [Canceled]
     FROM [dbo].[v_CustomerNeeds] AS [v_CustomerNeeds]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="v_RecentVisits" EntityType="Self.v_RecentVisits" store:Type="Views" store:Schema="dbo">
@@ -234,7 +248,8 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_RecentVisits].[Seat_Y] AS [Seat_Y], 
     [v_RecentVisits].[InLounge] AS [InLounge], 
     [v_RecentVisits].[WaitingFor] AS [WaitingFor], 
-    [v_RecentVisits].[LoginPIN] AS [LoginPIN]
+    [v_RecentVisits].[LoginPIN] AS [LoginPIN], 
+    [v_RecentVisits].[Mood] AS [Mood]
     FROM [dbo].[v_RecentVisits] AS [v_RecentVisits]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="Self.FK_CustomerNeeds_CustomerServices">

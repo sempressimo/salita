@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="address.aspx" />
+    <Content Include="ag_transport_form.aspx" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="cancel_transportation.aspx" />
     <Content Include="change_mood.aspx" />
@@ -343,6 +344,13 @@
     </Compile>
     <Compile Include="address.aspx.designer.cs">
       <DependentUpon>address.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ag_transport_form.aspx.cs">
+      <DependentUpon>ag_transport_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ag_transport_form.aspx.designer.cs">
+      <DependentUpon>ag_transport_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\DefaultResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -577,6 +585,9 @@
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Visit.cs">
+      <DependentUpon>SalitaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_AG_Transport.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="v_CustomerNeeds.cs">

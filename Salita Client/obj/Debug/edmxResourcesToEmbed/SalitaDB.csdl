@@ -4,12 +4,14 @@
     <EntitySet Name="CustomerNeeds" EntityType="SalitaModel.CustomerNeed" />
     <EntitySet Name="Customers" EntityType="SalitaModel.Customer" />
     <EntitySet Name="CustomerServices" EntityType="SalitaModel.CustomerService" />
+    <EntitySet Name="HourSlots" EntityType="SalitaModel.HourSlot" />
     <EntitySet Name="Maps" EntityType="SalitaModel.Map" />
     <EntitySet Name="sysdiagrams" EntityType="SalitaModel.sysdiagram" />
     <EntitySet Name="Users" EntityType="SalitaModel.User" />
     <EntitySet Name="Visits" EntityType="SalitaModel.Visit" />
     <EntitySet Name="ListZips" EntityType="SalitaModel.ListZip" />
     <EntitySet Name="WatingForReasons" EntityType="SalitaModel.WatingForReason" />
+    <EntitySet Name="v_AG_Transport" EntityType="SalitaModel.v_AG_Transport" />
     <EntitySet Name="v_CustomerNeeds" EntityType="SalitaModel.v_CustomerNeeds" />
     <EntitySet Name="v_RecentVisits" EntityType="SalitaModel.v_RecentVisits" />
     <AssociationSet Name="FK_CustomerNeeds_CustomerServices" Association="SalitaModel.FK_CustomerNeeds_CustomerServices">
@@ -35,6 +37,7 @@
     <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
     <Property Name="FromDealer" Type="Boolean" />
+    <Property Name="Canceled" Type="Boolean" />
     <NavigationProperty Name="CustomerService" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerNeed" ToRole="CustomerService" />
   </EntityType>
   <EntityType Name="Customer">
@@ -60,6 +63,14 @@
     <Property Name="ServiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" />
     <NavigationProperty Name="CustomerNeeds" Relationship="SalitaModel.FK_CustomerNeeds_CustomerServices" FromRole="CustomerService" ToRole="CustomerNeed" />
+  </EntityType>
+  <EntityType Name="HourSlot">
+    <Key>
+      <PropertyRef Name="HourSlotTime" />
+    </Key>
+    <Property Name="HourSlotTime" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="HourSlotOrder" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="Map">
     <Key>
@@ -99,6 +110,20 @@
     <Property Name="InLounge" Type="Boolean" />
     <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="AG_Companions" Type="Int32" />
+    <Property Name="AG_LL" Type="Boolean" />
+    <Property Name="AG_RR" Type="Boolean" />
+    <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_OK" Type="DateTime" Precision="3" />
+    <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Customer" Relationship="SalitaModel.FK_Visits_Customers" FromRole="Visit" ToRole="Customer" />
   </EntityType>
   <EntityType Name="ListZip">
@@ -120,6 +145,40 @@
     </Key>
     <Property Name="WatingForReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ReasonDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_AG_Transport">
+    <Key>
+      <PropertyRef Name="Visit_ID" />
+    </Key>
+    <Property Name="Visit_ID" Type="Int32" Nullable="false" />
+    <Property Name="Customer_ID" Type="Int32" />
+    <Property Name="VisitDate" Type="DateTime" Precision="3" />
+    <Property Name="Seat_X" Type="Int32" />
+    <Property Name="Seat_Y" Type="Int32" />
+    <Property Name="InLounge" Type="Boolean" />
+    <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="AG_Companions" Type="Int32" />
+    <Property Name="AG_LL" Type="Boolean" />
+    <Property Name="AG_RR" Type="Boolean" />
+    <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_OK" Type="DateTime" Precision="3" />
+    <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
+    <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="v_CustomerNeeds">
     <Key>
@@ -144,6 +203,7 @@
     <Property Name="Customer_Town" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Customer_ZipCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Canceled" Type="Boolean" />
   </EntityType>
   <EntityType Name="v_RecentVisits">
     <Key>
@@ -164,6 +224,7 @@
     <Property Name="InLounge" Type="Boolean" />
     <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
   <Association Name="FK_CustomerNeeds_CustomerServices">
     <End Type="SalitaModel.CustomerService" Role="CustomerService" Multiplicity="0..1" />

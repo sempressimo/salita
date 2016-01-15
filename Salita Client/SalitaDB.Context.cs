@@ -35,6 +35,7 @@ namespace Salita_Client
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<ListZip> ListZips { get; set; }
         public virtual DbSet<WatingForReason> WatingForReasons { get; set; }
+        public virtual DbSet<v_AG_Transport> v_AG_Transport { get; set; }
         public virtual DbSet<v_CustomerNeeds> v_CustomerNeeds { get; set; }
         public virtual DbSet<v_RecentVisits> v_RecentVisits { get; set; }
     }

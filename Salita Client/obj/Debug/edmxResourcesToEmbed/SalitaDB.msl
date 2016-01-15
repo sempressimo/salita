@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CustomerNeeds">
       <EntityTypeMapping TypeName="SalitaModel.CustomerNeed">
         <MappingFragment StoreEntitySet="CustomerNeeds">
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
           <ScalarProperty Name="FromDealer" ColumnName="FromDealer" />
           <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
           <ScalarProperty Name="Town" ColumnName="Town" />
@@ -41,6 +42,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HourSlots">
+      <EntityTypeMapping TypeName="SalitaModel.HourSlot">
+        <MappingFragment StoreEntitySet="HourSlots">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="HourSlotOrder" ColumnName="HourSlotOrder" />
+          <ScalarProperty Name="HourSlotTime" ColumnName="HourSlotTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Maps">
       <EntityTypeMapping TypeName="SalitaModel.Map">
         <MappingFragment StoreEntitySet="Maps">
@@ -73,6 +83,20 @@
     <EntitySetMapping Name="Visits">
       <EntityTypeMapping TypeName="SalitaModel.Visit">
         <MappingFragment StoreEntitySet="Visits">
+          <ScalarProperty Name="AG_DriverName" ColumnName="AG_DriverName" />
+          <ScalarProperty Name="AG_ArrivalTime" ColumnName="AG_ArrivalTime" />
+          <ScalarProperty Name="AG_ExitTime" ColumnName="AG_ExitTime" />
+          <ScalarProperty Name="AG_OK" ColumnName="AG_OK" />
+          <ScalarProperty Name="AG_RegisteredTime" ColumnName="AG_RegisteredTime" />
+          <ScalarProperty Name="AG_AttendedTime" ColumnName="AG_AttendedTime" />
+          <ScalarProperty Name="AG_AppointmentTime" ColumnName="AG_AppointmentTime" />
+          <ScalarProperty Name="AG_DriveTo" ColumnName="AG_DriveTo" />
+          <ScalarProperty Name="AG_Advisor" ColumnName="AG_Advisor" />
+          <ScalarProperty Name="AG_Tag" ColumnName="AG_Tag" />
+          <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
+          <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
+          <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
+          <ScalarProperty Name="Mood" ColumnName="Mood" />
           <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
           <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />
@@ -104,9 +128,45 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_AG_Transport">
+      <EntityTypeMapping TypeName="SalitaModel.v_AG_Transport">
+        <MappingFragment StoreEntitySet="v_AG_Transport">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AG_DriverName" ColumnName="AG_DriverName" />
+          <ScalarProperty Name="AG_ArrivalTime" ColumnName="AG_ArrivalTime" />
+          <ScalarProperty Name="AG_ExitTime" ColumnName="AG_ExitTime" />
+          <ScalarProperty Name="AG_OK" ColumnName="AG_OK" />
+          <ScalarProperty Name="AG_RegisteredTime" ColumnName="AG_RegisteredTime" />
+          <ScalarProperty Name="AG_AttendedTime" ColumnName="AG_AttendedTime" />
+          <ScalarProperty Name="AG_AppointmentTime" ColumnName="AG_AppointmentTime" />
+          <ScalarProperty Name="AG_DriveTo" ColumnName="AG_DriveTo" />
+          <ScalarProperty Name="AG_Advisor" ColumnName="AG_Advisor" />
+          <ScalarProperty Name="AG_Tag" ColumnName="AG_Tag" />
+          <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
+          <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
+          <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
+          <ScalarProperty Name="Mood" ColumnName="Mood" />
+          <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
+          <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
+          <ScalarProperty Name="InLounge" ColumnName="InLounge" />
+          <ScalarProperty Name="Seat_Y" ColumnName="Seat_Y" />
+          <ScalarProperty Name="Seat_X" ColumnName="Seat_X" />
+          <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Visit_ID" ColumnName="Visit_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="v_CustomerNeeds">
       <EntityTypeMapping TypeName="SalitaModel.v_CustomerNeeds">
         <MappingFragment StoreEntitySet="v_CustomerNeeds">
+          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Customer_ZipCode" ColumnName="Customer_ZipCode" />
           <ScalarProperty Name="Customer_Town" ColumnName="Customer_Town" />
@@ -132,6 +192,7 @@
     <EntitySetMapping Name="v_RecentVisits">
       <EntityTypeMapping TypeName="SalitaModel.v_RecentVisits">
         <MappingFragment StoreEntitySet="v_RecentVisits">
+          <ScalarProperty Name="Mood" ColumnName="Mood" />
           <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
           <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
           <ScalarProperty Name="InLounge" ColumnName="InLounge" />

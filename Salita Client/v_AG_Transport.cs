@@ -12,7 +12,7 @@ namespace Salita_Client
     using System;
     using System.Collections.Generic;
     
-    public partial class Visit
+    public partial class v_AG_Transport
     {
         public int Visit_ID { get; set; }
         public Nullable<int> Customer_ID { get; set; }
@@ -36,7 +36,12 @@ namespace Salita_Client
         public Nullable<System.DateTime> AG_ExitTime { get; set; }
         public Nullable<System.DateTime> AG_ArrivalTime { get; set; }
         public string AG_DriverName { get; set; }
-    
-        public virtual Customer Customer { get; set; }
+        public string Phone { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Town { get; set; }
+        public string ZipCode { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

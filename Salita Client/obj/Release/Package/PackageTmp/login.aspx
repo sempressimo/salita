@@ -8,11 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/form.css" />
-
-        <script src="Scripts/jquery-2.1.3.min.js"></script>
-        <script src="Scripts/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -29,14 +26,14 @@
                     <asp:Image runat="server" ImageUrl="~/images/logo.png" CssClass="img-responsive logo" />
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="lbLogin">
                         <div class="form-group">
-                            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" CssClass="form-control"></asp:TextBox>
+                            <input id="txtUsername" runat="server" placeholder="Usuario o # Teléfono" class="form-control">
                         </div>
                         <div class="form-group">
                             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <p>&nbsp;</p>
-                                <asp:LinkButton ID="lbLogin" runat="server" OnClick="cmdLogin_Click" CssClass="mybutton bold whitetext blue rounded">
+                                <asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" CssClass="mybutton btn-block bold whitetext blue rounded">
                                     <asp:Image ID="Image1" runat="server" ImageUrl="~/images/login.png" />
                                     <asp:Label runat="server" Text="Login"></asp:Label>
                                 </asp:LinkButton> 
@@ -54,5 +51,7 @@
         </div>
 
     </form>
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 </body>
 </html>
