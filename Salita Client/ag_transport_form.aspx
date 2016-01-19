@@ -4,6 +4,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-danger mysummary"/>
     <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="container-fluid" style="background-color: white;">
         <h1>Hoja de Transportación</h1>
         <table style="width: 100%; border: thin; border-color: silver;">
@@ -64,10 +84,10 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <%#Eval("FullName")%>
+                            <a href='#' data-toggle="modal" data-target="#myModal"><%#Eval("FullName")%></a>
                         </td>
                         <td>
-                            <input id="txtAGCompanions" type="number" value='<%#Eval("AG_Companions")%>'></input>
+                            <%#Eval("AG_Companions")%>
                         </td>
                         <td>
                             <%#Eval("AG_LL")%>
@@ -76,7 +96,7 @@
                             <%#Eval("AG_RR")%>
                         </td>
                         <td>
-                            <input id="txtPhone" type="number" value='<%#Eval("Phone")%>'></input>
+                            <%#Eval("Phone")%>
                         </td>
                         <td>
                             <%#Eval("AG_Tag")%>
