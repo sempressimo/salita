@@ -5,6 +5,8 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-danger mysummary"/>
     <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
     
+    <input type="hidden" value="-1" name="myRecordId" id="myRecordId" />
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -21,7 +23,7 @@
                         Nombre completo:
                     </div>
                     <div class="col-lg-6">
-                        <input id="txtEditFullName" placeholder="Full name" class="form-control" />
+                        <input id="txtEditFullName" runat="server" placeholder="Full name" class="form-control" />
                     </div>
                   </div>
 
@@ -30,14 +32,14 @@
                         Teléfono:
                     </div>
                     <div class="col-lg-6">
-                        <input id="txtEditPhone" placeholder="(787) 999-9999" class="form-control" />
+                        <input id="txtEditPhone" runat="server" placeholder="(787) 999-9999" class="form-control" />
                     </div>
                   </div>
           
               </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+              <asp:Button ID="cmdSave" OnClick="cmdSave_Click" CssClass="btn btn-primary" runat="server" Text="Save changes" />
           </div>
         </div>
       </div>
@@ -52,6 +54,9 @@
                         Nombre
                     </th>
                     <th>
+                        Teléfono
+                    </th>
+                    <th>
                         A#
                     </th>
                     <th>
@@ -59,9 +64,6 @@
                     </th>
                     <th>
                         R
-                    </th>
-                    <th>
-                        Teléfono
                     </th>
                     <th>
                         Tag
@@ -102,8 +104,11 @@
             <asp:ListView ID="ListView1" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td>
-                            <a href='#' data-toggle="modal" data-target="#myModal"><%#Eval("FullName")%></a>
+                        <td id='td-fullname-<%#Eval("Visit_ID")%>'>
+                            <a href='#' style="text-decoration: none; color: black;" onclick="setValue(<%#Eval("Visit_ID")%>)" data-toggle="modal" data-target="#myModal"><%#Eval("FullName")%></a>
+                        </td>
+                        <td id='td-phone-<%#Eval("Visit_ID")%>'>
+                            <a href='#' style="text-decoration: none; color: black;" onclick="setValue(<%#Eval("Visit_ID")%>)" data-toggle="modal" data-target="#myModal"><%#Eval("Phone")%></a>
                         </td>
                         <td>
                             <%#Eval("AG_Companions")%>
@@ -113,9 +118,6 @@
                         </td>
                         <td>
                             <%#Eval("AG_RR")%>
-                        </td>
-                        <td>
-                            <%#Eval("Phone")%>
                         </td>
                         <td>
                             <%#Eval("AG_Tag")%>
@@ -162,4 +164,15 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptSection" runat="server">
+    <script type="text/javascript">
+    function setValue(val)
+    {
+        document.getElementById('myRecordId').value = val;
+
+        $('#ContentPlaceHolder1_txtEditFullName').val($('#td-fullname-' + val).find('a').html().trim());
+        $('#ContentPlaceHolder1_txtEditPhone').val($('#td-phone-' + val).find('a').html().trim());
+        
+
+    }
+    </script>
 </asp:Content>
