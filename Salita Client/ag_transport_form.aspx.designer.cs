@@ -46,7 +46,7 @@ namespace Salita_Client {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPhone;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEditPhone;
         
         /// <summary>
         /// Text2 control.
@@ -55,34 +55,34 @@ namespace Salita_Client {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text2;
         
         /// <summary>
-        /// Text1 control.
+        /// txtTag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtTag;
         
         /// <summary>
-        /// CheckBox1 control.
+        /// cbLL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox cbLL;
         
         /// <summary>
-        /// CheckBox2 control.
+        /// lbR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+        protected global::System.Web.UI.WebControls.CheckBox lbR;
         
         /// <summary>
         /// txtDestiny control.
@@ -94,67 +94,67 @@ namespace Salita_Client {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDestiny;
         
         /// <summary>
-        /// Text3 control.
+        /// txtDateTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDateTime;
         
         /// <summary>
-        /// Time1 control.
+        /// txtSignedInTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Time1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtSignedInTime;
         
         /// <summary>
-        /// Time2 control.
+        /// txtAtended control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Time2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtAtended;
         
         /// <summary>
-        /// Time3 control.
+        /// txtDriver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Time3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDriver;
         
         /// <summary>
-        /// CheckBox3 control.
+        /// cbOK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
+        protected global::System.Web.UI.WebControls.CheckBox cbOK;
         
         /// <summary>
-        /// Time4 control.
+        /// txtLeaveTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Time4;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLeaveTime;
         
         /// <summary>
-        /// Time5 control.
+        /// txtArriveTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Time5;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtArriveTime;
         
         /// <summary>
         /// cmdSave control.
