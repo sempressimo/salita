@@ -17,7 +17,7 @@ namespace Salita_Client
             {
                 if (!Page.IsPostBack)
                 {
-
+                    this.LoadVisits();
                 }
             }
             catch (Exception E)
@@ -27,7 +27,6 @@ namespace Salita_Client
             }
         }
 
-        /*
         protected void LoadVisits()
         {
             var TodaysVisits = this.db.v_AG_Transport.OrderBy(x => x.VisitDate);
@@ -35,7 +34,6 @@ namespace Salita_Client
             this.ListView1.DataSource = TodaysVisits.ToList();
             this.ListView1.DataBind();
         }
-        */
 
         protected string GetDefaultString(object f)
         {
@@ -55,7 +53,18 @@ namespace Salita_Client
         {
             try
             {
+                int RecId = 0;
+                int.TryParse(Request.Form["myRecordId"].ToString(), out RecId);
 
+                var FullName = this.txtEditFullName.Value;
+
+                var VisitRecord = db.Visits.Single(p => p.Visit_ID == RecId);
+
+                VisitRecord.AG_Advisor = this.txtEditFullName.Value;
+
+                this.db.SaveChanges();
+
+                this.LoadVisits();
             }
             catch (Exception E)
             {
