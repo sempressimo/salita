@@ -125,6 +125,13 @@
     
     <div class="container-fluid" style="background-color: white;">
         <h1>Hoja de Transportación</h1>
+
+        <!-- Header details -->
+        <div>
+
+            &nbsp;
+        </div>
+
         <table style="width: 100%; border: thin; border-color: silver;">
             <thead style="background-color: silver;">
                 <tr>
