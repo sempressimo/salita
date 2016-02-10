@@ -69,6 +69,16 @@ namespace Salita_Client
             return f.ToString();
         }
 
+        protected Boolean GetDefaultBool(object f)
+        {
+            if (f == null)
+            {
+                return false;
+            }
+
+            return Convert.ToBoolean(f);
+        }
+
         protected void cmdSave_Click(object sender, EventArgs e)
         {
             try
@@ -130,6 +140,28 @@ namespace Salita_Client
 
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = validationErrors;
+            }
+            catch (Exception ex)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = ex.Message;
+            }
+        }
+
+        protected void lbAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Customer
+
+                Visit v = new Visit();
+
+                v.AG_Companions = 0;
+
+                this.db.Visits.Add(v);
+                this.db.SaveChanges();
+
+                this.LoadVisits();
             }
             catch (Exception ex)
             {

@@ -137,6 +137,7 @@
     
     <div class="container-fluid" style="background-color: white;">
         <h1>Hoja de Transportación</h1>
+        <asp:LinkButton ID="lbAdd" runat="server" OnClick="lbAdd_Click">Anadir Visita</asp:LinkButton>
 
         <!-- Header details -->
         <div>
@@ -211,7 +212,7 @@
                             <%#Eval("AG_Companions")%>
                         </td>
                         <td>
-                            <%#Eval("AG_LL")%>
+                            <asp:CheckBox ID="cbListLL" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_LL"))%>' />
                         </td>
                         <td>
                             <%#Eval("AG_RR")%>
@@ -219,10 +220,10 @@
                         <td id='td-tag-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Tag")%>
                         </td>
-                        <td>
+                        <td id='td-advisor-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Advisor")%>
                         </td>
-                        <td>
+                        <td id='td-driveto-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriveTo")%>
                         </td>
                         <td>
@@ -235,7 +236,7 @@
                             <%#this.ParseDate(Eval("AG_AttendedTime"))%>
                         </td>
                         <td>
-                            <%#Eval("AG_OK")%>
+                            <asp:CheckBox ID="CheckBox1" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_OK"))%>' />
                         </td>
                         <td>
                             <%#this.ParseDate(Eval("AG_ExitTime"))%>
@@ -268,7 +269,10 @@
             $('#ContentPlaceHolder1_txtEditFullName').val($('#td-fullname-' + val).find('a').html().trim());
             $('#ContentPlaceHolder1_txtEditPhone').val($('#td-phone-' + val).find('a').html().trim());
             $('#ContentPlaceHolder1_txtTag').val($('#td-tag-' + val).html().trim());
+            $('#ContentPlaceHolder1_cmbCompanions').val($('#td-companions-' + val).html().trim());
 
+            $('#ContentPlaceHolder1_txtAdvisor').val($('#td-advisor-' + val).html().trim());
+            $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
 
         }
     </script>
