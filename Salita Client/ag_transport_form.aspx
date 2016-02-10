@@ -34,7 +34,14 @@
 
                     <div class="col-lg-4">
                         <label>Acompañantes</label>
-                        <input id="Text2" runat="server" type="number" placeholder="#" class="form-control" />
+                        <select id="cmbCompanions" runat="server" class="form-control">
+                            <option value="0">Solo</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
 
                     <div class="col-lg-4">
@@ -56,9 +63,14 @@
 
                 <div class="row">
 
-                    <div class="col-lg-12">
+                     <div class="col-lg-6">
+                        <label>Asesor</label>
+                        <input id="txtAdvisor" type="text" runat="server" placeholder="Nombre..." class="form-control" />
+                    </div>
+
+                    <div class="col-lg-6">
                         <label>Destino</label>
-                        <input id="txtDestiny" type="text" runat="server" placeholder="Detalles..." class="form-control" />
+                        <input id="txtDriveTo" type="text" runat="server" placeholder="Detalles..." class="form-control" />
                     </div>
 
                 </div>
@@ -67,7 +79,7 @@
                 
                     <div class="col-lg-4">
                         <label>H. Cita</label>
-                        <input id="txtDateTime" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
+                        <input id="txtAppointment" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
                 
                     <div class="col-lg-4">
@@ -193,9 +205,9 @@
                             <a href='#' style="text-decoration: none; color: black;" onclick="setValue(<%#Eval("Visit_ID")%>)" data-toggle="modal" data-target="#myModal"><%#Eval("FullName")%></a>
                         </td>
                         <td id='td-phone-<%#Eval("Visit_ID")%>'>
-                            <a href='#' style="text-decoration: none; color: black;" onclick="setValue(<%#Eval("Visit_ID")%>)" data-toggle="modal" data-target="#myModal"><%#Eval("Phone")%></a>
+                            <a href='#' style="text-decoration: none; color: black;" onclick="setValue(<%#Eval("Visit_ID")%>)" data-toggle="modal" data-target="#myModal"><%#Eval("AG_Phone")%></a>
                         </td>
-                        <td>
+                        <td id='td-companions-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Companions")%>
                         </td>
                         <td>
@@ -204,7 +216,7 @@
                         <td>
                             <%#Eval("AG_RR")%>
                         </td>
-                        <td>
+                        <td id='td-tag-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Tag")%>
                         </td>
                         <td>
@@ -214,25 +226,25 @@
                             <%#Eval("AG_DriveTo")%>
                         </td>
                         <td>
-                            <%#Eval("AG_AppointmentTime")%>
+                            <%#this.ParseDate(Eval("AG_AppointmentTime"))%>
                         </td>
                         <td>
-                            <%#Eval("AG_RegisteredTime")%>
+                            <%#this.ParseDate(Eval("AG_RegisteredTime"))%>
                         </td>
                         <td>
-                            <%#Eval("AG_AttendedTime")%>
+                            <%#this.ParseDate(Eval("AG_AttendedTime"))%>
                         </td>
                         <td>
                             <%#Eval("AG_OK")%>
                         </td>
                         <td>
-                            <%#Eval("AG_ExitTime")%>
+                            <%#this.ParseDate(Eval("AG_ExitTime"))%>
                         </td>
                         <td>
                             <%#Eval("AG_DriverName")%>
                         </td>
                         <td>
-                            <%#Eval("AG_ArrivalTime")%>
+                            <%#this.ParseDate(Eval("AG_ArrivalTime"))%>
                         </td>
                         <td>
                             <%#Eval("Seat_X")%>
@@ -255,6 +267,7 @@
 
             $('#ContentPlaceHolder1_txtEditFullName').val($('#td-fullname-' + val).find('a').html().trim());
             $('#ContentPlaceHolder1_txtEditPhone').val($('#td-phone-' + val).find('a').html().trim());
+            $('#ContentPlaceHolder1_txtTag').val($('#td-tag-' + val).html().trim());
 
 
         }

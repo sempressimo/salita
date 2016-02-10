@@ -49,13 +49,13 @@ namespace Salita_Client {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEditPhone;
         
         /// <summary>
-        /// Text2 control.
+        /// cmbCompanions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text2;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbCompanions;
         
         /// <summary>
         /// txtTag control.
@@ -85,22 +85,31 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.CheckBox lbR;
         
         /// <summary>
-        /// txtDestiny control.
+        /// txtAdvisor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDestiny;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAdvisor;
         
         /// <summary>
-        /// txtDateTime control.
+        /// txtDriveTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDateTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDriveTo;
+        
+        /// <summary>
+        /// txtAppointment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtAppointment;
         
         /// <summary>
         /// txtSignedInTime control.
