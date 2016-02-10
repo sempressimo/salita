@@ -241,7 +241,7 @@
                         <td>
                             <%#this.ParseDate(Eval("AG_ExitTime"))%>
                         </td>
-                        <td>
+                        <td id='td-drivername-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriverName")%>
                         </td>
                         <td>
@@ -273,6 +273,8 @@
 
             $('#ContentPlaceHolder1_txtAdvisor').val($('#td-advisor-' + val).html().trim());
             $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
+
+            $('#ContentPlaceHolder1_txtDriverName').val($('#td-drivername-' + val).html().trim());
 
         }
     </script>
