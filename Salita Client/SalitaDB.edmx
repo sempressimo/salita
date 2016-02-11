@@ -105,16 +105,17 @@ warning 6002: The table/view 'Salita.dbo.ListZip' does not have a primary key de
           <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
           <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
           <Property Name="Mood" Type="char" MaxLength="1" />
+          <Property Name="AG_Phone" Type="varchar" MaxLength="15" />
           <Property Name="AG_Companions" Type="int" />
           <Property Name="AG_LL" Type="bit" />
           <Property Name="AG_RR" Type="bit" />
           <Property Name="AG_Tag" Type="varchar" MaxLength="5" />
-          <Property Name="AG_Advisor" Type="varchar" MaxLength="15" />
+          <Property Name="AG_Advisor" Type="varchar" MaxLength="25" />
           <Property Name="AG_DriveTo" Type="varchar" MaxLength="50" />
           <Property Name="AG_AppointmentTime" Type="datetime" />
           <Property Name="AG_AttendedTime" Type="datetime" />
           <Property Name="AG_RegisteredTime" Type="datetime" />
-          <Property Name="AG_OK" Type="datetime" />
+          <Property Name="AG_OK" Type="bit" />
           <Property Name="AG_ExitTime" Type="datetime" />
           <Property Name="AG_ArrivalTime" Type="datetime" />
           <Property Name="AG_DriverName" Type="varchar" MaxLength="15" />
@@ -143,16 +144,17 @@ warning 6002: The table/view 'Salita.dbo.v_AG_Transport' does not have a primary
           <Property Name="WaitingFor" Type="varchar" MaxLength="25" />
           <Property Name="LoginPIN" Type="varchar" MaxLength="4" />
           <Property Name="Mood" Type="char" MaxLength="1" />
+          <Property Name="AG_Phone" Type="varchar" MaxLength="15" />
           <Property Name="AG_Companions" Type="int" />
           <Property Name="AG_LL" Type="bit" />
           <Property Name="AG_RR" Type="bit" />
           <Property Name="AG_Tag" Type="varchar" MaxLength="5" />
-          <Property Name="AG_Advisor" Type="varchar" MaxLength="15" />
+          <Property Name="AG_Advisor" Type="varchar" MaxLength="25" />
           <Property Name="AG_DriveTo" Type="varchar" MaxLength="50" />
           <Property Name="AG_AppointmentTime" Type="datetime" />
           <Property Name="AG_AttendedTime" Type="datetime" />
           <Property Name="AG_RegisteredTime" Type="datetime" />
-          <Property Name="AG_OK" Type="datetime" />
+          <Property Name="AG_OK" Type="bit" />
           <Property Name="AG_ExitTime" Type="datetime" />
           <Property Name="AG_ArrivalTime" Type="datetime" />
           <Property Name="AG_DriverName" Type="varchar" MaxLength="15" />
@@ -274,6 +276,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
     [v_AG_Transport].[WaitingFor] AS [WaitingFor], 
     [v_AG_Transport].[LoginPIN] AS [LoginPIN], 
     [v_AG_Transport].[Mood] AS [Mood], 
+    [v_AG_Transport].[AG_Phone] AS [AG_Phone], 
     [v_AG_Transport].[AG_Companions] AS [AG_Companions], 
     [v_AG_Transport].[AG_LL] AS [AG_LL], 
     [v_AG_Transport].[AG_RR] AS [AG_RR], 
@@ -463,16 +466,17 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AG_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="AG_Companions" Type="Int32" />
           <Property Name="AG_LL" Type="Boolean" />
           <Property Name="AG_RR" Type="Boolean" />
           <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AG_Advisor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
           <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
           <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
-          <Property Name="AG_OK" Type="DateTime" Precision="3" />
+          <Property Name="AG_OK" Type="Boolean" />
           <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
           <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
           <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -511,16 +515,17 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
           <Property Name="WaitingFor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LoginPIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="Mood" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AG_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="AG_Companions" Type="Int32" />
           <Property Name="AG_LL" Type="Boolean" />
           <Property Name="AG_RR" Type="Boolean" />
           <Property Name="AG_Tag" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="AG_Advisor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AG_Advisor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="AG_DriveTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AG_AppointmentTime" Type="DateTime" Precision="3" />
           <Property Name="AG_AttendedTime" Type="DateTime" Precision="3" />
           <Property Name="AG_RegisteredTime" Type="DateTime" Precision="3" />
-          <Property Name="AG_OK" Type="DateTime" Precision="3" />
+          <Property Name="AG_OK" Type="Boolean" />
           <Property Name="AG_ExitTime" Type="DateTime" Precision="3" />
           <Property Name="AG_ArrivalTime" Type="DateTime" Precision="3" />
           <Property Name="AG_DriverName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -703,6 +708,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
                 <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
                 <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
                 <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
+                <ScalarProperty Name="AG_Phone" ColumnName="AG_Phone" />
                 <ScalarProperty Name="Mood" ColumnName="Mood" />
                 <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />
@@ -758,6 +764,7 @@ warning 6002: The table/view 'Salita.dbo.v_RecentVisits' does not have a primary
                 <ScalarProperty Name="AG_RR" ColumnName="AG_RR" />
                 <ScalarProperty Name="AG_LL" ColumnName="AG_LL" />
                 <ScalarProperty Name="AG_Companions" ColumnName="AG_Companions" />
+                <ScalarProperty Name="AG_Phone" ColumnName="AG_Phone" />
                 <ScalarProperty Name="Mood" ColumnName="Mood" />
                 <ScalarProperty Name="LoginPIN" ColumnName="LoginPIN" />
                 <ScalarProperty Name="WaitingFor" ColumnName="WaitingFor" />

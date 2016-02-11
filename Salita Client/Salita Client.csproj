@@ -178,13 +178,10 @@
     <Content Include="css\style.css" />
     <Content Include="css\top.css" />
     <Content Include="CustomerHome\default.aspx" />
-    <Content Include="CustomerHome\my_transports.aspx" />
     <Content Include="CustomerHome\request_service.aspx" />
     <Content Include="CustomerHome\request_service_feedback.aspx" />
     <Content Include="CustomerHome\request_transport.aspx" />
-    <Content Include="CustomerHome\service_request_confirmation.aspx" />
     <Content Include="CustomerHome\signout.aspx" />
-    <Content Include="CustomerHome\user_transport_cancel.aspx" />
     <Content Include="customers_list.aspx" />
     <Content Include="customer_arrived.aspx" />
     <Content Include="customer_detail.aspx" />
@@ -378,22 +375,12 @@
       <DependentUpon>CustomerSite.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomerHome\CustomerSite.Master.designer.cs">
-      <DependentUpon>CustomerSite.Master</DependentUpon>
-    </Compile>
     <Compile Include="CustomerHome\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomerHome\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerHome\my_transports.aspx.cs">
-      <DependentUpon>my_transports.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomerHome\my_transports.aspx.designer.cs">
-      <DependentUpon>my_transports.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerHome\request_service.aspx.cs">
       <DependentUpon>request_service.aspx</DependentUpon>
@@ -416,26 +403,12 @@
     <Compile Include="CustomerHome\request_transport.aspx.designer.cs">
       <DependentUpon>request_transport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomerHome\service_request_confirmation.aspx.cs">
-      <DependentUpon>service_request_confirmation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomerHome\service_request_confirmation.aspx.designer.cs">
-      <DependentUpon>service_request_confirmation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CustomerHome\signout.aspx.cs">
       <DependentUpon>signout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomerHome\signout.aspx.designer.cs">
       <DependentUpon>signout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerHome\user_transport_cancel.aspx.cs">
-      <DependentUpon>user_transport_cancel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomerHome\user_transport_cancel.aspx.designer.cs">
-      <DependentUpon>user_transport_cancel.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerNeed.cs">
       <DependentUpon>SalitaDB.tt</DependentUpon>

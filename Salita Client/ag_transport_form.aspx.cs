@@ -119,6 +119,9 @@ namespace Salita_Client
                 VisitRecord.AG_OK = this.cbOK.Checked;
                 VisitRecord.AG_DriverName = this.txtDriver.Value;
 
+                //VisitRecord.Seat_X = 1;
+                //VisitRecord.Seat_Y = 1;
+
                 this.db.SaveChanges();
 
                 this.LoadVisits();

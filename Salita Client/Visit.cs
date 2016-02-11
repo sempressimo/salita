@@ -23,6 +23,7 @@ namespace Salita_Client
         public string WaitingFor { get; set; }
         public string LoginPIN { get; set; }
         public string Mood { get; set; }
+        public string AG_Phone { get; set; }
         public Nullable<int> AG_Companions { get; set; }
         public Nullable<bool> AG_LL { get; set; }
         public Nullable<bool> AG_RR { get; set; }
@@ -32,7 +33,7 @@ namespace Salita_Client
         public Nullable<System.DateTime> AG_AppointmentTime { get; set; }
         public Nullable<System.DateTime> AG_AttendedTime { get; set; }
         public Nullable<System.DateTime> AG_RegisteredTime { get; set; }
-        public Nullable<System.DateTime> AG_OK { get; set; }
+        public Nullable<bool> AG_OK { get; set; }
         public Nullable<System.DateTime> AG_ExitTime { get; set; }
         public Nullable<System.DateTime> AG_ArrivalTime { get; set; }
         public string AG_DriverName { get; set; }

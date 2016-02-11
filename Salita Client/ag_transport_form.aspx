@@ -121,7 +121,29 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <label>&nbsp;</label>
+                        <label>Silla</label>
+                        <select id="cmbChair" runat="server" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
                     </div>
 
                 </div>
@@ -226,13 +248,13 @@
                         <td id='td-driveto-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriveTo")%>
                         </td>
-                        <td>
+                        <td id='td-appointmenttime-<%#Eval("Visit_ID")%>'>
                             <%#this.ParseDate(Eval("AG_AppointmentTime"))%>
                         </td>
-                        <td>
+                        <td id='td-registeredtime-<%#Eval("Visit_ID")%>'>
                             <%#this.ParseDate(Eval("AG_RegisteredTime"))%>
                         </td>
-                        <td>
+                        <td id='td-attendedtime-<%#Eval("Visit_ID")%>'>
                             <%#this.ParseDate(Eval("AG_AttendedTime"))%>
                         </td>
                         <td>
@@ -247,7 +269,7 @@
                         <td>
                             <%#this.ParseDate(Eval("AG_ArrivalTime"))%>
                         </td>
-                        <td>
+                        <td id='td-chair-<%#Eval("Visit_ID")%>'>
                             <%#Eval("Seat_X")%>
                         </td>
                     </tr>
@@ -275,6 +297,12 @@
             $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
 
             $('#ContentPlaceHolder1_txtDriverName').val($('#td-drivername-' + val).html().trim());
+
+            $('#ContentPlaceHolder1_txtAppointment').val($('#td-appointmenttime-' + val).html().trim());
+            $('#ContentPlaceHolder1_txtSignedInTime').val($('#td-registeredtime-' + val).html().trim());
+            $('#ContentPlaceHolder1_txtAttended').val($('#td-attendedtime-' + val).html().trim());
+
+            $('#ContentPlaceHolder1_cmbChair').val($('#td-chair-' + val).html().trim());
 
         }
     </script>
