@@ -58,6 +58,15 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.Button cmdNewVisit;
         
         /// <summary>
+        /// txtCustomer_ID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtCustomer_ID;
+        
+        /// <summary>
         /// txtEditFullName control.
         /// </summary>
         /// <remarks>

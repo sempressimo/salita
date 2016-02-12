@@ -231,11 +231,13 @@ namespace Salita_Client
         {
             try
             {
-                var _Customer = this.db.Customers.SingleOrDefault(p => p.Customer_ID == 0);
+                int cId = Convert.ToInt32(this.txtCustomer_ID.Value);
 
-                if (_Customer != null)
+                var _V = this.db.Visits.SingleOrDefault(p => p.Visit_ID == cId);
+
+                if (_V != null)
                 {
-                    this.db.Customers.Remove(_Customer);
+                    this.db.Visits.Remove(_V);
                     this.db.SaveChanges();
 
                     this.LoadVisits();

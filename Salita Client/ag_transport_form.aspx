@@ -59,7 +59,7 @@
                   
                 <div class="row"> 
                     <div class="col-lg-6">
-                        <label>Nombre</label>
+                        <label>Nombre<input id="txtCustomer_ID" runat="server" type="hidden" /></label>
                         <input id="txtEditFullName" runat="server" type="text" placeholder="Full name" class="form-control" />
                     </div>
                     <div class="col-lg-6">
@@ -326,6 +326,8 @@
     <script type="text/javascript">
         function setValue(val) {
             document.getElementById('myRecordId').value = val;
+
+            $('#ContentPlaceHolder1_txtCustomer_ID').val(val);
 
             $('#ContentPlaceHolder1_txtEditFullName').val($('#td-fullname-' + val).find('a').html().trim());
             $('#ContentPlaceHolder1_txtEditPhone').val($('#td-phone-' + val).find('a').html().trim());
