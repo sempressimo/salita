@@ -18,8 +18,8 @@
               <div class="modal-body">
             
                 <!-- Basic details form start here -->
-                
-                <div class="row">
+                  
+                <div class="row"> 
                     <div class="col-lg-6">
                         <label>Nombre</label>
                         <input id="txtEditFullName" runat="server" type="text" placeholder="Full name" class="form-control" />
@@ -34,7 +34,7 @@
 
                     <div class="col-lg-4">
                         <label>Acompañantes</label>
-                        <select id="cmbCompanions" runat="server" class="form-control">
+                        <select id="cmbCompanions" runat="server" class ="form-control">
                             <option value="0">Solo</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -249,25 +249,25 @@
                             <%#Eval("AG_DriveTo")%>
                         </td>
                         <td id='td-appointmenttime-<%#Eval("Visit_ID")%>'>
-                            <%#this.ParseDate(Eval("AG_AppointmentTime"))%>
+                            <%#Eval("AG_AppointmentTime")%>
                         </td>
                         <td id='td-registeredtime-<%#Eval("Visit_ID")%>'>
-                            <%#this.ParseDate(Eval("AG_RegisteredTime"))%>
+                            <%#Eval("AG_RegisteredTime")%>
                         </td>
                         <td id='td-attendedtime-<%#Eval("Visit_ID")%>'>
-                            <%#this.ParseDate(Eval("AG_AttendedTime"))%>
+                            <%#Eval("AG_AttendedTime")%>
                         </td>
                         <td>
                             <asp:CheckBox ID="CheckBox1" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_OK"))%>' />
                         </td>
                         <td>
-                            <%#this.ParseDate(Eval("AG_ExitTime"))%>
+                            <%#Eval("AG_ExitTime")%>
                         </td>
                         <td id='td-drivername-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriverName")%>
                         </td>
                         <td>
-                            <%#this.ParseDate(Eval("AG_ArrivalTime"))%>
+                            <%#Eval("AG_ArrivalTime")%>
                         </td>
                         <td id='td-chair-<%#Eval("Visit_ID")%>'>
                             <%#Eval("Seat_X")%>

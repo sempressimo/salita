@@ -110,11 +110,11 @@ namespace Salita_Client
                 VisitRecord.AG_Advisor = this.txtAdvisor.Value;
                 VisitRecord.AG_DriveTo = this.txtDriveTo.Value;
                 
-                VisitRecord.AG_AppointmentTime = string.IsNullOrEmpty(this.txtAppointment.Value) ? Convert.ToDateTime("1/1/1900") : Convert.ToDateTime(this.txtAppointment.Value);
-                VisitRecord.AG_RegisteredTime = string.IsNullOrEmpty(this.txtSignedInTime.Value) ? Convert.ToDateTime("1/1/1900") : Convert.ToDateTime(this.txtSignedInTime.Value);
-                VisitRecord.AG_AttendedTime = string.IsNullOrEmpty(this.txtAtended.Value) ? Convert.ToDateTime("1/1/1900") : Convert.ToDateTime(this.txtAtended.Value);
-                VisitRecord.AG_ArrivalTime = string.IsNullOrEmpty(this.txtArriveTime.Value) ? Convert.ToDateTime("1/1/1900") : Convert.ToDateTime(this.txtArriveTime.Value);
-                VisitRecord.AG_ExitTime = string.IsNullOrEmpty(this.txtLeaveTime.Value) ? Convert.ToDateTime("1/1/1900") : Convert.ToDateTime(this.txtLeaveTime.Value);
+                VisitRecord.AG_AppointmentTime = this.txtAppointment.Value;
+                VisitRecord.AG_RegisteredTime = this.txtSignedInTime.Value;
+                VisitRecord.AG_AttendedTime = this.txtAtended.Value;
+                VisitRecord.AG_ArrivalTime = this.txtArriveTime.Value;
+                VisitRecord.AG_ExitTime = this.txtLeaveTime.Value;
                 
                 VisitRecord.AG_OK = this.cbOK.Checked;
                 VisitRecord.AG_DriverName = this.txtDriver.Value;

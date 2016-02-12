@@ -30,12 +30,12 @@ namespace Salita_Client
         public string AG_Tag { get; set; }
         public string AG_Advisor { get; set; }
         public string AG_DriveTo { get; set; }
-        public Nullable<System.DateTime> AG_AppointmentTime { get; set; }
-        public Nullable<System.DateTime> AG_AttendedTime { get; set; }
-        public Nullable<System.DateTime> AG_RegisteredTime { get; set; }
+        public string AG_AppointmentTime { get; set; }
+        public string AG_AttendedTime { get; set; }
+        public string AG_RegisteredTime { get; set; }
         public Nullable<bool> AG_OK { get; set; }
-        public Nullable<System.DateTime> AG_ExitTime { get; set; }
-        public Nullable<System.DateTime> AG_ArrivalTime { get; set; }
+        public string AG_ExitTime { get; set; }
+        public string AG_ArrivalTime { get; set; }
         public string AG_DriverName { get; set; }
     
         public virtual Customer Customer { get; set; }
