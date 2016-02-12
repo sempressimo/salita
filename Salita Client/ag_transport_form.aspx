@@ -7,7 +7,45 @@
     
     <input type="hidden" value="-1" name="myRecordId" id="myRecordId" />
 
-    <!-- Modal -->
+    <!-- Visit Modal -->
+    <div class="modal fade" id="myNewVisitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myNewVisitModalLabel">Nueva Visita</h4>
+          </div>
+              <div class="modal-body">
+            
+                  <!-- Basic details form start here -->
+                  <div class="row">
+                    <div class="col-lg-6">
+                        Nombre completo:
+                    </div>
+                    <div class="col-lg-6">
+                        <input id="txtNewVisitName" runat="server" placeholder="Full name" class="form-control" />
+                    </div>
+                  </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        Teléfono:
+                    </div>
+                    <div class="col-lg-6">
+                        <input id="txtNewVisitPhone" runat="server" placeholder="(787) 999-9999" class="form-control" />
+                    </div>
+                  </div>
+          
+              </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <asp:Button ID="cmdNewVisit" OnClick="cmdNewVisit_Click" CssClass="btn btn-primary" runat="server" Text="Crear Record" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -150,8 +188,9 @@
 
               </div>
           <div class="modal-footer">
+            <asp:Button ID="cmdDelete" OnClick="cmdDelete_Click" CssClass="btn btn-danger" runat="server" Text="Delete" />
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <asp:Button ID="cmdSave" OnClick="cmdSave_Click" CssClass="btn btn-primary" runat="server" Text="Save changes" />
+            <asp:Button ID="cmdSave" OnClick="cmdSave_Click" CssClass="btn btn-primary" runat="server" Text="Actualizar" />
           </div>
         </div>
       </div>
@@ -159,7 +198,7 @@
     
     <div class="container-fluid" style="background-color: white;">
         <h1>Hoja de Transportación</h1>
-        <asp:LinkButton ID="lbAdd" runat="server" OnClick="lbAdd_Click">Anadir Visita</asp:LinkButton>
+        <a id="lbNewVisit" href="#" data-toggle="modal" data-target="#myNewVisitModal">Anadir Visita</a>
 
         <!-- Header details -->
         <div>

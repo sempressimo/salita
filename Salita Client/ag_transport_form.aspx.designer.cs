@@ -31,6 +31,33 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
+        /// txtNewVisitName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNewVisitName;
+        
+        /// <summary>
+        /// txtNewVisitPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNewVisitPhone;
+        
+        /// <summary>
+        /// cmdNewVisit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdNewVisit;
+        
+        /// <summary>
         /// txtEditFullName control.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,15 @@ namespace Salita_Client {
         protected global::System.Web.UI.HtmlControls.HtmlSelect cmbChair;
         
         /// <summary>
+        /// cmdDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdDelete;
+        
+        /// <summary>
         /// cmdSave control.
         /// </summary>
         /// <remarks>
@@ -182,15 +218,6 @@ namespace Salita_Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cmdSave;
-        
-        /// <summary>
-        /// lbAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbAdd;
         
         /// <summary>
         /// ListView1 control.
