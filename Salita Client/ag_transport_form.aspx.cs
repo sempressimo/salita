@@ -80,6 +80,88 @@ namespace Salita_Client
             return Convert.ToBoolean(f);
         }
 
+        protected int GetSeatNumber(int Seat_X, int Seat_Y)
+        {
+            if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 0;
+            }
+
+
+            return 0;
+        }
+
+        protected void GetSeatCoords(int SeatNum, ref int? SeatX, ref int? SeatY)
+        {
+            switch (SeatNum)
+            { 
+                case 1:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 2:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 3:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 4:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 5:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 6:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 7:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 8:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 9:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 10:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 11:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 12:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 13:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 14:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 15:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+                case 16:
+                    SeatX = 0;
+                    SeatY = 0;
+                    break;
+            }
+        }
+
         protected void cmdSave_Click(object sender, EventArgs e)
         {
             try
@@ -120,8 +202,12 @@ namespace Salita_Client
                 VisitRecord.AG_OK = this.cbOK.Checked;
                 VisitRecord.AG_DriverName = this.txtDriver.Value;
 
-                //VisitRecord.Seat_X = 1;
-                //VisitRecord.Seat_Y = 1;
+                int? Seat_X = 0;
+                int? Seat_Y = 0;
+                this.GetSeatCoords(1, ref Seat_X, ref Seat_Y);
+
+                VisitRecord.Seat_X = Seat_X;
+                VisitRecord.Seat_Y = Seat_Y;
 
                 this.db.SaveChanges();
 
