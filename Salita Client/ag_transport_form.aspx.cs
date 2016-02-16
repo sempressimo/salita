@@ -202,7 +202,7 @@ namespace Salita_Client
                 v.AG_ExitTime = "";
                 v.AG_LL = false;
                 v.AG_OK = false;
-                v.AG_Phone = "";
+                v.AG_Phone = FormattedPhone;
                 v.AG_RegisteredTime = DateTime.Now.ToShortTimeString();
                 v.AG_RR = false;
                 v.AG_Tag = "";

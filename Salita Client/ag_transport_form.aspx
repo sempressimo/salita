@@ -1,5 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ag_transport_form.aspx.cs" Inherits="Salita_Client.ag_transport_form" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        tr 
+        {
+            border-bottom: 1px solid #ccc;
+        }
+
+    tr:nth-child(even) 
+        {
+            background-color: #DDDDDD;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-danger mysummary"/>
@@ -197,8 +208,8 @@
     </div>
     
     <div class="container-fluid" style="background-color: white;">
-        <h1>Hoja de Transportación</h1>
-        <a id="lbNewVisit" href="#" data-toggle="modal" data-target="#myNewVisitModal">Anadir Visita</a>
+        <h1>Hoja de Transportación&nbsp;<a id="lbNewVisit" href="#" class="btn btn-primary" data-toggle="modal" data-target="#myNewVisitModal">Anadir Visita</a></h1>
+        
 
         <!-- Header details -->
         <div>
@@ -206,7 +217,7 @@
             &nbsp;
         </div>
 
-        <table style="width: 100%; border: thin; border-color: silver;">
+        <table style="width: 100%; border-collapse: collapse;">
             <thead style="background-color: silver;">
                 <tr>
                     <th>
@@ -276,7 +287,7 @@
                             <asp:CheckBox ID="cbListLL" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_LL"))%>' />
                         </td>
                         <td>
-                            <%#Eval("AG_RR")%>
+                            <asp:CheckBox ID="cbListRR" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_RR"))%>' />
                         </td>
                         <td id='td-tag-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Tag")%>
