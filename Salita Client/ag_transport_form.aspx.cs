@@ -96,68 +96,128 @@ namespace Salita_Client
             switch (SeatNum)
             { 
                 case 1:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 1;
+                    SeatY = 11;
                     break;
                 case 2:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 2;
+                    SeatY = 11;
                     break;
                 case 3:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 3;
+                    SeatY = 11;
                     break;
                 case 4:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 4;
+                    SeatY = 10;
                     break;
                 case 5:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 4;
+                    SeatY = 9;
                     break;
                 case 6:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 3;
+                    SeatY = 8;
                     break;
                 case 7:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 2;
+                    SeatY = 8;
                     break;
                 case 8:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 1;
+                    SeatY = 8;
                     break;
                 case 9:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 1;
+                    SeatY = 7;
                     break;
                 case 10:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 2;
+                    SeatY = 7;
                     break;
                 case 11:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 3;
+                    SeatY = 7;
                     break;
                 case 12:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 4;
+                    SeatY = 6;
                     break;
                 case 13:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 4;
+                    SeatY = 5;
                     break;
                 case 14:
-                    SeatX = 0;
+                    SeatX = 1;
                     SeatY = 0;
                     break;
                 case 15:
-                    SeatX = 0;
+                    SeatX = 3;
                     SeatY = 0;
                     break;
                 case 16:
-                    SeatX = 0;
-                    SeatY = 0;
+                    SeatX = 4;
+                    SeatY = 1;
+                    break;
+                case 17:
+                    SeatX = 4;
+                    SeatY = 2;
+                    break;
+                case 18:
+                    SeatX = 5;
+                    SeatY = 3;
+                    break;
+                case 19:
+                    SeatX = 6;
+                    SeatY = 3;
+                    break;
+                case 20:
+                    SeatX = 8;
+                    SeatY = 2;
+                    break;
+                case 21:
+                    SeatX = 8;
+                    SeatY = 1;
+                    break;
+                case 22:
+                    SeatX = 9;
+                    SeatY = 4;
+                    break;
+                case 23:
+                    SeatX = 8;
+                    SeatY = 4;
+                    break;
+                case 24:
+                    SeatX = 7;
+                    SeatY = 5;
+                    break;
+                case 25:
+                    SeatX = 7;
+                    SeatY = 6;
+                    break;
+                case 26:
+                    SeatX = 7;
+                    SeatY = 7;
+                    break;
+                case 27:
+                    SeatX = 7;
+                    SeatY = 8;
+                    break;
+                case 28:
+                    SeatX = 9;
+                    SeatY = 1;
+                    break;
+                case 29:
+                    SeatX = 9;
+                    SeatY = 9;
+                    break;
+                case 30:
+                    SeatX = 11;
+                    SeatY = 9;
+                    break;
+                case 31:
+                    SeatX = 11;
+                    SeatY = 11;
                     break;
             }
         }
