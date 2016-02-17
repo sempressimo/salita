@@ -82,11 +82,134 @@ namespace Salita_Client
 
         protected int GetSeatNumber(int Seat_X, int Seat_Y)
         {
-            if (Seat_X == 0 && Seat_Y == 0)
+            if (Seat_X == 1 && Seat_Y == 11)
             {
-                return 0;
+                return 1;
             }
-
+            else if (Seat_X == 2 && Seat_Y == 11)
+            {
+                return 2;
+            }
+            else if (Seat_X == 3 && Seat_Y == 11)
+            {
+                return 3;
+            }
+            else if (Seat_X == 4 && Seat_Y == 10)
+            {
+                return 4;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 5;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 6;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 7;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 8;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 9;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 10;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 11;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 12;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 13;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 14;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 15;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 16;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 17;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 18;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 19;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 20;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 21;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 22;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 23;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 24;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 25;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 26;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 27;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 28;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 1;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 29;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 30;
+            }
+            else if (Seat_X == 0 && Seat_Y == 0)
+            {
+                return 31;
+            }
 
             return 0;
         }
