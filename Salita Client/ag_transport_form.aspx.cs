@@ -31,9 +31,10 @@ namespace Salita_Client
 
         protected void LoadVisits()
         {
-            DateTime today = DateTime.Today;
+            DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
+            DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
-            var TodaysVisits = this.db.v_AG_Transport.Where(p => p.VisitDate == today).OrderBy(x => x.VisitDate);
+            var TodaysVisits = this.db.v_AG_Transport.Where(p => p.VisitDate >= todayLow && p.VisitDate <= todayHigh).OrderBy(x => x.VisitDate);
 
             this.ListView1.DataSource = TodaysVisits.ToList();
             this.ListView1.DataBind();
@@ -410,12 +411,18 @@ namespace Salita_Client
                 DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
                 DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
+                //
+                // Load my current transport requests
+                //
+                var myTransportRequests_LLevar = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 3 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+                var myTransportRequests_Recojer = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 4 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+
                 if (Llevar == false)
                 {
-                    // No need to take the customer, delete if previously created
-                    var myTransportRequests = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 3 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
-
-                    foreach (var t in myTransportRequests)
+                    //
+                    // If the llevar checkbox is false then delete my current request if any
+                    //
+                    foreach (var t in myTransportRequests_LLevar)
                     {
                         this.db.CustomerNeeds.Remove(t);
                         this.db.SaveChanges();
@@ -426,27 +433,34 @@ namespace Salita_Client
                     //
                     // Create the transportation requests
                     //
-                    CustomerNeed c = new CustomerNeed();
+                    if (myTransportRequests_LLevar.Count() > 0)
+                    {
 
-                    c.Customer_ID = VisitRecord.Customer_ID;
-                    c.RequestedService_ID = 3; // Llevar
-                    c.WasFullfilled = false;
-                    c.Note = "";
-                    c.Address_Line = VisitRecord.AG_DriveTo;
-                    c.Town = "";
-                    c.ZipCode = "";
-                    c.FromDealer = true;
+                    }
+                    else
+                    {
+                        CustomerNeed c = new CustomerNeed();
 
-                    this.db.CustomerNeeds.Add(c);
+                        c.Customer_ID = VisitRecord.Customer_ID;
+                        c.RequestedService_ID = 3; // Llevar
+                        c.RequestDateTime = DateTime.Now;
+                        c.WasFullfilled = false;
+                        c.Note = "";
+                        c.Address_Line = VisitRecord.AG_DriveTo;
+                        c.Town = "";
+                        c.ZipCode = "";
+                        c.FromDealer = true;
+                        c.Canceled = false;
+
+                        this.db.CustomerNeeds.Add(c);
+                    }
+
                     this.db.SaveChanges();
                 }
 
                 if (Recojer == false)
                 {
-                    // No need to take the customer, delete if previously created
-                    var myTransportRequests = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 4 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
-
-                    foreach (var t in myTransportRequests)
+                    foreach (var t in myTransportRequests_Recojer)
                     {
                         this.db.CustomerNeeds.Remove(t);
                         this.db.SaveChanges();
@@ -458,12 +472,14 @@ namespace Salita_Client
 
                     c.Customer_ID = VisitRecord.Customer_ID;
                     c.RequestedService_ID = 4; // Recojer
+                    c.RequestDateTime = DateTime.Now;
                     c.WasFullfilled = false;
                     c.Note = "";
                     c.Address_Line = "Autogermana";
                     c.Town = "Guaynabo";
                     c.ZipCode = "";
                     c.FromDealer = false;
+                    c.Canceled = false;
 
                     this.db.CustomerNeeds.Add(c);
                     this.db.SaveChanges();
@@ -556,7 +572,7 @@ namespace Salita_Client
                 v.Mood = "";
                 v.Seat_X = 0;
                 v.Seat_Y = 0;
-                v.VisitDate = DateTime.Today;
+                v.VisitDate = DateTime.Now;
                 v.WaitingFor = "";
 
                 this.db.Visits.Add(v);

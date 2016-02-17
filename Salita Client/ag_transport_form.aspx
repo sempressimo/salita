@@ -100,12 +100,12 @@
 
                     <div class="col-md-2">
                         <label>LLevar</label>
-                        <br/><asp:CheckBox ID="cbLL" runat="server" class="form-control"/>
+                        <br/><asp:CheckBox ID="cbLL" runat="server" class="form-control" Checked="false"/>
                     </div>
                     
                     <div class="col-md-2">
                         <label>Recojer</label>
-                        <br/><asp:CheckBox ID="lbR" runat="server" class="form-control"/>
+                        <br/><asp:CheckBox ID="lbR" runat="server" class="form-control" Checked="false"/>
                     </div>
                   
                 </div>
@@ -283,10 +283,10 @@
                         <td id='td-companions-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Companions")%>
                         </td>
-                        <td>
+                        <td id='td-ll-<%#Eval("Visit_ID")%>'>
                             <asp:CheckBox ID="cbListLL" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_LL"))%>' />
                         </td>
-                        <td>
+                        <td id='td-rr-<%#Eval("Visit_ID")%>'>
                             <asp:CheckBox ID="cbListRR" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_RR"))%>' />
                         </td>
                         <td id='td-tag-<%#Eval("Visit_ID")%>'>
@@ -344,6 +344,12 @@
             $('#ContentPlaceHolder1_txtEditPhone').val($('#td-phone-' + val).find('a').html().trim());
             $('#ContentPlaceHolder1_txtTag').val($('#td-tag-' + val).html().trim());
             $('#ContentPlaceHolder1_cmbCompanions').val($('#td-companions-' + val).html().trim());
+
+            //$('#ContentPlaceHolder1_cbLL').attr('checked', $('#td-ll-' + val).find('input').is(":checked"));
+            //$('#ContentPlaceHolder1_lbR').attr('checked', $('#td-rr-' + val).find('input').is(":checked"));
+
+            $('input[id$="ContentPlaceHolder1_cbLL"]').attr('checked', $('#td-ll-' + val).find('input').is(":checked"));
+            $('input[id$="ContentPlaceHolder1_lbR"]').attr('checked', $('#td-rr-' + val).find('input').is(":checked"));
 
             $('#ContentPlaceHolder1_txtAdvisor').val($('#td-advisor-' + val).html().trim());
             $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
