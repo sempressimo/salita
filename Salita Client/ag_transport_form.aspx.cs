@@ -31,7 +31,9 @@ namespace Salita_Client
 
         protected void LoadVisits()
         {
-            var TodaysVisits = this.db.v_AG_Transport.OrderBy(x => x.VisitDate);
+            DateTime today = DateTime.Today;
+
+            var TodaysVisits = this.db.v_AG_Transport.Where(p => p.VisitDate == today).OrderBy(x => x.VisitDate);
 
             this.ListView1.DataSource = TodaysVisits.ToList();
             this.ListView1.DataBind();
