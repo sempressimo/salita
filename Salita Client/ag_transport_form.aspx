@@ -30,19 +30,19 @@
             
                   <!-- Basic details form start here -->
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         Nombre completo:
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <input id="txtNewVisitName" runat="server" placeholder="Full name" class="form-control" />
                     </div>
                   </div>
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         Teléfono:
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <input id="txtNewVisitPhone" runat="server" placeholder="(787) 999-9999" class="form-control" />
                     </div>
                   </div>
@@ -69,11 +69,11 @@
                 <!-- Basic details form start here -->
                   
                 <div class="row"> 
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label>Nombre<input id="txtCustomer_ID" runat="server" type="hidden" /></label>
                         <input id="txtEditFullName" runat="server" type="text" placeholder="Full name" class="form-control" />
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label>Teléfono</label>
                         <input id="txtEditPhone" runat="server" type="tel" placeholder="(787) 999-9999" class="form-control" />
                     </div>
@@ -81,7 +81,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>Acompañantes</label>
                         <select id="cmbCompanions" runat="server" class ="form-control">
                             <option value="0">Solo</option>
@@ -93,18 +93,18 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>Tag</label>
                         <input id="txtTag" runat="server" type="number" placeholder="#" class="form-control" />
                     </div>
 
-                    <div class="col-lg-2">
-                        <label>LL</label>
+                    <div class="col-md-2">
+                        <label>LLevar</label>
                         <br/><asp:CheckBox ID="cbLL" runat="server" class="form-control"/>
                     </div>
                     
-                    <div class="col-lg-2">
-                        <label>R</label>
+                    <div class="col-md-2">
+                        <label>Recojer</label>
                         <br/><asp:CheckBox ID="lbR" runat="server" class="form-control"/>
                     </div>
                   
@@ -112,12 +112,12 @@
 
                 <div class="row">
 
-                     <div class="col-lg-6">
+                     <div class="col-md-6">
                         <label>Asesor</label>
                         <input id="txtAdvisor" type="text" runat="server" placeholder="Nombre..." class="form-control" />
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label>Destino</label>
                         <input id="txtDriveTo" type="text" runat="server" placeholder="Detalles..." class="form-control" />
                     </div>
@@ -126,17 +126,17 @@
           
                 <div class="row">
                 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>H. Cita</label>
                         <input id="txtAppointment" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
                 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>H. Anotado</label>
                         <input id="txtSignedInTime" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>H. Atendido</label>
                         <input id="txtAtended" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
@@ -145,12 +145,12 @@
 
                 <div class="row">
                 
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label>Chofer</label>
                         <input id="txtDriver" type="text" runat="server" placeholder="Nombre..." class="form-control" />
                     </div>
                 
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <label>OK</label>
                         <br/><asp:CheckBox ID="cbOK" runat="server" />
                     </div>
@@ -159,17 +159,17 @@
 
                 <div class="row">
 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>H. Salida</label>
                         <input id="txtLeaveTime" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
                 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>H. Llegada</label>
                         <input id="txtArriveTime" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <label>Silla</label>
                         <select id="cmbChair" runat="server" class="form-control">
                             <option value="1">1</option>

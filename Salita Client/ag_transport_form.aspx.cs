@@ -375,13 +375,14 @@ namespace Salita_Client
                     VisitRecord.AG_Companions = Convert.ToInt32(this.cmbCompanions.Value);
                 }
 
-                VisitRecord.AG_LL = Convert.ToBoolean(this.cbLL.Checked);
-                VisitRecord.AG_RR = Convert.ToBoolean(this.lbR.Checked);
-                
                 VisitRecord.AG_Tag = this.txtTag.Value;  
                 VisitRecord.AG_Advisor = this.txtAdvisor.Value;
+
+                VisitRecord.AG_LL = Convert.ToBoolean(this.cbLL.Checked);
+                VisitRecord.AG_RR = Convert.ToBoolean(this.lbR.Checked);
                 VisitRecord.AG_DriveTo = this.txtDriveTo.Value;
-                
+                VisitRecord.AG_DriverName = this.txtDriver.Value;
+
                 VisitRecord.AG_AppointmentTime = this.txtAppointment.Value;
                 VisitRecord.AG_RegisteredTime = this.txtSignedInTime.Value;
                 VisitRecord.AG_AttendedTime = this.txtAtended.Value;
@@ -389,8 +390,7 @@ namespace Salita_Client
                 VisitRecord.AG_ExitTime = this.txtLeaveTime.Value;
                 
                 VisitRecord.AG_OK = this.cbOK.Checked;
-                VisitRecord.AG_DriverName = this.txtDriver.Value;
-
+                
                 int? Seat_X = 0;
                 int? Seat_Y = 0;
                 this.GetSeatCoords(1, ref Seat_X, ref Seat_Y);
@@ -399,6 +399,75 @@ namespace Salita_Client
                 VisitRecord.Seat_Y = Seat_Y;
 
                 this.db.SaveChanges();
+
+                //
+                // Update CustomersNeeds table to match
+                // the transportation information
+                //
+                bool Llevar = VisitRecord.AG_LL.Value;
+                bool Recojer = VisitRecord.AG_RR.Value;
+
+                DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
+                DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
+
+                if (Llevar == false)
+                {
+                    // No need to take the customer, delete if previously created
+                    var myTransportRequests = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 3 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+
+                    foreach (var t in myTransportRequests)
+                    {
+                        this.db.CustomerNeeds.Remove(t);
+                        this.db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    //
+                    // Create the transportation requests
+                    //
+                    CustomerNeed c = new CustomerNeed();
+
+                    c.Customer_ID = VisitRecord.Customer_ID;
+                    c.RequestedService_ID = 3; // Llevar
+                    c.WasFullfilled = false;
+                    c.Note = "";
+                    c.Address_Line = VisitRecord.AG_DriveTo;
+                    c.Town = "";
+                    c.ZipCode = "";
+                    c.FromDealer = true;
+
+                    this.db.CustomerNeeds.Add(c);
+                    this.db.SaveChanges();
+                }
+
+                if (Recojer == false)
+                {
+                    // No need to take the customer, delete if previously created
+                    var myTransportRequests = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 4 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+
+                    foreach (var t in myTransportRequests)
+                    {
+                        this.db.CustomerNeeds.Remove(t);
+                        this.db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    CustomerNeed c = new CustomerNeed();
+
+                    c.Customer_ID = VisitRecord.Customer_ID;
+                    c.RequestedService_ID = 4; // Recojer
+                    c.WasFullfilled = false;
+                    c.Note = "";
+                    c.Address_Line = "Autogermana";
+                    c.Town = "Guaynabo";
+                    c.ZipCode = "";
+                    c.FromDealer = false;
+
+                    this.db.CustomerNeeds.Add(c);
+                    this.db.SaveChanges();
+                }
 
                 this.LoadVisits();
             }
