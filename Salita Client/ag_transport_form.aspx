@@ -320,7 +320,7 @@
                             <%#Eval("AG_ArrivalTime")%>
                         </td>
                         <td id='td-chair-<%#Eval("Visit_ID")%>'>
-                            <%#Eval("Seat_X")%>
+                            <%#this.GetSeatNumber(Eval("Seat_X"), Eval("Seat_Y"))%>
                         </td>
                     </tr>
                 </ItemTemplate>
