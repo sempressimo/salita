@@ -127,7 +127,7 @@
                 <div class="row">
                 
                     <div class="col-md-4">
-                        <label>H. Cita</label>
+                        <label>H. Cita <a id="h-cita-w" href="#">W</a>&nbsp;-&nbsp;<a id="h-cita-w2" href="#">iW</a></label>
                         <input id="txtAppointment" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
                 
@@ -335,6 +335,11 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptSection" runat="server">
     <script type="text/javascript">
+
+        $("#h-cita-w").click(function () {
+            $('#ContentPlaceHolder1_txtAppointment').val('W');
+        });
+
         function setValue(val) {
             document.getElementById('myRecordId').value = val;
 
