@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ag_transport_form.aspx.cs" Inherits="Salita_Client.ag_transport_form" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="ag_transport_form.aspx.cs" Inherits="Salita_Client.ag_transport_form" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         tr 
@@ -284,10 +284,10 @@
                             <%#Eval("AG_Companions")%>
                         </td>
                         <td id='td-ll-<%#Eval("Visit_ID")%>'>
-                            <asp:CheckBox ID="cbListLL" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_LL"))%>' />
+                            <asp:CheckBox ID="cbListLL" Enabled="true" runat="server" Checked='<%#GetDefaultBool(Eval("AG_LL"))%>' />
                         </td>
                         <td id='td-rr-<%#Eval("Visit_ID")%>'>
-                            <asp:CheckBox ID="cbListRR" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_RR"))%>' />
+                            <asp:CheckBox ID="cbListRR" Enabled="true" runat="server" Checked='<%#GetDefaultBool(Eval("AG_RR"))%>' />
                         </td>
                         <td id='td-tag-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_Tag")%>
@@ -308,7 +308,7 @@
                             <%#Eval("AG_AttendedTime")%>
                         </td>
                         <td>
-                            <asp:CheckBox ID="CheckBox1" Enabled="false" runat="server" Checked='<%#GetDefaultBool(Eval("AG_OK"))%>' />
+                            <asp:CheckBox ID="cbOK" Enabled="true" ToolTip='<%#Eval("Visit_ID")%>' OnCheckedChanged="cbOK_CheckedChanged" value="" AutoPostBack="true" runat="server" Checked='<%#GetDefaultBool(Eval("AG_OK"))%>' />
                         </td>
                         <td>
                             <%#Eval("AG_ExitTime")%>

@@ -83,6 +83,16 @@ namespace Salita_Client
             return Convert.ToBoolean(f);
         }
 
+        protected string GetCheckedAtrrib(bool Value)
+        {
+            if (Value)
+            {
+                return "checked='checked'";
+            }
+
+            return "";
+        }
+
         protected int GetSeatNumber(object _Seat_X, object _Seat_Y)
         {
             if (_Seat_X == null || _Seat_Y == null)
@@ -612,6 +622,32 @@ namespace Salita_Client
                 if (_V != null)
                 {
                     this.db.Visits.Remove(_V);
+                    this.db.SaveChanges();
+
+                    this.LoadVisits();
+                }
+            }
+            catch (Exception ex)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = ex.Message;
+            }
+        }
+
+        protected void cbOK_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CheckBox cb = (CheckBox)sender;
+
+                int Visit_ID = int.Parse(cb.ToolTip);
+
+                var _V = this.db.Visits.SingleOrDefault(p => p.Visit_ID == Visit_ID);
+
+                if (_V != null)
+                {
+                    _V.AG_OK = cb.Checked;
+                    
                     this.db.SaveChanges();
 
                     this.LoadVisits();
