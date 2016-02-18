@@ -151,8 +151,8 @@
                     </div>
                 
                     <div class="col-md-6">
-                        <label>OK</label>
-                        <br/><asp:CheckBox ID="cbOK" runat="server" />
+                        <label>Commentarios</label>
+                        <input id="txtNotes" type="text" runat="server" placeholder="..." class="form-control" />
                     </div>
 
                 </div>
@@ -315,6 +315,7 @@
                         </td>
                         <td id='td-drivername-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriverName")%>
+                            <input id="txtComments" type="hidden" value='<%#Eval("AG_Comments")%>' />
                         </td>
                         <td>
                             <%#Eval("AG_ArrivalTime")%>

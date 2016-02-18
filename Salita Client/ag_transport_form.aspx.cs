@@ -399,8 +399,8 @@ namespace Salita_Client
                 VisitRecord.AG_AttendedTime = this.txtAtended.Value;
                 VisitRecord.AG_ArrivalTime = this.txtArriveTime.Value;
                 VisitRecord.AG_ExitTime = this.txtLeaveTime.Value;
-                
-                VisitRecord.AG_OK = this.cbOK.Checked;
+
+                //VisitRecord.AG_OK = this.cbOK.Checked; // Moved to click directly on ListView
                 
                 int? Seat_X = 0;
                 int? Seat_Y = 0;
@@ -420,6 +420,8 @@ namespace Salita_Client
 
                 DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
                 DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
+
+                string NoteField = this.txtNotes.Value;
 
                 //
                 // Load my current transport requests
@@ -444,7 +446,7 @@ namespace Salita_Client
                     if (myTransportRequests_LLevar != null)
                     {
                         myTransportRequests_LLevar.Address_Line = VisitRecord.AG_DriveTo;
-
+                        myTransportRequests_LLevar.Note = NoteField;
                     }
                     else
                     {
@@ -457,7 +459,7 @@ namespace Salita_Client
                         c.RequestedService_ID = 3; // Llevar
                         c.RequestDateTime = DateTime.Now;
                         c.WasFullfilled = false;
-                        c.Note = "";
+                        c.Note = NoteField;
                         c.Address_Line = VisitRecord.AG_DriveTo;
                         c.Town = "";
                         c.ZipCode = "";
@@ -483,7 +485,7 @@ namespace Salita_Client
                     if (myTransportRequests_Recojer != null)
                     {
                         myTransportRequests_Recojer.Address_Line = VisitRecord.AG_DriveTo;
-
+                        myTransportRequests_Recojer.Note = NoteField;
                     }
                     else
                     {
@@ -496,7 +498,7 @@ namespace Salita_Client
                         c.RequestedService_ID = 4; // Recojer
                         c.RequestDateTime = DateTime.Now;
                         c.WasFullfilled = false;
-                        c.Note = "";
+                        c.Note = NoteField;
                         c.Address_Line = "Autogermana";
                         c.Town = "Guaynabo";
                         c.ZipCode = "";

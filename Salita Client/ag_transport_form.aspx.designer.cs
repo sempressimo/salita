@@ -175,13 +175,13 @@ namespace Salita_Client {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDriver;
         
         /// <summary>
-        /// cbOK control.
+        /// txtNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbOK;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNotes;
         
         /// <summary>
         /// txtLeaveTime control.
