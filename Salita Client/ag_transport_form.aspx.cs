@@ -369,6 +369,8 @@ namespace Salita_Client
                 int RecId = 0;
                 int.TryParse(Request.Form["myRecordId"].ToString(), out RecId);
 
+                string NoteField = this.txtNotes.Value;
+
                 // Not been saved
                 var FullName = this.txtEditFullName.Value;
                 var Phone = this.txtEditPhone.Value;
@@ -399,6 +401,7 @@ namespace Salita_Client
                 VisitRecord.AG_AttendedTime = this.txtAtended.Value;
                 VisitRecord.AG_ArrivalTime = this.txtArriveTime.Value;
                 VisitRecord.AG_ExitTime = this.txtLeaveTime.Value;
+                VisitRecord.AG_Comments = NoteField;
 
                 //VisitRecord.AG_OK = this.cbOK.Checked; // Moved to click directly on ListView
                 
@@ -421,7 +424,7 @@ namespace Salita_Client
                 DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
                 DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
-                string NoteField = this.txtNotes.Value;
+                
 
                 //
                 // Load my current transport requests
