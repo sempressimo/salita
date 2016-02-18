@@ -315,7 +315,7 @@
                         </td>
                         <td id='td-drivername-<%#Eval("Visit_ID")%>'>
                             <%#Eval("AG_DriverName")%>
-                            <input id="txtComments" type="hidden" value='<%#Eval("AG_Comments")%>' />
+                            <input id='txtComments-<%#Eval("Visit_ID")%>' type="hidden" value='<%#Eval("AG_Comments")%>' />
                         </td>
                         <td>
                             <%#Eval("AG_ArrivalTime")%>
@@ -365,6 +365,7 @@
             $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
 
             $('#ContentPlaceHolder1_txtDriverName').val($('#td-drivername-' + val).html().trim());
+            $('#ContentPlaceHolder1_txtNotes').val($('#txtComments-' + val).html().trim());
 
             $('#ContentPlaceHolder1_txtAppointment').val($('#td-appointmenttime-' + val).html().trim());
             $('#ContentPlaceHolder1_txtSignedInTime').val($('#td-registeredtime-' + val).html().trim());
