@@ -414,31 +414,33 @@ namespace Salita_Client
                 //
                 // Load my current transport requests
                 //
-                var myTransportRequests_LLevar = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 3 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
-                var myTransportRequests_Recojer = this.db.CustomerNeeds.Where(p => p.RequestedService_ID == 4 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+                var myTransportRequests_LLevar = this.db.CustomerNeeds.SingleOrDefault(p => p.RequestedService_ID == 3 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
+                var myTransportRequests_Recojer = this.db.CustomerNeeds.SingleOrDefault(p => p.RequestedService_ID == 4 && p.Customer_ID == VisitRecord.Customer_ID && p.RequestDateTime >= todayLow && p.RequestDateTime <= todayHigh && p.WasFullfilled == false);
 
                 if (Llevar == false)
                 {
                     //
-                    // If the llevar checkbox is false then delete my current request if any
+                    // If the llevar checkbox is false then delete my current open request if any
                     //
-                    foreach (var t in myTransportRequests_LLevar)
+                    if (myTransportRequests_LLevar != null)
                     {
-                        this.db.CustomerNeeds.Remove(t);
+                        this.db.CustomerNeeds.Remove(myTransportRequests_LLevar);
                         this.db.SaveChanges();
                     }
                 }
                 else
                 {
-                    //
-                    // Create the transportation requests
-                    //
-                    if (myTransportRequests_LLevar.Count() > 0)
+
+                    if (myTransportRequests_LLevar != null)
                     {
+                        myTransportRequests_LLevar.Address_Line = VisitRecord.AG_DriveTo;
 
                     }
                     else
                     {
+                        //
+                        // Create the transportation requests
+                        //
                         CustomerNeed c = new CustomerNeed();
 
                         c.Customer_ID = VisitRecord.Customer_ID;
@@ -460,28 +462,40 @@ namespace Salita_Client
 
                 if (Recojer == false)
                 {
-                    foreach (var t in myTransportRequests_Recojer)
+                    if (myTransportRequests_Recojer != null)
                     {
-                        this.db.CustomerNeeds.Remove(t);
+                        this.db.CustomerNeeds.Remove(myTransportRequests_Recojer);
                         this.db.SaveChanges();
                     }
                 }
                 else
                 {
-                    CustomerNeed c = new CustomerNeed();
+                    if (myTransportRequests_Recojer != null)
+                    {
+                        myTransportRequests_Recojer.Address_Line = VisitRecord.AG_DriveTo;
 
-                    c.Customer_ID = VisitRecord.Customer_ID;
-                    c.RequestedService_ID = 4; // Recojer
-                    c.RequestDateTime = DateTime.Now;
-                    c.WasFullfilled = false;
-                    c.Note = "";
-                    c.Address_Line = "Autogermana";
-                    c.Town = "Guaynabo";
-                    c.ZipCode = "";
-                    c.FromDealer = false;
-                    c.Canceled = false;
+                    }
+                    else
+                    {
+                        //
+                        // Create the transportation requests
+                        //
+                        CustomerNeed c = new CustomerNeed();
 
-                    this.db.CustomerNeeds.Add(c);
+                        c.Customer_ID = VisitRecord.Customer_ID;
+                        c.RequestedService_ID = 4; // Recojer
+                        c.RequestDateTime = DateTime.Now;
+                        c.WasFullfilled = false;
+                        c.Note = "";
+                        c.Address_Line = "Autogermana";
+                        c.Town = "Guaynabo";
+                        c.ZipCode = "";
+                        c.FromDealer = false;
+                        c.Canceled = false;
+
+                        this.db.CustomerNeeds.Add(c);
+                    }
+                        
                     this.db.SaveChanges();
                 }
 

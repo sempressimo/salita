@@ -340,6 +340,10 @@
             $('#ContentPlaceHolder1_txtAppointment').val('W');
         });
 
+        $("#h-cita-w2").click(function () {
+            $('#ContentPlaceHolder1_txtAppointment').val('W2');
+        });
+
         function setValue(val) {
             document.getElementById('myRecordId').value = val;
 
