@@ -127,12 +127,12 @@
                 <div class="row">
                 
                     <div class="col-md-4">
-                        <label>H. Cita <a id="h-cita-w" href="#">W</a>&nbsp;-&nbsp;<a id="h-cita-w2" href="#">iW</a></label>
+                        <label>H. Cita <a id="h-cita-w" href="#">WI</a></label>
                         <input id="txtAppointment" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
                 
                     <div class="col-md-4">
-                        <label>H. Anotado</label>
+                        <label>H. Anotado <a id="h-anotado-w" href="#">WI</a></label>
                         <input id="txtSignedInTime" type="time" runat="server" placeholder="9:99 AM" class="form-control" />
                     </div>
 
@@ -337,11 +337,11 @@
     <script type="text/javascript">
 
         $("#h-cita-w").click(function () {
-            $('#ContentPlaceHolder1_txtAppointment').val('W');
+            $('#ContentPlaceHolder1_txtAppointment').val('WI');
         });
 
-        $("#h-cita-w2").click(function () {
-            $('#ContentPlaceHolder1_txtAppointment').val('W2');
+        $("#h-anotado-w").click(function () {
+            $('#ContentPlaceHolder1_txtSignedInTime').val('WI');
         });
 
         function setValue(val) {
