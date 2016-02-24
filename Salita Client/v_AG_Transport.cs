@@ -37,6 +37,8 @@ namespace Salita_Client
         public string AG_ExitTime { get; set; }
         public string AG_ArrivalTime { get; set; }
         public string AG_DriverName { get; set; }
+        public string AG_Comments { get; set; }
+        public int Expr1 { get; set; }
         public string Phone { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }

@@ -365,7 +365,7 @@
             $('#ContentPlaceHolder1_txtDriveTo').val($('#td-driveto-' + val).html().trim());
 
             $('#ContentPlaceHolder1_txtDriverName').val($('#td-drivername-' + val).html().trim());
-            $('#ContentPlaceHolder1_txtNotes').val($('#txtComments-' + val).html().trim());
+            $('#ContentPlaceHolder1_txtNotes').val($('#txtComments-' + val).val());
 
             $('#ContentPlaceHolder1_txtAppointment').val($('#td-appointmenttime-' + val).html().trim());
             $('#ContentPlaceHolder1_txtSignedInTime').val($('#td-registeredtime-' + val).html().trim());

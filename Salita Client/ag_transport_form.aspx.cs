@@ -424,8 +424,6 @@ namespace Salita_Client
                 DateTime todayLow = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 12:00AM");
                 DateTime todayHigh = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " 11:59PM");
 
-                
-
                 //
                 // Load my current transport requests
                 //
