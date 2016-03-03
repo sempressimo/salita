@@ -47,8 +47,41 @@ namespace Salita_Client
 
                 var R = db.CustomerNeeds.Single(p => p.CustomerNeed_ID == id);
 
+                int? RequestedService_ID = R.RequestedService_ID;
+
                 this.db.CustomerNeeds.Remove(R);
                 this.db.SaveChanges();
+
+                //
+                // Update the AG Form
+                //
+                if (RequestedService_ID == 3)
+                {
+                    // Only update the drive to record
+                    DateTime NeedDateLow = Convert.ToDateTime(R.RequestDateTime.Value.ToShortDateString() + " 12:00AM");
+                    DateTime NeedDateHigh = Convert.ToDateTime(R.RequestDateTime.Value.ToShortDateString() + " 11:59PM");
+
+                    var V = db.Visits.Single(p => p.Customer_ID == R.Customer_ID && p.VisitDate >= NeedDateLow && p.VisitDate <= NeedDateHigh);
+
+                    V.AG_DriveTo = "";
+                    V.AG_Companions = 0;
+                    V.AG_ExitTime = "";
+                    V.AG_LL = false;
+
+                    db.SaveChanges();
+                }
+                else if (RequestedService_ID == 4)
+                {
+                    // Only update the drive from record
+                    DateTime NeedDateLow = Convert.ToDateTime(R.RequestDateTime.Value.ToShortDateString() + " 12:00AM");
+                    DateTime NeedDateHigh = Convert.ToDateTime(R.RequestDateTime.Value.ToShortDateString() + " 11:59PM");
+
+                    var V = db.Visits.Single(p => p.Customer_ID == R.Customer_ID && p.VisitDate >= NeedDateLow && p.VisitDate <= NeedDateHigh);
+
+                    V.AG_RR = false;
+
+                    db.SaveChanges();
+                }
 
                 Response.Redirect("transport_page.aspx");
             }

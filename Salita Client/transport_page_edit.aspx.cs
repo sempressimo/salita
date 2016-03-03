@@ -81,8 +81,27 @@ namespace Salita_Client
                 N.Town = this.txtTown.Value;
                 N.ZipCode = this.txtZipCode.Text;
                 N.RequestDateTime = Convert.ToDateTime(DateTime.Today.ToShortDateString() + " " + this.cmbTime.SelectedValue);
-
+                // TODO: add a field for # of companions
+                
                 db.SaveChanges();
+
+                //
+                // Edit the AG Form
+                //
+                if (N.RequestedService_ID == 3)
+                {
+                    // Only update the drive to record
+                    DateTime NeedDateLow = Convert.ToDateTime(N.RequestDateTime.Value.ToShortDateString() + " 12:00AM");
+                    DateTime NeedDateHigh = Convert.ToDateTime(N.RequestDateTime.Value.ToShortDateString() + " 11:59PM");
+
+                    var V = db.Visits.Single(p => p.Customer_ID == N.Customer_ID && p.VisitDate >= NeedDateLow && p.VisitDate <= NeedDateHigh);
+
+                    V.AG_DriveTo = this.txtAddressLine1.Value;
+                    V.AG_Companions = Convert.ToInt32(this.cmbCompanions.SelectedValue);
+                    V.AG_ExitTime = this.cmbTime.Text;
+
+                    db.SaveChanges();
+                }
 
                 Response.Redirect("transport_page.aspx");
             }

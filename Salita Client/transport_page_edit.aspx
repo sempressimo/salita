@@ -22,6 +22,18 @@
                         </div>
 
                         <div class="form-group">
+                        <label>Acompañantes</label>
+                        <asp:DropDownList ID="cmbCompanions" CssClass="form-control" runat="server">
+                            <asp:ListItem>0</asp:ListItem>
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>3</asp:ListItem>
+                            <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="form-group">
                         <label>Dirección</label>
                         <input ID="txtAddressLine1" class="form-control" runat="server"/>
                         </div>
