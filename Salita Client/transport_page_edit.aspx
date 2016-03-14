@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group">
-                        <label>Dirección</label>
+                        <label>Dirección</label> 
                         <input ID="txtAddressLine1" class="form-control" runat="server"/>
                         </div>
 
