@@ -27,9 +27,10 @@ namespace Salita_Client
                     {
                         ViewState["Customer_ID"] = Request.QueryString["id"];
                         ViewState["m"] = Request.QueryString["m"];
+                        ViewState["vid"] = Request.QueryString["vid"];
 
                         int cid = Convert.ToInt32(ViewState["Customer_ID"]);
-                        int m = Convert.ToInt32(ViewState["m"]);
+                        string m = ViewState["m"].ToString();
 
                         Customer C = db.Customers.Single(p => p.Customer_ID == cid);
 
@@ -39,15 +40,15 @@ namespace Salita_Client
 
                         //this.lblServiceRequested.Text = S.ServiceDescription;
 
-                        if (m == 1)
+                        if (m == "N")
                         {
                             this.imageIcon.ImageUrl = @"images\customer_neutral.png";
                         }
-                        else if (m == 2)
+                        else if (m == "G")
                         {
                             this.imageIcon.ImageUrl = @"images\face_idle.png";
                         }
-                        else if (m == 3)
+                        else if (m == "B")
                         {
                             this.imageIcon.ImageUrl = @"images\face_bad.png";
                         }
@@ -75,15 +76,13 @@ namespace Salita_Client
         {
             try
             {
-                int cid = Convert.ToInt32(ViewState["Customer_ID"]);
-                int m = Convert.ToInt32(ViewState["m"]);
-                int vid = 0;
+                int vid = Convert.ToInt32(ViewState["vid"]);
 
                 SalitaEntities db = new SalitaEntities();
 
                 var V = db.Visits.Single(p => p.Visit_ID == vid);
 
-                V.Mood = "";
+                V.Mood = ViewState["m"].ToString();
 
                 db.SaveChanges();
 

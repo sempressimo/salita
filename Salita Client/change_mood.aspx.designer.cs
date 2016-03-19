@@ -49,15 +49,6 @@ namespace Salita_Client {
         protected global::System.Web.UI.WebControls.Image imageIcon;
         
         /// <summary>
-        /// lblServiceRequested control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblServiceRequested;
-        
-        /// <summary>
         /// txtServiceNote control.
         /// </summary>
         /// <remarks>
