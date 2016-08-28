@@ -61,6 +61,8 @@
                         <li><a href="report_transportation.aspx">Reporte: Transportación</a></li>
                         <li><a href="report_services.aspx">Reporte: Salita</a></li>
                         <li class="divider"></li>
+                        <li><a href="clear_salita.aspx">Admin: Vaciar la Salita</a></li>
+                        <li class="divider"></li>
                         <li><a href="login_list.aspx">Cuentas de Usuario</a></li>
                         <li><a href="logout.aspx">Log Out</a></li>
                         </ul>
